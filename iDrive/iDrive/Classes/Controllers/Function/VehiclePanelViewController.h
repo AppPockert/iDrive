@@ -10,6 +10,6 @@
  *  车辆监控面板
  */
 
-@interface VehiclePanelViewController : UIViewController
+@interface VehiclePanelViewController : BaseViewController
 
 @end

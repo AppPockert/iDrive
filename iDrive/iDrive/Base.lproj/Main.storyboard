@@ -336,6 +336,8 @@
                         <outletCollection property="tabs" destination="6w3-qA-4tf" id="1fc-tQ-j9f"/>
                         <outletCollection property="tabs" destination="Qca-uS-83j" id="xqf-nk-OyB"/>
                         <segue destination="7N7-LP-d8M" kind="push" identifier="ItineraryHistory" id="kCJ-ug-4cZ"/>
+                        <segue destination="BYf-fF-UzS" kind="push" identifier="RealTimeTraj" id="of2-Gu-MmJ"/>
+                        <segue destination="vg7-Zt-8WV" kind="push" identifier="VehicleExam" id="URx-zB-o8w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T1R-hk-4NS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -388,10 +390,10 @@
             </objects>
             <point key="canvasLocation" x="996" y="-610"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Function View Controller-->
         <scene sceneID="ZtG-Kk-rSo">
             <objects>
-                <tableViewController id="IiZ-ec-Xqu" sceneMemberID="viewController">
+                <tableViewController id="IiZ-ec-Xqu" customClass="FunctionViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="aHE-3M-9cl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -399,15 +401,15 @@
                         <sections>
                             <tableViewSection id="xpW-9I-w2b">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Prz-gd-G53" style="IBUITableViewCellStyleDefault" id="Gct-c8-QXs">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="Prz-gd-G53" style="IBUITableViewCellStyleDefault" id="Gct-c8-QXs">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gct-c8-QXs" id="0mG-0Z-XKw">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="信息21" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Prz-gd-G53">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -433,15 +435,15 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="0QC-mg-Ja7" style="IBUITableViewCellStyleDefault" id="TeE-bS-Wh8">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="0QC-mg-Ja7" style="IBUITableViewCellStyleDefault" id="TeE-bS-Wh8">
                                         <rect key="frame" x="0.0" y="88" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TeE-bS-Wh8" id="ede-ko-nHL">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="信息23" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0QC-mg-Ja7">
-                                                    <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                                    <rect key="frame" x="15" y="0.0" width="270" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -463,10 +465,10 @@
             </objects>
             <point key="canvasLocation" x="1031" y="130"/>
         </scene>
-        <!--View Controller-->
+        <!--Real Time Trajectory View Controller-->
         <scene sceneID="X8e-9d-K4m">
             <objects>
-                <viewController id="BYf-fF-UzS" sceneMemberID="viewController">
+                <viewController id="BYf-fF-UzS" customClass="RealTimeTrajectoryViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oC4-qH-rUq"/>
                         <viewControllerLayoutGuide type="bottom" id="u9Q-47-aN8"/>
@@ -503,15 +505,16 @@
                             <constraint firstAttribute="trailing" secondItem="aq9-yk-XUV" secondAttribute="trailing" id="vP1-R7-sq8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="5YP-W5-0pB"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epk-pd-5cU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1700" y="146"/>
         </scene>
-        <!--View Controller-->
+        <!--Vehicle Examination View Controller-->
         <scene sceneID="rTB-0w-yth">
             <objects>
-                <viewController id="vg7-Zt-8WV" sceneMemberID="viewController">
+                <viewController id="vg7-Zt-8WV" customClass="VehicleExaminationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uKq-UB-tRZ"/>
                         <viewControllerLayoutGuide type="bottom" id="6Jd-Wp-DsF"/>
@@ -548,6 +551,7 @@
                             <constraint firstItem="UgF-ve-RfI" firstAttribute="top" secondItem="lzi-js-j6A" secondAttribute="top" constant="64" id="vev-II-XiW"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="QOl-P2-qjs"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H1x-YY-A84" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

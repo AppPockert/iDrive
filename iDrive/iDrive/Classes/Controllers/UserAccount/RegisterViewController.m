@@ -40,4 +40,9 @@
 - (IBAction)registerAction:(id)sender {
 }
 
+#pragma mark -
+
+- (void)handleResult:(id)result of:(RequestService *)service {
+}
+
 @end

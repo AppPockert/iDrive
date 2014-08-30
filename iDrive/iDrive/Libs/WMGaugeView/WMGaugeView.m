@@ -9,8 +9,6 @@
 
 #define DEGREES_TO_RADIANS(degrees) (degrees) / 180.0 * M_PI
 
-#define RGB(r,g,b) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1.0]
-#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a/255.0]
 #define CGRGB(r,g,b) RGB(r,g,b).CGColor
 #define iCGRGB(r,g,b) (id)CGRGB(r,g,b)
 #define CGRGBA(r,g,b,a) RGBA(r,g,b,a).CGColor

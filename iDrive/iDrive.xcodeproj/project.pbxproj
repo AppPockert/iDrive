@@ -21,10 +21,6 @@
 		040C8EC819B0CE3000E3C43B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 040C8EA719B0CE3000E3C43B /* UIKit.framework */; };
 		040C8ED019B0CE3000E3C43B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 040C8ECE19B0CE3000E3C43B /* InfoPlist.strings */; };
 		040C8ED219B0CE3000E3C43B /* iDriveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C8ED119B0CE3000E3C43B /* iDriveTests.m */; };
-		040C8F3F19B0CED000E3C43B /* ItineraryHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C8EDE19B0CED000E3C43B /* ItineraryHistoryViewController.m */; };
-		040C8F4019B0CED000E3C43B /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C8EE019B0CED000E3C43B /* LoginViewController.m */; };
-		040C8F4119B0CED000E3C43B /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C8EE219B0CED000E3C43B /* RegisterViewController.m */; };
-		040C8F4219B0CED000E3C43B /* VehiclePanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C8EE419B0CED000E3C43B /* VehiclePanelViewController.m */; };
 		040C8F4319B0CED000E3C43B /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C8EE719B0CED000E3C43B /* UIView+Toast.m */; };
 		040C8F4419B0CED000E3C43B /* NSStringUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C8EEA19B0CED000E3C43B /* NSStringUtil.m */; };
 		040C8F4519B0CED000E3C43B /* RegexHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C8EEC19B0CED000E3C43B /* RegexHelper.m */; };
@@ -93,6 +89,15 @@
 		0477614819B1C78600B1DA26 /* LoginRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477614719B1C78600B1DA26 /* LoginRequestParameter.m */; };
 		0477614B19B1C95D00B1DA26 /* TestLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477614A19B1C95D00B1DA26 /* TestLoginService.m */; };
 		0477614E19B1D2B900B1DA26 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477614D19B1D2B900B1DA26 /* BaseModel.m */; };
+		0481635619B200D600138CC9 /* BMKStartOrEndPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481635519B200D600138CC9 /* BMKStartOrEndPointAnnotation.m */; };
+		0481636D19B208D100138CC9 /* FunctionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481635F19B208D100138CC9 /* FunctionViewController.m */; };
+		0481636E19B208D100138CC9 /* ItineraryHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481636119B208D100138CC9 /* ItineraryHistoryViewController.m */; };
+		0481636F19B208D100138CC9 /* RealTimeTrajectoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481636319B208D100138CC9 /* RealTimeTrajectoryViewController.m */; };
+		0481637019B208D100138CC9 /* VehicleExaminationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481636519B208D100138CC9 /* VehicleExaminationViewController.m */; };
+		0481637119B208D100138CC9 /* VehiclePanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481636719B208D100138CC9 /* VehiclePanelViewController.m */; };
+		0481637219B208D100138CC9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481636A19B208D100138CC9 /* LoginViewController.m */; };
+		0481637319B208D100138CC9 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481636C19B208D100138CC9 /* RegisterViewController.m */; };
+		0481637619B209DE00138CC9 /* BMKStartOrEndPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481637519B209DE00138CC9 /* BMKStartOrEndPolyline.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,14 +131,6 @@
 		040C8ECD19B0CE3000E3C43B /* iDriveTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iDriveTests-Info.plist"; sourceTree = "<group>"; };
 		040C8ECF19B0CE3000E3C43B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		040C8ED119B0CE3000E3C43B /* iDriveTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iDriveTests.m; sourceTree = "<group>"; };
-		040C8EDD19B0CED000E3C43B /* ItineraryHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryHistoryViewController.h; sourceTree = "<group>"; };
-		040C8EDE19B0CED000E3C43B /* ItineraryHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryHistoryViewController.m; sourceTree = "<group>"; };
-		040C8EDF19B0CED000E3C43B /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		040C8EE019B0CED000E3C43B /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		040C8EE119B0CED000E3C43B /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		040C8EE219B0CED000E3C43B /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		040C8EE319B0CED000E3C43B /* VehiclePanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehiclePanelViewController.h; sourceTree = "<group>"; };
-		040C8EE419B0CED000E3C43B /* VehiclePanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehiclePanelViewController.m; sourceTree = "<group>"; };
 		040C8EE619B0CED000E3C43B /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
 		040C8EE719B0CED000E3C43B /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
 		040C8EE919B0CED000E3C43B /* NSStringUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSStringUtil.h; sourceTree = "<group>"; };
@@ -322,6 +319,24 @@
 		0477614A19B1C95D00B1DA26 /* TestLoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLoginService.m; sourceTree = "<group>"; };
 		0477614C19B1D2B900B1DA26 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		0477614D19B1D2B900B1DA26 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		0481635419B200D600138CC9 /* BMKStartOrEndPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKStartOrEndPointAnnotation.h; sourceTree = "<group>"; };
+		0481635519B200D600138CC9 /* BMKStartOrEndPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMKStartOrEndPointAnnotation.m; sourceTree = "<group>"; };
+		0481635E19B208D100138CC9 /* FunctionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionViewController.h; sourceTree = "<group>"; };
+		0481635F19B208D100138CC9 /* FunctionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionViewController.m; sourceTree = "<group>"; };
+		0481636019B208D100138CC9 /* ItineraryHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryHistoryViewController.h; sourceTree = "<group>"; };
+		0481636119B208D100138CC9 /* ItineraryHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryHistoryViewController.m; sourceTree = "<group>"; };
+		0481636219B208D100138CC9 /* RealTimeTrajectoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealTimeTrajectoryViewController.h; sourceTree = "<group>"; };
+		0481636319B208D100138CC9 /* RealTimeTrajectoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealTimeTrajectoryViewController.m; sourceTree = "<group>"; };
+		0481636419B208D100138CC9 /* VehicleExaminationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleExaminationViewController.h; sourceTree = "<group>"; };
+		0481636519B208D100138CC9 /* VehicleExaminationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleExaminationViewController.m; sourceTree = "<group>"; };
+		0481636619B208D100138CC9 /* VehiclePanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehiclePanelViewController.h; sourceTree = "<group>"; };
+		0481636719B208D100138CC9 /* VehiclePanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehiclePanelViewController.m; sourceTree = "<group>"; };
+		0481636919B208D100138CC9 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		0481636A19B208D100138CC9 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		0481636B19B208D100138CC9 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		0481636C19B208D100138CC9 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		0481637419B209DE00138CC9 /* BMKStartOrEndPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKStartOrEndPolyline.h; sourceTree = "<group>"; };
+		0481637519B209DE00138CC9 /* BMKStartOrEndPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMKStartOrEndPolyline.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -462,14 +477,8 @@
 		040C8EDC19B0CED000E3C43B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				040C8EDD19B0CED000E3C43B /* ItineraryHistoryViewController.h */,
-				040C8EDE19B0CED000E3C43B /* ItineraryHistoryViewController.m */,
-				040C8EDF19B0CED000E3C43B /* LoginViewController.h */,
-				040C8EE019B0CED000E3C43B /* LoginViewController.m */,
-				040C8EE119B0CED000E3C43B /* RegisterViewController.h */,
-				040C8EE219B0CED000E3C43B /* RegisterViewController.m */,
-				040C8EE319B0CED000E3C43B /* VehiclePanelViewController.h */,
-				040C8EE419B0CED000E3C43B /* VehiclePanelViewController.m */,
+				0481635D19B208D100138CC9 /* Function */,
+				0481636819B208D100138CC9 /* UserAccount */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -497,6 +506,7 @@
 		040C8EED19B0CED000E3C43B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0481635319B2009700138CC9 /* BMKMap */,
 				0477614119B1C75400B1DA26 /* Entity */,
 				0477614419B1C75400B1DA26 /* ReqeustParameter */,
 			);
@@ -852,6 +862,45 @@
 			path = ReqeustParameter;
 			sourceTree = "<group>";
 		};
+		0481635319B2009700138CC9 /* BMKMap */ = {
+			isa = PBXGroup;
+			children = (
+				0481635419B200D600138CC9 /* BMKStartOrEndPointAnnotation.h */,
+				0481635519B200D600138CC9 /* BMKStartOrEndPointAnnotation.m */,
+				0481637419B209DE00138CC9 /* BMKStartOrEndPolyline.h */,
+				0481637519B209DE00138CC9 /* BMKStartOrEndPolyline.m */,
+			);
+			path = BMKMap;
+			sourceTree = "<group>";
+		};
+		0481635D19B208D100138CC9 /* Function */ = {
+			isa = PBXGroup;
+			children = (
+				0481635E19B208D100138CC9 /* FunctionViewController.h */,
+				0481635F19B208D100138CC9 /* FunctionViewController.m */,
+				0481636019B208D100138CC9 /* ItineraryHistoryViewController.h */,
+				0481636119B208D100138CC9 /* ItineraryHistoryViewController.m */,
+				0481636219B208D100138CC9 /* RealTimeTrajectoryViewController.h */,
+				0481636319B208D100138CC9 /* RealTimeTrajectoryViewController.m */,
+				0481636419B208D100138CC9 /* VehicleExaminationViewController.h */,
+				0481636519B208D100138CC9 /* VehicleExaminationViewController.m */,
+				0481636619B208D100138CC9 /* VehiclePanelViewController.h */,
+				0481636719B208D100138CC9 /* VehiclePanelViewController.m */,
+			);
+			path = Function;
+			sourceTree = "<group>";
+		};
+		0481636819B208D100138CC9 /* UserAccount */ = {
+			isa = PBXGroup;
+			children = (
+				0481636919B208D100138CC9 /* LoginViewController.h */,
+				0481636A19B208D100138CC9 /* LoginViewController.m */,
+				0481636B19B208D100138CC9 /* RegisterViewController.h */,
+				0481636C19B208D100138CC9 /* RegisterViewController.m */,
+			);
+			path = UserAccount;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -970,11 +1019,13 @@
 				040C8F4D19B0CED000E3C43B /* WMGaugeView.m in Sources */,
 				0477612319B1950900B1DA26 /* NSData+ImageContentType.m in Sources */,
 				0477614819B1C78600B1DA26 /* LoginRequestParameter.m in Sources */,
+				0481636F19B208D100138CC9 /* RealTimeTrajectoryViewController.m in Sources */,
 				0477612A19B1950900B1DA26 /* SDWebImagePrefetcher.m in Sources */,
 				040C8F4C19B0CED000E3C43B /* JVFloatLabeledTextView.m in Sources */,
 				047760FB19B1950900B1DA26 /* ASIDataDecompressor.m in Sources */,
 				0477613A19B19A8B00B1DA26 /* BaseViewController.m in Sources */,
 				0477612B19B1950900B1DA26 /* UIButton+WebCache.m in Sources */,
+				0481637019B208D100138CC9 /* VehicleExaminationViewController.m in Sources */,
 				0477613119B1950900B1DA26 /* UIView+WebCacheOperation.m in Sources */,
 				0477610519B1950900B1DA26 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				0477614019B19E2B00B1DA26 /* RequestParameter.m in Sources */,
@@ -982,26 +1033,31 @@
 				040C8F4B19B0CED000E3C43B /* JVFloatLabeledTextField.m in Sources */,
 				0477610C19B1950900B1DA26 /* ASIS3BucketObject.m in Sources */,
 				0477613019B1950900B1DA26 /* UIImageView+WebCache.m in Sources */,
+				0481635619B200D600138CC9 /* BMKStartOrEndPointAnnotation.m in Sources */,
 				0477610119B1950900B1DA26 /* ASIWebPageRequest.m in Sources */,
 				0477612519B1950900B1DA26 /* SDWebImageCompat.m in Sources */,
+				0481637619B209DE00138CC9 /* BMKStartOrEndPolyline.m in Sources */,
 				0477614B19B1C95D00B1DA26 /* TestLoginService.m in Sources */,
 				0477612219B1950900B1DA26 /* MKAnnotationView+WebCache.m in Sources */,
 				0477610D19B1950900B1DA26 /* ASIS3BucketRequest.m in Sources */,
+				0481637119B208D100138CC9 /* VehiclePanelViewController.m in Sources */,
 				040C8EBA19B0CE3000E3C43B /* MasterViewController.m in Sources */,
-				040C8F4019B0CED000E3C43B /* LoginViewController.m in Sources */,
 				0477610019B1950900B1DA26 /* ASINetworkQueue.m in Sources */,
 				0477610419B1950900B1DA26 /* ASICloudFilesContainerRequest.m in Sources */,
 				040C8EB019B0CE3000E3C43B /* main.m in Sources */,
 				0477613D19B19DF100B1DA26 /* RequestService.m in Sources */,
+				0481636E19B208D100138CC9 /* ItineraryHistoryViewController.m in Sources */,
 				0477612119B1950900B1DA26 /* MBProgressHUD.m in Sources */,
 				047760FE19B1950900B1DA26 /* ASIHTTPRequest.m in Sources */,
-				040C8F4119B0CED000E3C43B /* RegisterViewController.m in Sources */,
 				047760FC19B1950900B1DA26 /* ASIDownloadCache.m in Sources */,
 				047760FA19B1950900B1DA26 /* ASIDataCompressor.m in Sources */,
 				040C8EBD19B0CE3000E3C43B /* DetailViewController.m in Sources */,
 				0477610219B1950900B1DA26 /* ASICloudFilesCDNRequest.m in Sources */,
 				047760FD19B1950900B1DA26 /* ASIFormDataRequest.m in Sources */,
+				0481636D19B208D100138CC9 /* FunctionViewController.m in Sources */,
 				040C8F4519B0CED000E3C43B /* RegexHelper.m in Sources */,
+				0481637219B208D100138CC9 /* LoginViewController.m in Sources */,
+				0481637319B208D100138CC9 /* RegisterViewController.m in Sources */,
 				0477610A19B1950900B1DA26 /* Reachability.m in Sources */,
 				0477612619B1950900B1DA26 /* SDWebImageDecoder.m in Sources */,
 				0477614E19B1D2B900B1DA26 /* BaseModel.m in Sources */,
@@ -1009,9 +1065,7 @@
 				047760FF19B1950900B1DA26 /* ASIInputStream.m in Sources */,
 				040C8F4419B0CED000E3C43B /* NSStringUtil.m in Sources */,
 				0477612919B1950900B1DA26 /* SDWebImageManager.m in Sources */,
-				040C8F4219B0CED000E3C43B /* VehiclePanelViewController.m in Sources */,
 				0477610619B1950900B1DA26 /* ASICloudFilesObject.m in Sources */,
-				040C8F3F19B0CED000E3C43B /* ItineraryHistoryViewController.m in Sources */,
 				0477611019B1950900B1DA26 /* ASIS3ServiceRequest.m in Sources */,
 				0477612019B1950900B1DA26 /* FXBlurView.m in Sources */,
 			);

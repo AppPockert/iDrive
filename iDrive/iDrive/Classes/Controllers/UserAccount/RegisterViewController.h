@@ -1,5 +1,5 @@
 //
-//  ItineraryHistoryViewController.h
+//  RegisterViewController.h
 //  CarMaster
 //
 //  Created by 钱宇杰 on 14-8-23.
@@ -7,9 +7,9 @@
 //
 
 /**
- *  行程管理
+ *  注册
  */
 
-@interface ItineraryHistoryViewController : UIViewController
+@interface RegisterViewController : BaseViewController
 
 @end
