@@ -594,6 +594,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="4AC-9l-4Fq"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="9m3-ib-6Qi" id="qOR-Mx-3Ba"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CpZ-oD-yYJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

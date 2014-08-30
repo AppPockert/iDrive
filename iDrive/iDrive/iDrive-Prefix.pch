@@ -14,5 +14,12 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "AppConstants.h"
+    #import "BaseViewController.h"
     #import "UIView+Toast.h"
+#endif
+
+#ifndef __OPTIMIZE__
+#define NSLog(format, ...) NSLog(format, ##__VA_ARGS__)
+#else
+#define NSLog(format, ...) {}
 #endif

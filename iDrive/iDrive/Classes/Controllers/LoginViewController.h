@@ -10,6 +10,6 @@
  *  登陆
  */
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : BaseViewController
 
 @end

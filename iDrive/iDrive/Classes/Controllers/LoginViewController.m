@@ -10,14 +10,17 @@
 #import "JVFloatLabeledTextField.h"
 #import "NSStringUtil.h"
 #import "RegexHelper.h"
+#import "TestLoginService.h"
+#import "LoginRequestParameter.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 {
 	UITapGestureRecognizer *_tap;
 }
 
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *account;
-@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *password;
+
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *account;  // 用户名
+@property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *password; // 密码
 
 @end
 
@@ -99,6 +102,16 @@
 	else {
 		[self.view makeToast:@"手机号码未注册"];
 	}
+
+//	TestLoginService *servive = [[TestLoginService alloc] init];
+//	LoginRequestParameter *parameter = [[LoginRequestParameter alloc] init];
+//	parameter.account = self.account.text;
+//	parameter.password = self.password.text;
+//
+//	[self sendRequestTo:servive with:nil];
+}
+
+- (void)handleResult:(id)result of:(RequestService *)service {
 }
 
 #pragma mark
