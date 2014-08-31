@@ -98,6 +98,9 @@
 		0481637219B208D100138CC9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481636A19B208D100138CC9 /* LoginViewController.m */; };
 		0481637319B208D100138CC9 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481636C19B208D100138CC9 /* RegisterViewController.m */; };
 		0481637619B209DE00138CC9 /* BMKStartOrEndPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481637519B209DE00138CC9 /* BMKStartOrEndPolyline.m */; };
+		04929A2A19B2C0AA00427371 /* GPLoadingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04929A2519B2C0AA00427371 /* GPLoadingButton.m */; };
+		04929A2B19B2C0AA00427371 /* GPLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04929A2719B2C0AA00427371 /* GPLoadingView.m */; };
+		04929A2C19B2C0AA00427371 /* GPRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04929A2919B2C0AA00427371 /* GPRoundView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -337,6 +340,12 @@
 		0481636C19B208D100138CC9 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		0481637419B209DE00138CC9 /* BMKStartOrEndPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKStartOrEndPolyline.h; sourceTree = "<group>"; };
 		0481637519B209DE00138CC9 /* BMKStartOrEndPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMKStartOrEndPolyline.m; sourceTree = "<group>"; };
+		04929A2419B2C0AA00427371 /* GPLoadingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPLoadingButton.h; sourceTree = "<group>"; };
+		04929A2519B2C0AA00427371 /* GPLoadingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPLoadingButton.m; sourceTree = "<group>"; };
+		04929A2619B2C0AA00427371 /* GPLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPLoadingView.h; sourceTree = "<group>"; };
+		04929A2719B2C0AA00427371 /* GPLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPLoadingView.m; sourceTree = "<group>"; };
+		04929A2819B2C0AA00427371 /* GPRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPRoundView.h; sourceTree = "<group>"; };
+		04929A2919B2C0AA00427371 /* GPRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPRoundView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,6 +487,7 @@
 			isa = PBXGroup;
 			children = (
 				0481635D19B208D100138CC9 /* Function */,
+				04929A2219B2B64E00427371 /* Setting */,
 				0481636819B208D100138CC9 /* UserAccount */,
 			);
 			path = Controllers;
@@ -535,6 +545,7 @@
 				0477607819B1950900B1DA26 /* ASIHttpRequest */,
 				040C8EF319B0CED000E3C43B /* BaiduMap_IOSSDK_v2.3.0_Lib */,
 				047760D119B1950900B1DA26 /* FXBlurView */,
+				04929A2319B2C0AA00427371 /* GPLoadingView */,
 				040C8F3619B0CED000E3C43B /* JVFloatLabeledTextField */,
 				047760D419B1950900B1DA26 /* MBProgressHUD */,
 				047760D719B1950900B1DA26 /* SDWebImage */,
@@ -901,6 +912,26 @@
 			path = UserAccount;
 			sourceTree = "<group>";
 		};
+		04929A2219B2B64E00427371 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		04929A2319B2C0AA00427371 /* GPLoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				04929A2419B2C0AA00427371 /* GPLoadingButton.h */,
+				04929A2519B2C0AA00427371 /* GPLoadingButton.m */,
+				04929A2619B2C0AA00427371 /* GPLoadingView.h */,
+				04929A2719B2C0AA00427371 /* GPLoadingView.m */,
+				04929A2819B2C0AA00427371 /* GPRoundView.h */,
+				04929A2919B2C0AA00427371 /* GPRoundView.m */,
+			);
+			path = GPLoadingView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1005,6 +1036,7 @@
 				0477612C19B1950900B1DA26 /* UIImage+GIF.m in Sources */,
 				0477612419B1950900B1DA26 /* SDImageCache.m in Sources */,
 				0477612719B1950900B1DA26 /* SDWebImageDownloader.m in Sources */,
+				04929A2C19B2C0AA00427371 /* GPRoundView.m in Sources */,
 				0477610819B1950900B1DA26 /* ASICloudFilesRequest.m in Sources */,
 				0477612D19B1950900B1DA26 /* UIImage+MultiFormat.m in Sources */,
 				0477610719B1950900B1DA26 /* ASICloudFilesObjectRequest.m in Sources */,
@@ -1018,6 +1050,7 @@
 				0477612819B1950900B1DA26 /* SDWebImageDownloaderOperation.m in Sources */,
 				040C8F4D19B0CED000E3C43B /* WMGaugeView.m in Sources */,
 				0477612319B1950900B1DA26 /* NSData+ImageContentType.m in Sources */,
+				04929A2A19B2C0AA00427371 /* GPLoadingButton.m in Sources */,
 				0477614819B1C78600B1DA26 /* LoginRequestParameter.m in Sources */,
 				0481636F19B208D100138CC9 /* RealTimeTrajectoryViewController.m in Sources */,
 				0477612A19B1950900B1DA26 /* SDWebImagePrefetcher.m in Sources */,
@@ -1057,6 +1090,7 @@
 				0481636D19B208D100138CC9 /* FunctionViewController.m in Sources */,
 				040C8F4519B0CED000E3C43B /* RegexHelper.m in Sources */,
 				0481637219B208D100138CC9 /* LoginViewController.m in Sources */,
+				04929A2B19B2C0AA00427371 /* GPLoadingView.m in Sources */,
 				0481637319B208D100138CC9 /* RegisterViewController.m in Sources */,
 				0477610A19B1950900B1DA26 /* Reachability.m in Sources */,
 				0477612619B1950900B1DA26 /* SDWebImageDecoder.m in Sources */,

@@ -7,8 +7,12 @@
 //
 
 #import "VehicleExaminationViewController.h"
+#import "GPLoadingView.h"
 
 @interface VehicleExaminationViewController ()
+
+@property (weak, nonatomic) IBOutlet UIButton *beginExamBtn;    // 开始体检
+@property (weak, nonatomic) IBOutlet GPLoadingView *indicator;  // 等待指示器
 
 @end
 
@@ -30,6 +34,12 @@
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
 	// Dispose of any resources that can be recreated.
+}
+
+#pragma mark -
+
+- (IBAction)beginExam:(id)sender {
+	[self.indicator startAnimation];
 }
 
 #pragma mark -
