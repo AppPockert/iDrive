@@ -101,6 +101,15 @@
 		04929A2A19B2C0AA00427371 /* GPLoadingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04929A2519B2C0AA00427371 /* GPLoadingButton.m */; };
 		04929A2B19B2C0AA00427371 /* GPLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04929A2719B2C0AA00427371 /* GPLoadingView.m */; };
 		04929A2C19B2C0AA00427371 /* GPRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04929A2919B2C0AA00427371 /* GPRoundView.m */; };
+		04ED25F019BB0D0400139CD0 /* OBShapedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED25EF19BB0D0400139CD0 /* OBShapedButton.m */; };
+		04ED25F419BB0D3000139CD0 /* UIImage+ColorAtPixel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED25F319BB0D3000139CD0 /* UIImage+ColorAtPixel.m */; };
+		04ED25F719BB0EA200139CD0 /* IntroductionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED25F619BB0EA200139CD0 /* IntroductionViewController.m */; };
+		04ED25FA19BB181A00139CD0 /* CarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED25F919BB181A00139CD0 /* CarInfoViewController.m */; };
+		04ED25FD19BB18BF00139CD0 /* MainIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED25FC19BB18BF00139CD0 /* MainIndexViewController.m */; };
+		04ED260119BB3A4700139CD0 /* UIPopoverListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED260019BB3A4700139CD0 /* UIPopoverListView.m */; };
+		04ED260719BB44F000139CD0 /* CATextLayer+NumberJump.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED260419BB44F000139CD0 /* CATextLayer+NumberJump.m */; };
+		04ED260819BB44F000139CD0 /* NJDBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED260619BB44F000139CD0 /* NJDBezierCurve.m */; };
+		04ED260B19BB4FBD00139CD0 /* CarInfoDetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED260A19BB4FBD00139CD0 /* CarInfoDetailTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -346,6 +355,24 @@
 		04929A2719B2C0AA00427371 /* GPLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPLoadingView.m; sourceTree = "<group>"; };
 		04929A2819B2C0AA00427371 /* GPRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPRoundView.h; sourceTree = "<group>"; };
 		04929A2919B2C0AA00427371 /* GPRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPRoundView.m; sourceTree = "<group>"; };
+		04ED25EE19BB0D0400139CD0 /* OBShapedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OBShapedButton.h; sourceTree = "<group>"; };
+		04ED25EF19BB0D0400139CD0 /* OBShapedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OBShapedButton.m; sourceTree = "<group>"; };
+		04ED25F219BB0D3000139CD0 /* UIImage+ColorAtPixel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorAtPixel.h"; sourceTree = "<group>"; };
+		04ED25F319BB0D3000139CD0 /* UIImage+ColorAtPixel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorAtPixel.m"; sourceTree = "<group>"; };
+		04ED25F519BB0EA200139CD0 /* IntroductionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroductionViewController.h; sourceTree = "<group>"; };
+		04ED25F619BB0EA200139CD0 /* IntroductionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroductionViewController.m; sourceTree = "<group>"; };
+		04ED25F819BB181A00139CD0 /* CarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarInfoViewController.h; sourceTree = "<group>"; };
+		04ED25F919BB181A00139CD0 /* CarInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarInfoViewController.m; sourceTree = "<group>"; };
+		04ED25FB19BB18BF00139CD0 /* MainIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainIndexViewController.h; sourceTree = "<group>"; };
+		04ED25FC19BB18BF00139CD0 /* MainIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainIndexViewController.m; sourceTree = "<group>"; };
+		04ED25FF19BB3A4700139CD0 /* UIPopoverListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPopoverListView.h; sourceTree = "<group>"; };
+		04ED260019BB3A4700139CD0 /* UIPopoverListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPopoverListView.m; sourceTree = "<group>"; };
+		04ED260319BB44F000139CD0 /* CATextLayer+NumberJump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CATextLayer+NumberJump.h"; sourceTree = "<group>"; };
+		04ED260419BB44F000139CD0 /* CATextLayer+NumberJump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CATextLayer+NumberJump.m"; sourceTree = "<group>"; };
+		04ED260519BB44F000139CD0 /* NJDBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJDBezierCurve.h; sourceTree = "<group>"; };
+		04ED260619BB44F000139CD0 /* NJDBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJDBezierCurve.m; sourceTree = "<group>"; };
+		04ED260919BB4FBD00139CD0 /* CarInfoDetailTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarInfoDetailTableViewController.h; sourceTree = "<group>"; };
+		04ED260A19BB4FBD00139CD0 /* CarInfoDetailTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarInfoDetailTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -489,6 +516,8 @@
 				0481635D19B208D100138CC9 /* Function */,
 				04929A2219B2B64E00427371 /* Setting */,
 				0481636819B208D100138CC9 /* UserAccount */,
+				04ED25F519BB0EA200139CD0 /* IntroductionViewController.h */,
+				04ED25F619BB0EA200139CD0 /* IntroductionViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -548,6 +577,9 @@
 				04929A2319B2C0AA00427371 /* GPLoadingView */,
 				040C8F3619B0CED000E3C43B /* JVFloatLabeledTextField */,
 				047760D419B1950900B1DA26 /* MBProgressHUD */,
+				04ED260219BB44F000139CD0 /* NJDNumberJump */,
+				04ED25ED19BB0D0400139CD0 /* OBShapedButton */,
+				04ED25FE19BB3A4700139CD0 /* PopoverListView */,
 				047760D719B1950900B1DA26 /* SDWebImage */,
 				040C8F3B19B0CED000E3C43B /* WMGaugeView */,
 			);
@@ -887,10 +919,16 @@
 		0481635D19B208D100138CC9 /* Function */ = {
 			isa = PBXGroup;
 			children = (
+				04ED260919BB4FBD00139CD0 /* CarInfoDetailTableViewController.h */,
+				04ED260A19BB4FBD00139CD0 /* CarInfoDetailTableViewController.m */,
+				04ED25F819BB181A00139CD0 /* CarInfoViewController.h */,
+				04ED25F919BB181A00139CD0 /* CarInfoViewController.m */,
 				0481635E19B208D100138CC9 /* FunctionViewController.h */,
 				0481635F19B208D100138CC9 /* FunctionViewController.m */,
 				0481636019B208D100138CC9 /* ItineraryHistoryViewController.h */,
 				0481636119B208D100138CC9 /* ItineraryHistoryViewController.m */,
+				04ED25FB19BB18BF00139CD0 /* MainIndexViewController.h */,
+				04ED25FC19BB18BF00139CD0 /* MainIndexViewController.m */,
 				0481636219B208D100138CC9 /* RealTimeTrajectoryViewController.h */,
 				0481636319B208D100138CC9 /* RealTimeTrajectoryViewController.m */,
 				0481636419B208D100138CC9 /* VehicleExaminationViewController.h */,
@@ -930,6 +968,45 @@
 				04929A2919B2C0AA00427371 /* GPRoundView.m */,
 			);
 			path = GPLoadingView;
+			sourceTree = "<group>";
+		};
+		04ED25ED19BB0D0400139CD0 /* OBShapedButton */ = {
+			isa = PBXGroup;
+			children = (
+				04ED25F119BB0D3000139CD0 /* UIImage+ColorAtPixel */,
+				04ED25EE19BB0D0400139CD0 /* OBShapedButton.h */,
+				04ED25EF19BB0D0400139CD0 /* OBShapedButton.m */,
+			);
+			path = OBShapedButton;
+			sourceTree = "<group>";
+		};
+		04ED25F119BB0D3000139CD0 /* UIImage+ColorAtPixel */ = {
+			isa = PBXGroup;
+			children = (
+				04ED25F219BB0D3000139CD0 /* UIImage+ColorAtPixel.h */,
+				04ED25F319BB0D3000139CD0 /* UIImage+ColorAtPixel.m */,
+			);
+			path = "UIImage+ColorAtPixel";
+			sourceTree = "<group>";
+		};
+		04ED25FE19BB3A4700139CD0 /* PopoverListView */ = {
+			isa = PBXGroup;
+			children = (
+				04ED25FF19BB3A4700139CD0 /* UIPopoverListView.h */,
+				04ED260019BB3A4700139CD0 /* UIPopoverListView.m */,
+			);
+			path = PopoverListView;
+			sourceTree = "<group>";
+		};
+		04ED260219BB44F000139CD0 /* NJDNumberJump */ = {
+			isa = PBXGroup;
+			children = (
+				04ED260319BB44F000139CD0 /* CATextLayer+NumberJump.h */,
+				04ED260419BB44F000139CD0 /* CATextLayer+NumberJump.m */,
+				04ED260519BB44F000139CD0 /* NJDBezierCurve.h */,
+				04ED260619BB44F000139CD0 /* NJDBezierCurve.m */,
+			);
+			path = NJDNumberJump;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1037,6 +1114,7 @@
 				0477612419B1950900B1DA26 /* SDImageCache.m in Sources */,
 				0477612719B1950900B1DA26 /* SDWebImageDownloader.m in Sources */,
 				04929A2C19B2C0AA00427371 /* GPRoundView.m in Sources */,
+				04ED260819BB44F000139CD0 /* NJDBezierCurve.m in Sources */,
 				0477610819B1950900B1DA26 /* ASICloudFilesRequest.m in Sources */,
 				0477612D19B1950900B1DA26 /* UIImage+MultiFormat.m in Sources */,
 				0477610719B1950900B1DA26 /* ASICloudFilesObjectRequest.m in Sources */,
@@ -1045,6 +1123,8 @@
 				0477610E19B1950900B1DA26 /* ASIS3ObjectRequest.m in Sources */,
 				040C8F4319B0CED000E3C43B /* UIView+Toast.m in Sources */,
 				0477610319B1950900B1DA26 /* ASICloudFilesContainer.m in Sources */,
+				04ED25FA19BB181A00139CD0 /* CarInfoViewController.m in Sources */,
+				04ED260119BB3A4700139CD0 /* UIPopoverListView.m in Sources */,
 				047760F919B1950900B1DA26 /* ASIAuthenticationDialog.m in Sources */,
 				040C8F5019B0D0A100E3C43B /* AppDelegate.mm in Sources */,
 				0477612819B1950900B1DA26 /* SDWebImageDownloaderOperation.m in Sources */,
@@ -1057,12 +1137,15 @@
 				040C8F4C19B0CED000E3C43B /* JVFloatLabeledTextView.m in Sources */,
 				047760FB19B1950900B1DA26 /* ASIDataDecompressor.m in Sources */,
 				0477613A19B19A8B00B1DA26 /* BaseViewController.m in Sources */,
+				04ED260719BB44F000139CD0 /* CATextLayer+NumberJump.m in Sources */,
 				0477612B19B1950900B1DA26 /* UIButton+WebCache.m in Sources */,
 				0481637019B208D100138CC9 /* VehicleExaminationViewController.m in Sources */,
 				0477613119B1950900B1DA26 /* UIView+WebCacheOperation.m in Sources */,
+				04ED25F019BB0D0400139CD0 /* OBShapedButton.m in Sources */,
 				0477610519B1950900B1DA26 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				0477614019B19E2B00B1DA26 /* RequestParameter.m in Sources */,
 				0477610B19B1950900B1DA26 /* ASIS3Bucket.m in Sources */,
+				04ED25F719BB0EA200139CD0 /* IntroductionViewController.m in Sources */,
 				040C8F4B19B0CED000E3C43B /* JVFloatLabeledTextField.m in Sources */,
 				0477610C19B1950900B1DA26 /* ASIS3BucketObject.m in Sources */,
 				0477613019B1950900B1DA26 /* UIImageView+WebCache.m in Sources */,
@@ -1086,10 +1169,12 @@
 				047760FA19B1950900B1DA26 /* ASIDataCompressor.m in Sources */,
 				040C8EBD19B0CE3000E3C43B /* DetailViewController.m in Sources */,
 				0477610219B1950900B1DA26 /* ASICloudFilesCDNRequest.m in Sources */,
+				04ED25FD19BB18BF00139CD0 /* MainIndexViewController.m in Sources */,
 				047760FD19B1950900B1DA26 /* ASIFormDataRequest.m in Sources */,
 				0481636D19B208D100138CC9 /* FunctionViewController.m in Sources */,
 				040C8F4519B0CED000E3C43B /* RegexHelper.m in Sources */,
 				0481637219B208D100138CC9 /* LoginViewController.m in Sources */,
+				04ED25F419BB0D3000139CD0 /* UIImage+ColorAtPixel.m in Sources */,
 				04929A2B19B2C0AA00427371 /* GPLoadingView.m in Sources */,
 				0481637319B208D100138CC9 /* RegisterViewController.m in Sources */,
 				0477610A19B1950900B1DA26 /* Reachability.m in Sources */,
@@ -1099,6 +1184,7 @@
 				047760FF19B1950900B1DA26 /* ASIInputStream.m in Sources */,
 				040C8F4419B0CED000E3C43B /* NSStringUtil.m in Sources */,
 				0477612919B1950900B1DA26 /* SDWebImageManager.m in Sources */,
+				04ED260B19BB4FBD00139CD0 /* CarInfoDetailTableViewController.m in Sources */,
 				0477610619B1950900B1DA26 /* ASICloudFilesObject.m in Sources */,
 				0477611019B1950900B1DA26 /* ASIS3ServiceRequest.m in Sources */,
 				0477612019B1950900B1DA26 /* FXBlurView.m in Sources */,

@@ -26,12 +26,23 @@
 
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
-	if (![[NSUserDefaults standardUserDefaults] objectForKey:kUserInfo]) {
-		_navigationController = [storyboard instantiateViewControllerWithIdentifier:kLoginNav];
+
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+	NSString *identifier;
+
+	if ([userDefaults boolForKey:kFirstLaunch]) {
+		if (![userDefaults objectForKey:kUserInfo]) {
+			identifier = kLoginNav;
+		}
+		else {
+			identifier = kMainIndexNav;
+		}
 	}
 	else {
-		_navigationController = [storyboard instantiateViewControllerWithIdentifier:kMainIndexNav];
+		identifier = kIntroductionNav;
 	}
+
+	_navigationController = [storyboard instantiateViewControllerWithIdentifier:identifier];
 
 	self.window.rootViewController = _navigationController;
 	[self.window makeKeyAndVisible];

@@ -62,6 +62,8 @@
 	}
 	else {
 		[textField resignFirstResponder];
+		[self login:nil];
+
 		return YES;
 	}
 }
@@ -97,7 +99,7 @@
 
 	// test
 	if ([self.account.text isEqualToString:@"13611113333"] && [self.password.text isEqualToString:@"123456"]) {
-		[self performSegueWithIdentifier:kMainIndex sender:nil];
+		[self performSegueWithIdentifier:kCarInfo sender:nil];
 	}
 	else {
 		[self.view makeToast:@"手机号码未注册"];
