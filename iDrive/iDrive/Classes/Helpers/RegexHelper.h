@@ -9,6 +9,7 @@
 typedef NS_ENUM (int, RegexType) {
 	RegexTypePhone,
 	RegexTypePassword,
+	RegexTypeDeviceNo
 };
 
 @interface RegexHelper : NSObject

@@ -12,6 +12,8 @@
 #import "RegexHelper.h"
 #import "TestLoginService.h"
 #import "LoginRequestParameter.h"
+#import "CarInfoViewController.h"
+#import "RegisterViewController.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 {
@@ -74,7 +76,7 @@
 	[self.view endEditing:YES];
 
 	if (![NSStringUtil isValidate:self.account.text]) {
-		[self.view makeToast:@"手机号不能为空"];
+		[self.view makeToast:@"帐号不能为空"];
 		return;
 	}
 	else {
@@ -97,6 +99,7 @@
 		}
 	}
 
+#warning 暂时写死，等服务器通了再替换成与服务器交互
 	// test
 	if ([self.account.text isEqualToString:@"13611113333"] && [self.password.text isEqualToString:@"123456"]) {
 		[self performSegueWithIdentifier:kCarInfo sender:nil];
@@ -128,6 +131,25 @@
 
 - (void)dismissKeyboard:(id)sender {
 	[self.view endEditing:YES];
+}
+
+#pragma mark
+
+- (void)saveUserInfo {
+}
+
+#pragma mark
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:kCarInfo]) {
+		CarInfoViewController *controller = segue.destinationViewController;
+		controller.pushFromLogin = YES;
+	}
+	else if ([segue.identifier isEqualToString:kRegister]) {
+		RegisterViewController *controller = segue.destinationViewController;
+		controller.accountForRegister = self.account.text;
+		controller.passwordForRegister = self.password.text;
+	}
 }
 
 @end

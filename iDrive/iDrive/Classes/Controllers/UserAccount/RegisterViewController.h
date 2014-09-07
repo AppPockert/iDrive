@@ -12,4 +12,7 @@
 
 @interface RegisterViewController : BaseViewController
 
+@property (strong, nonatomic) NSString *accountForRegister;
+@property (strong, nonatomic) NSString *passwordForRegister;
+
 @end
