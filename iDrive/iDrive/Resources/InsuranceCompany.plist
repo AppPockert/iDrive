@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>name</key>
+		<string>平安车险</string>
+		<key>phone</key>
+		<string>95512</string>
+	</dict>
+	<dict>
+		<key>name</key>
+		<string>人保车险</string>
+		<key>phone</key>
+		<string>95518</string>
+	</dict>
+    <dict>
+		<key>name</key>
+		<string>太平洋保险</string>
+		<key>phone</key>
+		<string>95500</string>
+	</dict>
+    <dict>
+		<key>name</key>
+		<string>天平车险</string>
+		<key>phone</key>
+		<string>95500</string>
+	</dict>
+    <dict>
+		<key>name</key>
+		<string>安邦车险</string>
+		<key>phone</key>
+		<string>95569</string>
+	</dict>
+</array>
+</plist>

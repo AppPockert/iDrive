@@ -19,6 +19,8 @@
 #define kRealTimeTraj     @"RealTimeTraj"     // 实时轨迹
 #define kCarInfo          @"CarInfo"          // 车辆信息
 #define kCarInfoDetail    @"CarInfoDetail"    // 车辆信息详情
+#define kCarBrand         @"CarBrand"         // 汽车品牌
+#define kInsuranceCompany @"InsuranceCompany" // 保险公司
 
 #define kMainIndexNav     @"MainIndexNav"
 #define kLoginNav         @"LoginNav"

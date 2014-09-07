@@ -388,18 +388,18 @@
                     <navigationItem key="navigationItem" id="LPW-N1-NBM"/>
                     <connections>
                         <segue destination="H0W-nT-Sij" kind="push" identifier="MainIndex" id="MZR-eD-mQ3"/>
-                        <segue destination="ztm-iO-wcp" kind="push" id="UPR-bp-pRx"/>
-                        <segue destination="ii6-Wa-EJQ" kind="push" id="HVB-CL-AwH"/>
+                        <segue destination="ztm-iO-wcp" kind="push" identifier="CarBrand" id="UPR-bp-pRx"/>
+                        <segue destination="5fQ-hW-T7G" kind="push" identifier="InsuranceCompany" id="oM9-kT-U93"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VS1-mM-Rfv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="558" y="2374"/>
         </scene>
-        <!--View Controller-->
+        <!--Car Brand View Controller-->
         <scene sceneID="X9N-P0-0J8">
             <objects>
-                <viewController id="ztm-iO-wcp" sceneMemberID="viewController">
+                <viewController id="ztm-iO-wcp" customClass="CarBrandViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DbB-m4-F8u"/>
                         <viewControllerLayoutGuide type="bottom" id="8jd-av-TRr"/>
@@ -414,6 +414,90 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGx-th-5dN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1497" y="2374"/>
+        </scene>
+        <!--Insurance Company View Controller-->
+        <scene sceneID="bu2-jE-wou">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="5fQ-hW-T7G" customClass="InsuranceCompanyViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qoU-gu-kIl"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Ac-Sy-iAT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NBs-5K-vJw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="qsd-U4-RSi">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="JPp-5Z-aUS">
+                                    <rect key="frame" x="0.0" y="82" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="InsuranceCompany" textLabel="Kd5-IN-ZkJ" detailTextLabel="bAH-v9-Vr0" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="Qox-2C-PaX" customClass="InsuranceCompanyCell">
+                                        <rect key="frame" x="0.0" y="22" width="320" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qox-2C-PaX" id="PxF-b9-amz">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kd5-IN-ZkJ">
+                                                    <rect key="frame" x="15" y="11" width="34" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bAH-v9-Vr0">
+                                                    <rect key="frame" x="15" y="33" width="43" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHh-5b-dSp">
+                                                    <rect key="frame" x="266" y="15" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="46" id="ohx-jY-9DE"/>
+                                                    </constraints>
+                                                    <state key="normal" title="拨打">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="call:" destination="Qox-2C-PaX" eventType="touchUpInside" id="B4X-Kc-tTZ"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SHh-5b-dSp" firstAttribute="top" secondItem="PxF-b9-amz" secondAttribute="top" constant="15" id="ZHX-3b-EWP"/>
+                                                <constraint firstAttribute="trailing" secondItem="SHh-5b-dSp" secondAttribute="trailing" constant="8" id="p0R-7m-t3R"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="5fQ-hW-T7G" id="Jm7-Gg-lfS"/>
+                                    <outlet property="delegate" destination="5fQ-hW-T7G" id="l8U-gd-1n8"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qsd-U4-RSi" secondAttribute="trailing" id="Gnr-ED-qxk"/>
+                            <constraint firstItem="2Ac-Sy-iAT" firstAttribute="top" secondItem="qsd-U4-RSi" secondAttribute="bottom" id="Hp1-Pp-AL7"/>
+                            <constraint firstItem="qsd-U4-RSi" firstAttribute="top" secondItem="NBs-5K-vJw" secondAttribute="top" constant="64" id="LOx-6F-rxK"/>
+                            <constraint firstItem="qsd-U4-RSi" firstAttribute="leading" secondItem="NBs-5K-vJw" secondAttribute="leading" id="sY1-k4-vmt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0Uc-jw-g2K"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A9Q-ck-hPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1497" y="3170"/>
         </scene>
         <!--Car Info Detail Table View Controller-->
         <scene sceneID="xn0-dK-7db">
@@ -456,6 +540,13 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1YM-T9-OET">
+                                                    <rect key="frame" x="122" y="11" width="165" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -472,6 +563,12 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入驾驶员的姓名" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VrS-0U-o7M">
+                                                    <rect key="frame" x="103" y="7" width="197" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -484,6 +581,18 @@
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="行驶里程" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzw-23-Tqj">
                                                     <rect key="frame" x="20" y="11" width="75" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入行驶的里程数" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kWH-Hu-Asf">
+                                                    <rect key="frame" x="103" y="7" width="140" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                </textField>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="公里" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i1c-X3-p7U">
+                                                    <rect key="frame" x="258" y="11" width="42" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
@@ -532,6 +641,12 @@
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="保险公司" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7zb-h6-I7w">
                                                     <rect key="frame" x="20" y="11" width="75" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VnK-x8-0MC">
+                                                    <rect key="frame" x="122" y="11" width="165" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
@@ -586,6 +701,9 @@
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="save:" destination="fma-HL-Oc6" eventType="touchUpInside" id="YfU-9u-7GW"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -599,31 +717,16 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="carBrandLabel" destination="1YM-T9-OET" id="6tO-af-aAu"/>
                         <outlet property="doneBtn" destination="H5V-6X-dSM" id="2Wb-ns-G3K"/>
+                        <outlet property="driverField" destination="VrS-0U-o7M" id="mjW-HB-bEL"/>
+                        <outlet property="insuranceCompanyLabel" destination="VnK-x8-0MC" id="AcP-Hq-bFi"/>
+                        <outlet property="mileageField" destination="kWH-Hu-Asf" id="FHn-If-27f"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGe-S0-33t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1022" y="2438"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="MnV-RC-lVW">
-            <objects>
-                <viewController id="ii6-Wa-EJQ" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gnC-3r-snB"/>
-                        <viewControllerLayoutGuide type="bottom" id="GQK-Ot-5Ll"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Mgp-TB-u4b">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="fdD-hD-tkN"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="AGS-lt-vog" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1521" y="3241"/>
         </scene>
         <!--Vehicle Examination View Controller-->
         <scene sceneID="rTB-0w-yth">

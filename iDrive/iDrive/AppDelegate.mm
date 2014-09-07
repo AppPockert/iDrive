@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "BMapKit.h"
 #import "UserInfo.h"
+#import "PlistFilePathManager.h"
 
 @interface AppDelegate ()
 

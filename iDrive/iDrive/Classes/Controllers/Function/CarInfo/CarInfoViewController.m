@@ -8,14 +8,19 @@
 
 #import "CarInfoViewController.h"
 #import "CarInfoDetailTableViewController.h"
+#import "SelectableViewController.h"
 
 @interface CarInfoDetailTableViewController ()
 
 @property (nonatomic) UIButton *doneBtn;
+@property (nonatomic) UILabel *carBrandLabel;
+@property (nonatomic) UITextField *driverField;
+@property (nonatomic) UITextField *mileageField;
+@property (nonatomic) UILabel *insuranceCompanyLabel;
 
 @end
 
-@interface CarInfoViewController ()
+@interface CarInfoViewController () <SelectableViewControllerDelegate>
 
 @property (strong, nonatomic) CarInfoDetailTableViewController *detail;
 
@@ -45,17 +50,33 @@
 	[self.detail.doneBtn setTitle:buttonTitle forState:UIControlStateNormal];
 }
 
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
-	// Dispose of any resources that can be recreated.
-}
-
 #pragma mark
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:kCarInfoDetail]) {
 		self.detail = segue.destinationViewController;
 	}
+	else if ([segue.identifier isEqualToString:kInsuranceCompany]
+	         || [segue.identifier isEqualToString:kCarBrand]) {
+		SelectableViewController *controller = segue.destinationViewController;
+		controller.delegate = self;
+	}
+}
+
+#pragma mark - SelectableViewControllerDelegate
+
+- (void)didSelectObject:(id)object with:(NSString *)identifer {
+	if ([identifer isEqualToString:kCarBrand]) {
+		self.detail.carBrandLabel.text = object;
+	}
+	else if ([identifer isEqualToString:kInsuranceCompany]) {
+		self.detail.insuranceCompanyLabel.text = object;
+	}
+}
+
+#pragma mark
+
+- (void)saveCarInfo {
 }
 
 @end
