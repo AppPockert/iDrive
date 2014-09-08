@@ -7,7 +7,7 @@
 //
 
 /**
- *  行程管理
+ *  行程历史
  */
 
 @interface ItineraryHistoryViewController : BaseViewController

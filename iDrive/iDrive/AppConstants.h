@@ -37,7 +37,7 @@
 #define kAppDelegate      ((AppDelegate *)([UIApplication sharedApplication].delegate))
 #define kScreenHeight     ([[UIScreen mainScreen] bounds].size.height)
 #define kScreenWidth      320.f // 暂不对应iphone6的宽屏
-#define kStatusBarHeight  20.f
+#define kNavBarHeight     64.f  // 包含状态栏
 
 #define kScreenHeight568  568.f
 #define kScreenHeight480  480.f
