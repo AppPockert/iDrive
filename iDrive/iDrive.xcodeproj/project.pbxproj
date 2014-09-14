@@ -103,6 +103,9 @@
 		04929A2A19B2C0AA00427371 /* GPLoadingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04929A2519B2C0AA00427371 /* GPLoadingButton.m */; };
 		04929A2B19B2C0AA00427371 /* GPLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04929A2719B2C0AA00427371 /* GPLoadingView.m */; };
 		04929A2C19B2C0AA00427371 /* GPRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04929A2919B2C0AA00427371 /* GPRoundView.m */; };
+		04AF3B8319C5C49800C53563 /* CheckItemListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF3B8219C5C49800C53563 /* CheckItemListView.m */; };
+		04AF3B8619C5C80B00C53563 /* CheckItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF3B8519C5C80B00C53563 /* CheckItemView.m */; };
+		04AF3B8819C5C83500C53563 /* CheckItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AF3B8719C5C83500C53563 /* CheckItemView.xib */; };
 		04E359F619BD97DD00E451A5 /* ItineraryHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E359F319BD97DD00E451A5 /* ItineraryHistoryViewController.m */; };
 		04E359F719BD97DD00E451A5 /* TrajectoryMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E359F519BD97DD00E451A5 /* TrajectoryMapViewController.m */; };
 		04E359FA19BD988A00E451A5 /* InquiryItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E359F919BD988A00E451A5 /* InquiryItineraryViewController.m */; };
@@ -375,6 +378,11 @@
 		04929A2719B2C0AA00427371 /* GPLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPLoadingView.m; sourceTree = "<group>"; };
 		04929A2819B2C0AA00427371 /* GPRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPRoundView.h; sourceTree = "<group>"; };
 		04929A2919B2C0AA00427371 /* GPRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPRoundView.m; sourceTree = "<group>"; };
+		04AF3B8119C5C49800C53563 /* CheckItemListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckItemListView.h; sourceTree = "<group>"; };
+		04AF3B8219C5C49800C53563 /* CheckItemListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckItemListView.m; sourceTree = "<group>"; };
+		04AF3B8419C5C80B00C53563 /* CheckItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckItemView.h; sourceTree = "<group>"; };
+		04AF3B8519C5C80B00C53563 /* CheckItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckItemView.m; sourceTree = "<group>"; };
+		04AF3B8719C5C83500C53563 /* CheckItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckItemView.xib; sourceTree = "<group>"; };
 		04E359F219BD97DD00E451A5 /* ItineraryHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryHistoryViewController.h; sourceTree = "<group>"; };
 		04E359F319BD97DD00E451A5 /* ItineraryHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryHistoryViewController.m; sourceTree = "<group>"; };
 		04E359F419BD97DD00E451A5 /* TrajectoryMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrajectoryMapViewController.h; sourceTree = "<group>"; };
@@ -614,6 +622,11 @@
 				04ED260D19BB671F00139CD0 /* InsuranceCompanyCell.m */,
 				04E359FB19BDAD0F00E451A5 /* ItineraryDetailCell.h */,
 				04E359FC19BDAD0F00E451A5 /* ItineraryDetailCell.m */,
+				04AF3B8119C5C49800C53563 /* CheckItemListView.h */,
+				04AF3B8219C5C49800C53563 /* CheckItemListView.m */,
+				04AF3B8419C5C80B00C53563 /* CheckItemView.h */,
+				04AF3B8519C5C80B00C53563 /* CheckItemView.m */,
+				04AF3B8719C5C83500C53563 /* CheckItemView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1198,6 +1211,7 @@
 			files = (
 				040C8F4819B0CED000E3C43B /* readme.txt in Resources */,
 				04E412F419BD6AF5005F2798 /* PaperFoldResources.bundle in Resources */,
+				04AF3B8819C5C83500C53563 /* CheckItemView.xib in Resources */,
 				040C8EBF19B0CE3000E3C43B /* Images.xcassets in Resources */,
 				040C8F4719B0CED000E3C43B /* mapapi.bundle in Resources */,
 				040C8EAE19B0CE3000E3C43B /* InfoPlist.strings in Resources */,
@@ -1244,6 +1258,7 @@
 				0477610319B1950900B1DA26 /* ASICloudFilesContainer.m in Sources */,
 				04ED260119BB3A4700139CD0 /* UIPopoverListView.m in Sources */,
 				04ED260E19BB671F00139CD0 /* InsuranceCompanyCell.m in Sources */,
+				04AF3B8319C5C49800C53563 /* CheckItemListView.m in Sources */,
 				047760F919B1950900B1DA26 /* ASIAuthenticationDialog.m in Sources */,
 				040CFAC819BC17E1000FCE06 /* CarBrandViewController.m in Sources */,
 				040C8F5019B0D0A100E3C43B /* AppDelegate.mm in Sources */,
@@ -1305,6 +1320,7 @@
 				04ED25F419BB0D3000139CD0 /* UIImage+ColorAtPixel.m in Sources */,
 				04929A2B19B2C0AA00427371 /* GPLoadingView.m in Sources */,
 				04E412F519BD6AF5005F2798 /* PaperFoldSwipeHintView.m in Sources */,
+				04AF3B8619C5C80B00C53563 /* CheckItemView.m in Sources */,
 				0481637319B208D100138CC9 /* RegisterViewController.m in Sources */,
 				0477610A19B1950900B1DA26 /* Reachability.m in Sources */,
 				0477612619B1950900B1DA26 /* SDWebImageDecoder.m in Sources */,
