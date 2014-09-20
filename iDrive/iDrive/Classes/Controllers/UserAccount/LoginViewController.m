@@ -149,7 +149,7 @@
 	parameter.account = self.account.text;
 	parameter.password = self.password.text;
 
-	[self sendRequestTo:servive with:nil];
+	[self sendRequestTo:servive with:parameter];
 }
 
 - (void)handleResult:(id)result of:(RequestService *)service {

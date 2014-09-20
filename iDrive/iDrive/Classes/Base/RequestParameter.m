@@ -25,4 +25,8 @@
 	}
 }
 
+- (NSString *)urlByAppendParameter {
+	return nil;
+}
+
 @end

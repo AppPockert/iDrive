@@ -7,13 +7,16 @@
 //
 
 /**
- *  请求服务
+ *  请求服务类
  */
 
 @class RequestParameter;
 
 @interface RequestService : NSObject
 
+/**
+ * 请求的URL，用于POST。如果是GET请求需要重写RequestParameter的urlByAppendParameter方法。
+ */
 @property (strong, nonatomic) NSString *url;
 @property (strong, nonatomic) NSString *requestMethod;
 

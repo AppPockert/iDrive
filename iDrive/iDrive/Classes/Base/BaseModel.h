@@ -8,7 +8,7 @@
 
 
 /**
- * 共通数据模型
+ * 共通数据模型类
  */
 
 @interface BaseModel : NSObject

@@ -19,44 +19,49 @@
 @implementation RequestService
 
 - (id)beginDealWith:(RequestParameter *)parameter {
-	if (self.url) {
-		NSURL *requestURL = [NSURL URLWithString:self.url];
-		ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:requestURL];
-		request.timeOutSeconds = 10.f;
-		if (self.requestMethod) {
-			request.requestMethod = self.requestMethod;
-		}
-		else {
-			request.requestMethod = @"GET";
-		}
-
-		if (parameter) {
-			[parameter addPostValueTo:request];
-		}
-
-
-		NSLog(@"Send request with url: %@\n RequestParameter:\n%@", self.url, parameter ? parameter : @"nil");
-		[request startSynchronous];
-
-		_resultCode = request.responseStatusCode;
-
-		NSData *response = request.responseData;
-
-		NSError *error = nil;
-		id JSON = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
-
-		if (error) {
-			NSLog(@"%@", error);
-
-			_resultCode = error.code;
+	if (!self.url) {
+		self.url = [parameter urlByAppendParameter];
+		if (!self.url) {
+			NSLog(@"Request URL or parameter is nil!");
 			return nil;
 		}
-
-		NSLog(@"Response:%@ for '%@'", JSON, self.url);
-		return JSON;
+		self.requestMethod = @"GET";
 	}
-	NSLog(@"Request URL is nil!");
-	return nil;
+
+	NSURL *requestURL = [NSURL URLWithString:self.url];
+	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:requestURL];
+	request.timeOutSeconds = 10.f;
+	if (self.requestMethod) {
+		request.requestMethod = self.requestMethod;
+	}
+	else {
+		request.requestMethod = @"GET";
+	}
+
+	if (parameter) {
+		[parameter addPostValueTo:request];
+	}
+
+
+	NSLog(@"Send request with url: %@\n RequestParameter:\n%@", self.url, parameter ? parameter : @"nil");
+	[request startSynchronous];
+
+	_resultCode = request.responseStatusCode;
+
+	NSData *response = request.responseData;
+
+	NSError *error = nil;
+	id JSON = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+
+	if (error) {
+		NSLog(@"%@", error);
+
+		_resultCode = error.code;
+		return nil;
+	}
+
+	NSLog(@"Response:%@ for '%@'", JSON, self.url);
+	return JSON;
 }
 
 @end

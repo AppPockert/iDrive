@@ -7,11 +7,18 @@
 //
 
 /**
- *  请求参数
+ *  请求参数类
  */
 
 #import "BaseModel.h"
 
 @interface RequestParameter : BaseModel
+
+/**
+ *  以拼接字符串的形式获取请求URL，用于GET请求
+ *
+ *  @return URL
+ */
+- (NSString *)urlByAppendParameter;
 
 @end

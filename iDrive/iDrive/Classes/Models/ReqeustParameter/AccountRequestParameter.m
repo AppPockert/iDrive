@@ -10,4 +10,8 @@
 
 @implementation AccountRequestParameter
 
+- (NSString *)urlByAppendParameter {
+	return @"http://117.89.129.127:9003/tcp/login.do?userName=123456&password=123456";
+}
+
 @end
