@@ -7,9 +7,10 @@
 //
 
 typedef NS_ENUM (int, RegexType) {
-	RegexTypePhone,
-	RegexTypePassword,
-	RegexTypeDeviceNo
+	RegexTypePhone,    // 手机号
+	RegexTypePassword, // 密码
+	RegexTypeDeviceNo, // 爱开车设备编号
+	RegexTypeICNo      // 身份证号
 };
 
 @interface RegexHelper : NSObject

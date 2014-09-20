@@ -27,11 +27,10 @@
 
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
 
-
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	NSString *identifier;
 
-	if ([userDefaults boolForKey:kFirstLaunch]) {
+	if ([userDefaults boolForKey:kFirstLaunched]) {
 		if (![userDefaults objectForKey:kUserInfo]) {
 			identifier = kLoginNav;
 		}
@@ -48,6 +47,7 @@
 	self.window.rootViewController = _navigationController;
 	[self.window makeKeyAndVisible];
 
+	// 初始化百度地图
 	[self initMap];
 
 	return YES;
@@ -77,6 +77,9 @@
 
 #pragma mark
 
+/**
+ *  初始化百度地图
+ */
 - (void)initMap {
 	_mapManager = [[BMKMapManager alloc]init];
 	// 如果要关注网络及授权验证事件，请设定     generalDelegate参数

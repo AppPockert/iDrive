@@ -11,15 +11,22 @@
 #import "NSStringUtil.h"
 #import "RegexHelper.h"
 #import "TestLoginService.h"
-#import "LoginRequestParameter.h"
+#import "AccountRequestParameter.h"
 #import "CarInfoViewController.h"
 #import "RegisterViewController.h"
 
-@interface LoginViewController () <UITextFieldDelegate>
+@interface LoginViewController () <UITextFieldDelegate, UIScrollViewDelegate>
 {
 	UITapGestureRecognizer *_tap;
 }
 
+@property (weak, nonatomic) IBOutlet UIView *introductionView;
+
+@property (weak, nonatomic) IBOutlet UIView *splashView;
+@property (weak, nonatomic) IBOutlet UIImageView *arrow;
+@property (weak, nonatomic) IBOutlet UIImageView *car;
+
+@property (weak, nonatomic) IBOutlet UIImageView *pageController;
 
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *account;  // 用户名
 @property (weak, nonatomic) IBOutlet JVFloatLabeledTextField *password; // 密码
@@ -39,6 +46,15 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
+	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+
+	if (![userDefaults boolForKey:kFirstLaunched]) {
+		self.introductionView.hidden = NO;
+
+		[userDefaults setBool:YES forKey:kFirstLaunched];
+		[userDefaults synchronize];
+	}
+
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
@@ -52,6 +68,26 @@
 
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+	// 到左边第一张展示不能滑动
+	if (scrollView.contentOffset.x < 0) {
+		scrollView.userInteractionEnabled = NO;
+		return;
+	}
+
+	// 最后一张后结束
+	if (scrollView.contentOffset.x > scrollView.contentSize.width) {
+		scrollView.userInteractionEnabled = NO;
+		self.introductionView.hidden = YES;
+	}
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+	scrollView.userInteractionEnabled = YES;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -101,22 +137,23 @@
 
 #warning 暂时写死，等服务器通了再替换成与服务器交互
 	// test
-	if ([self.account.text isEqualToString:@"13611113333"] && [self.password.text isEqualToString:@"123456"]) {
-		[self performSegueWithIdentifier:kCarInfo sender:nil];
-	}
-	else {
-		[self.view makeToast:@"手机号码未注册"];
-	}
+//	if ([self.account.text isEqualToString:@"13611113333"] && [self.password.text isEqualToString:@"123456"]) {
+//		[self performSegueWithIdentifier:kCarInfo sender:nil];
+//	}
+//	else {
+//		[self.view makeToast:@"手机号码未注册"];
+//	}
 
-//	TestLoginService *servive = [[TestLoginService alloc] init];
-//	LoginRequestParameter *parameter = [[LoginRequestParameter alloc] init];
-//	parameter.account = self.account.text;
-//	parameter.password = self.password.text;
-//
-//	[self sendRequestTo:servive with:nil];
+	TestLoginService *servive = [[TestLoginService alloc] init];
+	AccountRequestParameter *parameter = [[AccountRequestParameter alloc] init];
+	parameter.account = self.account.text;
+	parameter.password = self.password.text;
+
+	[self sendRequestTo:servive with:nil];
 }
 
 - (void)handleResult:(id)result of:(RequestService *)service {
+	NSLog(@"%@", result);
 }
 
 #pragma mark

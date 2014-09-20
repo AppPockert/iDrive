@@ -7,7 +7,7 @@
 //
 
 /**
- *  行程历史
+ *  行程历史的列表，显示查询后的结果
  */
 
 @interface ItineraryHistoryViewController : BaseViewController

@@ -7,29 +7,24 @@
 //
 
 #import "ItineraryDetailCell.h"
+#import "ItineraryHistory.h"
 
 @interface ItineraryDetailCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *time; // 时长
+@property (weak, nonatomic) IBOutlet UILabel *mileage; // 里程
+@property (weak, nonatomic) IBOutlet UILabel *fuelConsumption; // 油耗
 
 @end
 
 @implementation ItineraryDetailCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-	self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-	if (self) {
-		// Initialization code
-	}
-	return self;
-}
+- (void)setHistory:(ItineraryHistory *)history {
+	_history = history;
 
-- (void)awakeFromNib {
-	// Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-	[super setSelected:selected animated:animated];
-
-	// Configure the view for the selected state
+	self.time.text = history.time;
+	self.mileage.text = history.mileage;
+	self.fuelConsumption.text = history.fuelConsumption;
 }
 
 @end

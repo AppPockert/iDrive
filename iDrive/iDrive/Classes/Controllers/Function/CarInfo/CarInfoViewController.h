@@ -12,6 +12,6 @@
 
 @interface CarInfoViewController : BaseViewController
 
-@property (assign, nonatomic, getter = isPushFromLogin) BOOL pushFromLogin;
+@property (assign, nonatomic, getter = isPushFromLogin) BOOL pushFromLogin; // 是否是登陆后迁移而来
 
 @end

@@ -52,7 +52,7 @@
 			return nil;
 		}
 
-		NSLog(@"Response:%@", JSON);
+		NSLog(@"Response:%@ for '%@'", JSON, self.url);
 		return JSON;
 	}
 	NSLog(@"Request URL is nil!");

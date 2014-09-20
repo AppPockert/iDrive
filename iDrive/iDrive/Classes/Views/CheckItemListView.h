@@ -7,7 +7,7 @@
 //
 
 @protocol CheckItemListViewDelegate <NSObject>
-
+// 所有检测完毕
 - (void)allCheckDidCompleted:(id)result;
 
 @end
@@ -19,9 +19,16 @@
 @interface CheckItemListView : UIView
 
 @property (assign, nonatomic) id <CheckItemListViewDelegate> delegate;
-@property (strong, nonatomic) NSArray *checkList;
+@property (strong, nonatomic) NSArray *checkList; // 待检测列表
 
+/**
+ *  开始检测
+ */
 - (void)startCheck;
+
+/**
+ *  停止检测
+ */
 - (void)stopCheck;
 
 @end

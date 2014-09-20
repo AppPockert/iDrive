@@ -10,6 +10,10 @@
  *  里程详情TableviewCell
  */
 
+@class ItineraryHistory;
+
 @interface ItineraryDetailCell : UITableViewCell
+
+@property (strong, nonatomic) ItineraryHistory *history; // 历史行程的数据
 
 @end

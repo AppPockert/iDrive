@@ -39,6 +39,7 @@
 
 #pragma mark
 
+// 保存
 - (IBAction)save:(id)sender {
 	[self.parentViewController saveCarInfo];
 }
@@ -50,9 +51,11 @@
 
 	[self.tableView endEditing:YES];
 
+	// 车辆品牌
 	if (indexPath.row == 1) {
 		[self.parentViewController performSegueWithIdentifier:kCarBrand sender:nil];
 	}
+	// 保险公司
 	else if (indexPath.row == 6) {
 		[self.parentViewController performSegueWithIdentifier:kInsuranceCompany sender:nil];
 	}

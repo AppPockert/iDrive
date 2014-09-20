@@ -13,7 +13,8 @@
 - (instancetype)init {
 	self = [super init];
 	if (self) {
-		self.url = @"http://www.weather.com.cn/data/cityinfo/101010100.html";
+//		self.url = @"http://www.weather.com.cn/data/cityinfo/101010100.html";
+		self.url = @"http://117.89.129.127:9003/tcp/reg.do";
 	}
 	return self;
 }

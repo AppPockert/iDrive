@@ -17,7 +17,7 @@ typedef NS_ENUM (int, TrajectoryType) {
 
 @interface TrajectoryMapViewController : BaseViewController
 
-@property (assign, nonatomic) TrajectoryType trajectoryType;
-@property (strong, nonatomic) NSArray *pointsForLine;
+@property (assign, nonatomic) TrajectoryType trajectoryType; // 行程类型
+@property (strong, nonatomic) NSArray *pointsForLine; // 轨迹点
 
 @end

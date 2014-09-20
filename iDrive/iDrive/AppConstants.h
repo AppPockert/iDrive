@@ -21,6 +21,7 @@
 #define kCarInfoDetail    @"CarInfoDetail"    // 车辆信息详情
 #define kCarBrand         @"CarBrand"         // 汽车品牌
 #define kInsuranceCompany @"InsuranceCompany" // 保险公司
+#define kItinerayDetial   @"ItinerayDetial"   // 行程详情
 
 #define kMainIndexNav     @"MainIndexNav"
 #define kLoginNav         @"LoginNav"
@@ -30,7 +31,7 @@
 #pragma mark - UserDefaultKey
 
 #define kUserInfo         @"UserInfo"
-#define kFirstLaunch      @"FirstLaunch"
+#define kFirstLaunched    @"FirstLaunched"
 
 #pragma mark - Common
 
@@ -46,7 +47,15 @@
 #define RGB(r, g, b)      [UIColor colorWithRed : r / 255.0 green : g / 255.0 blue : b / 255.0 alpha : 1.0]
 #define RGBA(r, g, b, a)  [UIColor colorWithRed : r / 255.0 green : g / 255.0 blue : b / 255.0 alpha : a / 255.0]
 
+#define HexRGB(rgbValue)  [UIColor colorWithRed : ((float)((rgbValue & 0xFF0000) >> 16)) / 255.0 green : ((float)((rgbValue & 0xFF00) >> 8)) / 255.0 blue : ((float)(rgbValue & 0xFF)) / 255.0 alpha : 1.0]
+
+
 
 #pragma mark - Request API
+
+#define kLoginRequest
+#define kRegisterRequest
+#define kCarInfoRequest
+
 
 #endif

@@ -8,27 +8,27 @@
 
 #import "VehicleExaminationViewController.h"
 #import "GPLoadingView.h"
+#import "CheckItemListView.h"
 
 @interface VehicleExaminationViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *beginExamBtn;    // 开始体检
 @property (weak, nonatomic) IBOutlet GPLoadingView *indicator;  // 等待指示器
 
+@property (strong, nonatomic) CheckItemListView *checkListView; // 检测列表
+
 @end
 
 @implementation VehicleExaminationViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-	if (self) {
-		// Custom initialization
-	}
-	return self;
-}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+	_checkListView = [[CheckItemListView alloc] initWithFrame:self.view.bounds];
+	[self.view addSubview:_checkListView];
+
+	self.checkListView.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,6 +38,7 @@
 
 #pragma mark -
 
+// 开始检测
 - (IBAction)beginExam:(id)sender {
 	[self.indicator startAnimation];
 }
