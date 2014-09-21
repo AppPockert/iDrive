@@ -15,7 +15,7 @@
 @interface RequestParameter : BaseModel
 
 /**
- *  以拼接字符串的形式获取请求URL，用于GET请求
+ *  以拼接字符串的形式获取请求URL，用于GET请求的时候需要子类重写
  *
  *  @return URL
  */

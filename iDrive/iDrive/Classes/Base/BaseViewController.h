@@ -20,6 +20,9 @@
 	MBProgressHUD *HUD;
 }
 
+@property (assign, nonatomic) BOOL shouldAutoShowHUD; // 是否请求开始时自动显示HUD，默认是YES
+@property (assign, nonatomic) BOOL shouldAutoHideHUD; // 是否请求结束时自动隐藏HUD，默认是YES
+
 /**
  *  发送处理请求
  *

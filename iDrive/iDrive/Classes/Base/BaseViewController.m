@@ -39,7 +39,9 @@ static char RequestServiceDelegate;
 	dispatch_async(dispatch_get_global_queue(0, 0), ^{
 	    result = [self beginDealWith:parameter];
 	    dispatch_async(dispatch_get_main_queue(), ^{
-	        [self.delegate service:self didCompleted:result];
+	        if (self.delegate && [self.delegate respondsToSelector:@selector(service:didCompleted:)]) {
+	            [self.delegate service:self didCompleted:result];
+			}
 		});
 	});
 }
@@ -74,10 +76,13 @@ static char RequestServiceDelegate;
 	HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	HUD.opacity = .5f;
 	[self.view addSubview:HUD];
+
+	self.shouldAutoShowHUD = YES;
+	self.shouldAutoHideHUD = YES;
 }
 
 - (void)sendRequestTo:(RequestService *)service with:(RequestParameter *)parameter {
-	[HUD show:YES];
+	[HUD show:self.shouldAutoShowHUD];
 
 	service.delegate = self;
 	[service callServiceWith:parameter];
@@ -94,7 +99,7 @@ static char RequestServiceDelegate;
 - (void)service:(RequestService *)service didCompleted:(id)result {
 	[self handleResult:result of:service];
 
-	[HUD hide:YES];
+	[HUD hide:self.shouldAutoHideHUD];
 }
 
 @end
