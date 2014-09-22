@@ -9,6 +9,15 @@
 #import "InquiryItineraryViewController.h"
 
 @interface InquiryItineraryViewController ()
+{
+    BOOL isShowDatePicker;
+    int currDatePicker;
+}
+
+@property (weak, nonatomic) IBOutlet UIButton *startData;
+@property (weak, nonatomic) IBOutlet UIButton *endData;
+@property (weak, nonatomic) IBOutlet UIDatePicker *dataPicker;
+@property (weak, nonatomic) IBOutlet UIView *datePickerView;
 
 @end
 
@@ -33,6 +42,62 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)actionChooseDatePicker:(UIButton *)b
+{
+    currDatePicker = (int)b.tag;
+    if (b.tag == 1) {//起始
+        self.dataPicker.minimumDate = [NSDate date];
+        self.dataPicker.maximumDate = nil;
+    }else{//结束
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"yyyy-MM-dd";
+        self.dataPicker.minimumDate = [dateFormatter dateFromString:self.startData.titleLabel.text];
+        self.dataPicker.maximumDate = [self.dataPicker.minimumDate dateByAddingTimeInterval:60*60*24*30];
+    }
+    [self showDatePicker];
+}
+
+- (IBAction)actionDone:(id)sender
+{
+    if (currDatePicker == 1) {
+        [self.startData setTitle:[self getTheDate] forState:UIControlStateNormal];
+    }else{
+        [self.endData setTitle:[self getTheDate] forState:UIControlStateNormal];
+    }
+    [self hideDatePicker];
+}
+
+- (NSString *)getTheDate
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"yyyy-MM-dd";
+    return [dateFormatter stringFromDate:self.dataPicker.date];
+}
+
+- (void)showDatePicker
+{
+    if (!isShowDatePicker) {
+        isShowDatePicker = YES;
+        [UIView animateWithDuration:.5 animations:^{
+            CGRect rect = self.datePickerView.frame;
+            rect.origin.y = rect.origin.y - rect.size.height;
+            self.datePickerView.frame = rect;
+        }];
+    }
+}
+
+- (void)hideDatePicker
+{
+    if (isShowDatePicker) {
+        isShowDatePicker = NO;
+        [UIView animateWithDuration:.5 animations:^{
+            CGRect rect = self.datePickerView.frame;
+            rect.origin.y = rect.origin.y + rect.size.height;
+            self.datePickerView.frame = rect;
+        }];
+    }
 }
 
 /*
