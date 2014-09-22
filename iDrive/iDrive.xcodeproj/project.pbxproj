@@ -597,9 +597,9 @@
 		040C8EDC19B0CED000E3C43B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0465E60519D0457100D6A640 /* SeverSetting */,
 				0481635D19B208D100138CC9 /* Function */,
 				04929A2219B2B64E00427371 /* Setting */,
+				0465E60519D0457100D6A640 /* SeverSetting */,
 				0481636819B208D100138CC9 /* UserAccount */,
 				04ED25F519BB0EA200139CD0 /* IntroductionViewController.h */,
 				04ED25F619BB0EA200139CD0 /* IntroductionViewController.m */,
