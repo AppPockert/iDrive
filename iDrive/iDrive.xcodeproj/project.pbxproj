@@ -42,6 +42,9 @@
 		040CFAC519BC0D6D000FCE06 /* InsuranceCompanyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040CFAC419BC0D6D000FCE06 /* InsuranceCompanyViewController.m */; };
 		040CFAC819BC17E1000FCE06 /* CarBrandViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040CFAC719BC17E1000FCE06 /* CarBrandViewController.m */; };
 		040CFACB19BC1F52000FCE06 /* SelectableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040CFACA19BC1F52000FCE06 /* SelectableViewController.m */; };
+		0465E60819D0458A00D6A640 /* ServerSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0465E60719D0458A00D6A640 /* ServerSettingViewController.m */; };
+		0465E60E19D04C0300D6A640 /* ServerURLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0465E60D19D04C0300D6A640 /* ServerURLUtil.m */; };
+		0465E61019D04EEE00D6A640 /* CarBrand.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0465E60F19D04EEE00D6A640 /* CarBrand.plist */; };
 		047760F919B1950900B1DA26 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477607A19B1950900B1DA26 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		047760FA19B1950900B1DA26 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477607D19B1950900B1DA26 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		047760FB19B1950900B1DA26 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477607F19B1950900B1DA26 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -262,6 +265,11 @@
 		040CFAC719BC17E1000FCE06 /* CarBrandViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarBrandViewController.m; sourceTree = "<group>"; };
 		040CFAC919BC1F52000FCE06 /* SelectableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectableViewController.h; sourceTree = "<group>"; };
 		040CFACA19BC1F52000FCE06 /* SelectableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectableViewController.m; sourceTree = "<group>"; };
+		0465E60619D0458A00D6A640 /* ServerSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerSettingViewController.h; sourceTree = "<group>"; };
+		0465E60719D0458A00D6A640 /* ServerSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerSettingViewController.m; sourceTree = "<group>"; };
+		0465E60C19D04C0300D6A640 /* ServerURLUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerURLUtil.h; sourceTree = "<group>"; };
+		0465E60D19D04C0300D6A640 /* ServerURLUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerURLUtil.m; sourceTree = "<group>"; };
+		0465E60F19D04EEE00D6A640 /* CarBrand.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CarBrand.plist; sourceTree = "<group>"; };
 		0477607919B1950900B1DA26 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		0477607A19B1950900B1DA26 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		0477607B19B1950900B1DA26 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -589,6 +597,7 @@
 		040C8EDC19B0CED000E3C43B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0465E60519D0457100D6A640 /* SeverSetting */,
 				0481635D19B208D100138CC9 /* Function */,
 				04929A2219B2B64E00427371 /* Setting */,
 				0481636819B208D100138CC9 /* UserAccount */,
@@ -618,6 +627,8 @@
 				040CFAB219BBEF25000FCE06 /* PlistFilePathManager.m */,
 				04AEC7C919CD8ECE00266B18 /* DateUtil.h */,
 				04AEC7CA19CD8ECE00266B18 /* DateUtil.m */,
+				0465E60C19D04C0300D6A640 /* ServerURLUtil.h */,
+				0465E60D19D04C0300D6A640 /* ServerURLUtil.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -794,6 +805,7 @@
 			isa = PBXGroup;
 			children = (
 				040CFAB719BC08C0000FCE06 /* InsuranceCompany.plist */,
+				0465E60F19D04EEE00D6A640 /* CarBrand.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -813,6 +825,15 @@
 				040CFAC419BC0D6D000FCE06 /* InsuranceCompanyViewController.m */,
 			);
 			path = CarInfo;
+			sourceTree = "<group>";
+		};
+		0465E60519D0457100D6A640 /* SeverSetting */ = {
+			isa = PBXGroup;
+			children = (
+				0465E60619D0458A00D6A640 /* ServerSettingViewController.h */,
+				0465E60719D0458A00D6A640 /* ServerSettingViewController.m */,
+			);
+			path = SeverSetting;
 			sourceTree = "<group>";
 		};
 		0477607719B1943200B1DA26 /* Base */ = {
@@ -1258,6 +1279,7 @@
 				040CFAB819BC08C0000FCE06 /* InsuranceCompany.plist in Resources */,
 				04E412F819BD6AF5005F2798 /* swipe_guide2.psd in Resources */,
 				040C8EB719B0CE3000E3C43B /* Main.storyboard in Resources */,
+				0465E61019D04EEE00D6A640 /* CarBrand.plist in Resources */,
 				04E412F719BD6AF5005F2798 /* swipe_guide.psd in Resources */,
 				0477610919B1950900B1DA26 /* README-GHUnit in Resources */,
 			);
@@ -1321,6 +1343,7 @@
 				0477612B19B1950900B1DA26 /* UIButton+WebCache.m in Sources */,
 				0481637019B208D100138CC9 /* VehicleExaminationViewController.m in Sources */,
 				040CFAC519BC0D6D000FCE06 /* InsuranceCompanyViewController.m in Sources */,
+				0465E60819D0458A00D6A640 /* ServerSettingViewController.m in Sources */,
 				0477613119B1950900B1DA26 /* UIView+WebCacheOperation.m in Sources */,
 				04ED25F019BB0D0400139CD0 /* OBShapedButton.m in Sources */,
 				0477610519B1950900B1DA26 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
@@ -1359,6 +1382,7 @@
 				0477610219B1950900B1DA26 /* ASICloudFilesCDNRequest.m in Sources */,
 				04ED25FD19BB18BF00139CD0 /* MainIndexViewController.m in Sources */,
 				047760FD19B1950900B1DA26 /* ASIFormDataRequest.m in Sources */,
+				0465E60E19D04C0300D6A640 /* ServerURLUtil.m in Sources */,
 				040C8F4519B0CED000E3C43B /* RegexHelper.m in Sources */,
 				04E359F719BD97DD00E451A5 /* TrajectoryMapViewController.m in Sources */,
 				0481637219B208D100138CC9 /* LoginViewController.m in Sources */,

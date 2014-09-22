@@ -10,6 +10,7 @@
 #import "BMapKit.h"
 #import "UserInfo.h"
 #import "PlistFilePathManager.h"
+#import "ServerSettingViewController.h"
 
 @interface AppDelegate ()
 
@@ -50,6 +51,10 @@
 	// 初始化百度地图
 	[self initMap];
 
+#ifndef __OPTIMIZE__
+	[self setTestServer];
+#endif
+
 	return YES;
 }
 
@@ -89,6 +94,22 @@
 	}
 }
 
-#pragma mark
+#ifndef __OPTIMIZE__
+#pragma mark - 设置测试服务器地址
+
+- (void)setTestServer {
+	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showServerSetting:)];
+	tap.numberOfTapsRequired = 4;
+
+	[self.window addGestureRecognizer:tap];
+}
+
+- (void)showServerSetting:(id)sender {
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+	ServerSettingViewController *serverSetting = [storyboard instantiateViewControllerWithIdentifier:kServerSetting];
+	[self.navigationController presentViewController:serverSetting animated:YES completion:nil];
+}
+
+#endif
 
 @end

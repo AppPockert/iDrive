@@ -23,6 +23,8 @@
 #define kInsuranceCompany @"InsuranceCompany" // 保险公司
 #define kItinerayDetial   @"ItinerayDetial"   // 行程详情
 
+#define kServerSetting    @"ServerSetting"
+
 #define kMainIndexNav     @"MainIndexNav"
 #define kLoginNav         @"LoginNav"
 #define kIntroductionNav  @"IntroductionNav"
@@ -32,6 +34,8 @@
 
 #define kUserInfo         @"UserInfo"
 #define kFirstLaunched    @"FirstLaunched"
+
+#define TestServer        @"TestServer"
 
 #pragma mark - Common
 
@@ -52,6 +56,8 @@
 
 
 #pragma mark - Request API
+
+#define kBaseURL            @""
 
 #define kLoginRequest
 #define kRegisterRequest
