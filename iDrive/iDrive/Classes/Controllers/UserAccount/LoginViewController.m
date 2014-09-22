@@ -137,19 +137,19 @@
 
 #warning 暂时写死，等服务器通了再替换成与服务器交互
 	// test
-//	if ([self.account.text isEqualToString:@"13611113333"] && [self.password.text isEqualToString:@"123456"]) {
-//		[self performSegueWithIdentifier:kCarInfo sender:nil];
-//	}
-//	else {
-//		[self.view makeToast:@"手机号码未注册"];
-//	}
+	if ([self.account.text isEqualToString:@"13611113333"] && [self.password.text isEqualToString:@"123456"]) {
+		[self performSegueWithIdentifier:kCarInfo sender:nil];
+	}
+	else {
+		[self.view makeToast:@"手机号码未注册"];
+	}
 
-	TestLoginService *servive = [[TestLoginService alloc] init];
-	AccountRequestParameter *parameter = [[AccountRequestParameter alloc] init];
-	parameter.account = self.account.text;
-	parameter.password = self.password.text;
-
-	[self sendRequestTo:servive with:parameter];
+//	TestLoginService *servive = [[TestLoginService alloc] init];
+//	AccountRequestParameter *parameter = [[AccountRequestParameter alloc] init];
+//	parameter.account = self.account.text;
+//	parameter.password = self.password.text;
+//
+//	[self sendRequestTo:servive with:parameter];
 }
 
 - (void)handleResult:(id)result of:(RequestService *)service {
