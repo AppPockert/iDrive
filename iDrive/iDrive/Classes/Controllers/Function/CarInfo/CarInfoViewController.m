@@ -77,6 +77,8 @@
 
 // 保存车辆信息
 - (void)saveCarInfo {
+#warning 暂时直接迁移到主页面，等能和服务器交互后，再替换
+	[self performSegueWithIdentifier:kMainIndex sender:nil];
 }
 
 @end
