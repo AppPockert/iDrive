@@ -8,7 +8,9 @@
 
 @interface UserInfo : NSObject
 
-@property (strong, nonatomic) NSString *account;
-@property (strong, nonatomic) NSString *password;
+@property (strong, nonatomic) NSString *userTelephone;
+@property (strong, nonatomic) NSString *userPassword;
+@property (strong, nonatomic) NSString *SN;
+@property (strong, nonatomic) NSString *carLicense;
 
 @end

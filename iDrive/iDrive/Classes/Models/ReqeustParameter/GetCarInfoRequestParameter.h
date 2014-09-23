@@ -13,4 +13,6 @@
  */
 @interface GetCarInfoRequestParameter : RequestParameter
 
+@property (strong, nonatomic) NSString *userId;
+
 @end

@@ -10,6 +10,8 @@
 #import "JVFloatLabeledTextField.h"
 #import "NSStringUtil.h"
 #import "RegexHelper.h"
+#import "RequestService.h"
+#import "RegisterRequestParameter.h"
 
 @interface RegisterViewController ()
 
@@ -76,8 +78,15 @@
 		return;
 	}
 	else {
-		//
+		// check“爱开车”编号格式正确性
 	}
+
+	RegisterRequestParameter *parameter = [[RegisterRequestParameter alloc] init];
+	parameter.userTelephone = self.account.text;
+	parameter.userPassword = self.password.text;
+	parameter.userTianyitongid = self.deviceNo.text;
+
+	[self sendRequestTo:[[RequestService alloc] init] with:parameter];
 }
 
 #pragma mark

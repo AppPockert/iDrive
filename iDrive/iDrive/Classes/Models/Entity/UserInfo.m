@@ -11,16 +11,20 @@
 @implementation UserInfo
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-	[coder encodeObject:self.account forKey:@"account"];
-	[coder encodeObject:self.password forKey:@"password"];
+	[coder encodeObject:self.userTelephone forKey:@"userTelephone"];
+	[coder encodeObject:self.userPassword forKey:@"userPassword"];
+	[coder encodeObject:self.SN forKey:@"SN"];
+	[coder encodeObject:self.carLicense forKey:@"carLicense"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
 	self = [super init];
 
 	if (self) {
-		self.account = [decoder decodeObjectForKey:@"account"];
-		self.password = [decoder decodeObjectForKey:@"password"];
+		self.userTelephone = [decoder decodeObjectForKey:@"userTelephone"];
+		self.userPassword = [decoder decodeObjectForKey:@"userPassword"];
+		self.SN = [decoder decodeObjectForKey:@"SN"];
+		self.carLicense = [decoder decodeObjectForKey:@"carLicense"];
 	}
 
 	return self;

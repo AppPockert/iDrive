@@ -10,4 +10,9 @@
 
 @implementation GetCarInfoRequestParameter
 
+- (NSString *)urlByAppendParameter {
+	NSString *url = [NSString stringWithFormat:kCarInfoRequestUrl, self.userId];
+	return [ServerURLUtil getFullURL:url];
+}
+
 @end

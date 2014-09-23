@@ -9,7 +9,7 @@
 #import "RequestParameter.h"
 
 /**
- *  追加/修改车辆信息
+ *  修改车辆信息
  */
 @interface ModifyCarInfoRequestParameter : RequestParameter
 

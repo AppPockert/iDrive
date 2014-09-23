@@ -10,10 +10,10 @@
 #import "JVFloatLabeledTextField.h"
 #import "NSStringUtil.h"
 #import "RegexHelper.h"
-#import "TestLoginService.h"
-#import "AccountRequestParameter.h"
+#import "LoginRequestParameter.h"
 #import "CarInfoViewController.h"
 #import "RegisterViewController.h"
+#import "RequestService.h"
 
 @interface LoginViewController () <UITextFieldDelegate, UIScrollViewDelegate>
 {
@@ -144,10 +144,11 @@
 		[self.view makeToast:@"手机号码未注册"];
 	}
 
-//	TestLoginService *servive = [[TestLoginService alloc] init];
-//	AccountRequestParameter *parameter = [[AccountRequestParameter alloc] init];
-//	parameter.account = self.account.text;
-//	parameter.password = self.password.text;
+
+//	RequestService *servive = [[RequestService alloc] init];
+//	LoginRequestParameter *parameter = [[LoginRequestParameter alloc] init];
+//	parameter.userTelephone = self.account.text;
+//	parameter.userPassword = self.password.text;
 //
 //	[self sendRequestTo:servive with:parameter];
 }

@@ -11,6 +11,7 @@
  */
 
 #import "BaseModel.h"
+#import "ServerURLUtil.h"
 
 @interface RequestParameter : BaseModel
 

@@ -57,11 +57,13 @@
 
 #pragma mark - Request API
 
-#define kBaseURL            @""
+#define kBaseURL                 @"http://localhost:8080"
 
-#define kLoginRequest
-#define kRegisterRequest
-#define kCarInfoRequest
-
+#define kLoginRequestUrl         @"/EasyCarServer/struts/loginAction!doLogin?userTelephone=%@&userPassword=%@"
+#define kRegisterRequestUrl      @"/EasyCarServer/struts/registerAction!doRegister?userCarlicense=%@&userIdcard=%@&userPassword=%@&userTelephone=%@&userTianyitongid=%@"
+#define kCarInfoRequestUrl       @"/EasyCarServer/struts/carInfoAction!queryCarInfo?userId=%@"
+#define kRealTimeTrajectoryUrl   @"/EasyCarServer/struts/carTravelAction!doSelectLastTravelInfo?tdCarId=%@"
+#define kItineraryHistoryUrl     @"/EasyCarServer/struts/carTravelAction!doSelectTravelInfoList?tdCarId=%@&startTime=%@&endTime=%@"
+#define kExaminationInfoUrl      @"/EasyCarServer/struts/carInfoAction!queryCarTestInfo?carId=%@"
 
 #endif

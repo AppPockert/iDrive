@@ -14,10 +14,10 @@
 	NSString *testServer = [[NSUserDefaults standardUserDefaults] objectForKey:TestServer];
 
 	if (testServer) {
-		return [NSString stringWithFormat:@"%@/%@", testServer, relativeURL];
+		return [NSString stringWithFormat:@"%@%@", testServer, relativeURL];
 	}
 	else {
-		return [NSString stringWithFormat:@"%@/%@", kBaseURL, relativeURL];
+		return [NSString stringWithFormat:@"%@%@", kBaseURL, relativeURL];
 	}
 }
 

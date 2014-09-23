@@ -108,7 +108,6 @@
 		04AEC7C819CD60E800266B18 /* ItineraryHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEC7C719CD60E800266B18 /* ItineraryHistory.m */; };
 		04AEC7CB19CD8ECE00266B18 /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEC7CA19CD8ECE00266B18 /* DateUtil.m */; };
 		04AEC7CE19CD993A00266B18 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEC7CD19CD993A00266B18 /* SettingViewController.m */; };
-		04AEC7D119CD99BD00266B18 /* AccountRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEC7D019CD99BD00266B18 /* AccountRequestParameter.m */; };
 		04AEC7D719CD9B7300266B18 /* GetCarInfoRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEC7D619CD9B7300266B18 /* GetCarInfoRequestParameter.m */; };
 		04AEC7DA19CD9BB200266B18 /* ModifyCarInfoRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEC7D919CD9BB200266B18 /* ModifyCarInfoRequestParameter.m */; };
 		04AEC7DD19CD9D2F00266B18 /* GetInsuranceCompanyRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AEC7DC19CD9D2F00266B18 /* GetInsuranceCompanyRequestParameter.m */; };
@@ -117,6 +116,11 @@
 		04AF3B8319C5C49800C53563 /* CheckItemListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF3B8219C5C49800C53563 /* CheckItemListView.m */; };
 		04AF3B8619C5C80B00C53563 /* CheckItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04AF3B8519C5C80B00C53563 /* CheckItemView.m */; };
 		04AF3B8819C5C83500C53563 /* CheckItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AF3B8719C5C83500C53563 /* CheckItemView.xib */; };
+		04D908A219D1B7B600A4DF4C /* LoginRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D908A119D1B7B600A4DF4C /* LoginRequestParameter.m */; };
+		04D908A519D1C38200A4DF4C /* RegisterRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D908A419D1C38200A4DF4C /* RegisterRequestParameter.m */; };
+		04D908A819D1C6E500A4DF4C /* RealTimeTrajectoryRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D908A719D1C6E500A4DF4C /* RealTimeTrajectoryRequestParameter.m */; };
+		04D908AB19D1C80000A4DF4C /* ItineraryHistoryRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D908AA19D1C80000A4DF4C /* ItineraryHistoryRequestParameter.m */; };
+		04D908AE19D1C9FD00A4DF4C /* AddCarInfoRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D908AD19D1C9FD00A4DF4C /* AddCarInfoRequestParameter.m */; };
 		04E359F619BD97DD00E451A5 /* ItineraryHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E359F319BD97DD00E451A5 /* ItineraryHistoryViewController.m */; };
 		04E359F719BD97DD00E451A5 /* TrajectoryMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E359F519BD97DD00E451A5 /* TrajectoryMapViewController.m */; };
 		04E359FA19BD988A00E451A5 /* InquiryItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E359F919BD988A00E451A5 /* InquiryItineraryViewController.m */; };
@@ -398,8 +402,6 @@
 		04AEC7CA19CD8ECE00266B18 /* DateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtil.m; sourceTree = "<group>"; };
 		04AEC7CC19CD993A00266B18 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		04AEC7CD19CD993A00266B18 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
-		04AEC7CF19CD99BD00266B18 /* AccountRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountRequestParameter.h; sourceTree = "<group>"; };
-		04AEC7D019CD99BD00266B18 /* AccountRequestParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountRequestParameter.m; sourceTree = "<group>"; };
 		04AEC7D519CD9B7300266B18 /* GetCarInfoRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetCarInfoRequestParameter.h; sourceTree = "<group>"; };
 		04AEC7D619CD9B7300266B18 /* GetCarInfoRequestParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetCarInfoRequestParameter.m; sourceTree = "<group>"; };
 		04AEC7D819CD9BB200266B18 /* ModifyCarInfoRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyCarInfoRequestParameter.h; sourceTree = "<group>"; };
@@ -415,6 +417,16 @@
 		04AF3B8419C5C80B00C53563 /* CheckItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckItemView.h; sourceTree = "<group>"; };
 		04AF3B8519C5C80B00C53563 /* CheckItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckItemView.m; sourceTree = "<group>"; };
 		04AF3B8719C5C83500C53563 /* CheckItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckItemView.xib; sourceTree = "<group>"; };
+		04D908A019D1B7B600A4DF4C /* LoginRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequestParameter.h; sourceTree = "<group>"; };
+		04D908A119D1B7B600A4DF4C /* LoginRequestParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequestParameter.m; sourceTree = "<group>"; };
+		04D908A319D1C38200A4DF4C /* RegisterRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterRequestParameter.h; sourceTree = "<group>"; };
+		04D908A419D1C38200A4DF4C /* RegisterRequestParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterRequestParameter.m; sourceTree = "<group>"; };
+		04D908A619D1C6E500A4DF4C /* RealTimeTrajectoryRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealTimeTrajectoryRequestParameter.h; sourceTree = "<group>"; };
+		04D908A719D1C6E500A4DF4C /* RealTimeTrajectoryRequestParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealTimeTrajectoryRequestParameter.m; sourceTree = "<group>"; };
+		04D908A919D1C80000A4DF4C /* ItineraryHistoryRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryHistoryRequestParameter.h; sourceTree = "<group>"; };
+		04D908AA19D1C80000A4DF4C /* ItineraryHistoryRequestParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryHistoryRequestParameter.m; sourceTree = "<group>"; };
+		04D908AC19D1C9FD00A4DF4C /* AddCarInfoRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCarInfoRequestParameter.h; sourceTree = "<group>"; };
+		04D908AD19D1C9FD00A4DF4C /* AddCarInfoRequestParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCarInfoRequestParameter.m; sourceTree = "<group>"; };
 		04E359F219BD97DD00E451A5 /* ItineraryHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItineraryHistoryViewController.h; sourceTree = "<group>"; };
 		04E359F319BD97DD00E451A5 /* ItineraryHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItineraryHistoryViewController.m; sourceTree = "<group>"; };
 		04E359F419BD97DD00E451A5 /* TrajectoryMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrajectoryMapViewController.h; sourceTree = "<group>"; };
@@ -1030,8 +1042,6 @@
 		0477614419B1C75400B1DA26 /* ReqeustParameter */ = {
 			isa = PBXGroup;
 			children = (
-				04AEC7CF19CD99BD00266B18 /* AccountRequestParameter.h */,
-				04AEC7D019CD99BD00266B18 /* AccountRequestParameter.m */,
 				04AEC7D519CD9B7300266B18 /* GetCarInfoRequestParameter.h */,
 				04AEC7D619CD9B7300266B18 /* GetCarInfoRequestParameter.m */,
 				04AEC7D819CD9BB200266B18 /* ModifyCarInfoRequestParameter.h */,
@@ -1042,6 +1052,16 @@
 				04AEC7DF19CD9D9600266B18 /* GetExaminationInfoRequestParameter.m */,
 				04AEC7E119CD9DD000266B18 /* GetCarPanelInfoRequestParameter.h */,
 				04AEC7E219CD9DD000266B18 /* GetCarPanelInfoRequestParameter.m */,
+				04D908A019D1B7B600A4DF4C /* LoginRequestParameter.h */,
+				04D908A119D1B7B600A4DF4C /* LoginRequestParameter.m */,
+				04D908A319D1C38200A4DF4C /* RegisterRequestParameter.h */,
+				04D908A419D1C38200A4DF4C /* RegisterRequestParameter.m */,
+				04D908A619D1C6E500A4DF4C /* RealTimeTrajectoryRequestParameter.h */,
+				04D908A719D1C6E500A4DF4C /* RealTimeTrajectoryRequestParameter.m */,
+				04D908A919D1C80000A4DF4C /* ItineraryHistoryRequestParameter.h */,
+				04D908AA19D1C80000A4DF4C /* ItineraryHistoryRequestParameter.m */,
+				04D908AC19D1C9FD00A4DF4C /* AddCarInfoRequestParameter.h */,
+				04D908AD19D1C9FD00A4DF4C /* AddCarInfoRequestParameter.m */,
 			);
 			path = ReqeustParameter;
 			sourceTree = "<group>";
@@ -1329,6 +1349,7 @@
 				04E412FB19BD6AF5005F2798 /* UIView+Screenshot.m in Sources */,
 				04AEC7CE19CD993A00266B18 /* SettingViewController.m in Sources */,
 				04AEC7DA19CD9BB200266B18 /* ModifyCarInfoRequestParameter.m in Sources */,
+				04D908A819D1C6E500A4DF4C /* RealTimeTrajectoryRequestParameter.m in Sources */,
 				0477612819B1950900B1DA26 /* SDWebImageDownloaderOperation.m in Sources */,
 				040C8F4D19B0CED000E3C43B /* WMGaugeView.m in Sources */,
 				0477612319B1950900B1DA26 /* NSData+ImageContentType.m in Sources */,
@@ -1351,12 +1372,14 @@
 				0477610B19B1950900B1DA26 /* ASIS3Bucket.m in Sources */,
 				04ED25F719BB0EA200139CD0 /* IntroductionViewController.m in Sources */,
 				04E359F619BD97DD00E451A5 /* ItineraryHistoryViewController.m in Sources */,
+				04D908AE19D1C9FD00A4DF4C /* AddCarInfoRequestParameter.m in Sources */,
 				04E412F919BD6AF5005F2798 /* ShadowView.m in Sources */,
 				040C8F4B19B0CED000E3C43B /* JVFloatLabeledTextField.m in Sources */,
 				0477610C19B1950900B1DA26 /* ASIS3BucketObject.m in Sources */,
 				0477613019B1950900B1DA26 /* UIImageView+WebCache.m in Sources */,
 				0481635619B200D600138CC9 /* BMKStartOrEndPointAnnotation.m in Sources */,
 				0477610119B1950900B1DA26 /* ASIWebPageRequest.m in Sources */,
+				04D908A519D1C38200A4DF4C /* RegisterRequestParameter.m in Sources */,
 				0477612519B1950900B1DA26 /* SDWebImageCompat.m in Sources */,
 				0481637619B209DE00138CC9 /* BMKStartOrEndPolyline.m in Sources */,
 				0477614B19B1C95D00B1DA26 /* TestLoginService.m in Sources */,
@@ -1368,7 +1391,6 @@
 				0481637119B208D100138CC9 /* VehiclePanelViewController.m in Sources */,
 				0477610019B1950900B1DA26 /* ASINetworkQueue.m in Sources */,
 				0477610419B1950900B1DA26 /* ASICloudFilesContainerRequest.m in Sources */,
-				04AEC7D119CD99BD00266B18 /* AccountRequestParameter.m in Sources */,
 				040CFACB19BC1F52000FCE06 /* SelectableViewController.m in Sources */,
 				040C8EB019B0CE3000E3C43B /* main.m in Sources */,
 				0477613D19B19DF100B1DA26 /* RequestService.m in Sources */,
@@ -1394,6 +1416,7 @@
 				04AEC7C819CD60E800266B18 /* ItineraryHistory.m in Sources */,
 				0477610A19B1950900B1DA26 /* Reachability.m in Sources */,
 				0477612619B1950900B1DA26 /* SDWebImageDecoder.m in Sources */,
+				04D908A219D1B7B600A4DF4C /* LoginRequestParameter.m in Sources */,
 				0477614E19B1D2B900B1DA26 /* BaseModel.m in Sources */,
 				0477612E19B1950900B1DA26 /* UIImage+WebP.m in Sources */,
 				04AEC7E319CD9DD000266B18 /* GetCarPanelInfoRequestParameter.m in Sources */,
@@ -1403,6 +1426,7 @@
 				0477612919B1950900B1DA26 /* SDWebImageManager.m in Sources */,
 				0477610619B1950900B1DA26 /* ASICloudFilesObject.m in Sources */,
 				0477611019B1950900B1DA26 /* ASIS3ServiceRequest.m in Sources */,
+				04D908AB19D1C80000A4DF4C /* ItineraryHistoryRequestParameter.m in Sources */,
 				0477612019B1950900B1DA26 /* FXBlurView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

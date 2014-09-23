@@ -10,4 +10,9 @@
 
 @implementation GetExaminationInfoRequestParameter
 
+- (NSString *)urlByAppendParameter {
+	NSString *url = [NSString stringWithFormat:kExaminationInfoUrl, self.carId];
+	return [ServerURLUtil getFullURL:url];
+}
+
 @end

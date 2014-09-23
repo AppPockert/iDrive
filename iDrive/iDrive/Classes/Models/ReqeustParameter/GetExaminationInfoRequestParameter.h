@@ -13,4 +13,6 @@
  */
 @interface GetExaminationInfoRequestParameter : RequestParameter
 
+@property (strong, nonatomic) NSString *carId;
+
 @end
