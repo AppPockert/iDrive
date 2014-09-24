@@ -16,6 +16,7 @@
     #import "AppConstants.h"
     #import "BaseViewController.h"
     #import "UIView+Toast.h"
+    #import "AppDelegate.h"
 #endif
 
 #ifndef __OPTIMIZE__
