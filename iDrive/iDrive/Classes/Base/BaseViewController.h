@@ -39,4 +39,6 @@
  */
 - (void)handleResult:(id)result of:(RequestService *)service;
 
+- (IBAction)popAction:(id)sender;
+
 @end

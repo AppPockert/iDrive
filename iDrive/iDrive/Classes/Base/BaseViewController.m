@@ -102,4 +102,8 @@ static char RequestServiceDelegate;
 	[HUD hide:self.shouldAutoHideHUD];
 }
 
+- (IBAction)popAction:(id)sender {
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

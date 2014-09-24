@@ -54,11 +54,13 @@
 
 #define HexRGB(rgbValue)  [UIColor colorWithRed : ((float)((rgbValue & 0xFF0000) >> 16)) / 255.0 green : ((float)((rgbValue & 0xFF00) >> 8)) / 255.0 blue : ((float)(rgbValue & 0xFF)) / 255.0 alpha : 1.0]
 
+#define kNavBarBgColor    0xa8c545
+
 
 
 #pragma mark - Request API
 
-#define kBaseURL                 @"http://localhost:8080"
+#define kBaseURL                 @"http://180.109.214.190:9003"
 
 #define kLoginRequestUrl         @"/EasyCarServer/struts/loginAction!doLogin?userTelephone=%@&userPassword=%@"
 #define kRegisterRequestUrl      @"/EasyCarServer/struts/registerAction!doRegister?userCarlicense=%@&userIdcard=%@&userPassword=%@&userTelephone=%@&userTianyitongid=%@"
@@ -66,5 +68,9 @@
 #define kRealTimeTrajectoryUrl   @"/EasyCarServer/struts/carTravelAction!doSelectLastTravelInfo?tdCarId=%@"
 #define kItineraryHistoryUrl     @"/EasyCarServer/struts/carTravelAction!doSelectTravelInfoList?tdCarId=%@&startTime=%@&endTime=%@"
 #define kExaminationInfoUrl      @"/EasyCarServer/struts/carInfoAction!queryCarTestInfo?carId=%@"
+
+
+#define kTravelAction             @"/EasyCarServer/struts/carInfoAction!queryCarInfo?userId=1"
+#define kSaveCarIno               @"/EasyCarServer/struts/carInfoAction!addCarInfo?carLicenseid=%@&carModel=%@&carMotorid=%@&carUsercompany=%@&carInsurancemaintainInfo=%@&carTestInfo=%@&carObdRt=%@&carDriver=%@"
 
 #endif

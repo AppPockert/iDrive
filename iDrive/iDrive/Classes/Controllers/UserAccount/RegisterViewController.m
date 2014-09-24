@@ -33,10 +33,6 @@
 
 #pragma mark
 
-- (IBAction)back:(id)sender {
-	[self.navigationController popViewControllerAnimated:YES];
-}
-
 - (IBAction)registerAction:(id)sender {
 	if (![NSStringUtil isValidate:self.account.text]) {
 		[self.view makeToast:@"手机号不能为空"];

@@ -47,7 +47,9 @@
 
 	for (NSString *key in[self propertyKeys]) {
 		id propertyValue = [self valueForKey:key];
-		[dic setObject:propertyValue forKey:key];
+		if (propertyValue) {
+			[dic setObject:propertyValue forKey:key];
+		}
 	}
 
 	return dic;
