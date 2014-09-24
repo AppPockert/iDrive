@@ -83,7 +83,7 @@
 		isShowDatePicker = YES;
 		[UIView animateWithDuration:.5 animations: ^{
 		    CGRect rect = self.datePickerView.frame;
-		    rect.origin.y = rect.origin.y - rect.size.height;
+		    rect.origin.y = rect.origin.y - rect.size.height - 50;
 		    self.datePickerView.frame = rect;
 		}];
 	}
@@ -94,7 +94,7 @@
 		isShowDatePicker = NO;
 		[UIView animateWithDuration:.5 animations: ^{
 		    CGRect rect = self.datePickerView.frame;
-		    rect.origin.y = rect.origin.y + rect.size.height;
+		    rect.origin.y = rect.origin.y + rect.size.height + 50;
 		    self.datePickerView.frame = rect;
 		}];
 	}

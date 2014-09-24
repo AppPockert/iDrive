@@ -28,6 +28,7 @@
 #define kMainIndexNav     @"MainIndexNav"
 #define kLoginNav         @"LoginNav"
 #define kIntroductionNav  @"IntroductionNav"
+#define kMainTab          @"MainTab"
 
 
 #pragma mark - UserDefaultKey

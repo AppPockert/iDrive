@@ -45,6 +45,8 @@
 		0465E60819D0458A00D6A640 /* ServerSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0465E60719D0458A00D6A640 /* ServerSettingViewController.m */; };
 		0465E60E19D04C0300D6A640 /* ServerURLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0465E60D19D04C0300D6A640 /* ServerURLUtil.m */; };
 		0465E61019D04EEE00D6A640 /* CarBrand.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0465E60F19D04EEE00D6A640 /* CarBrand.plist */; };
+		04752FD719D2EE020098105B /* MainTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04752FD619D2EE020098105B /* MainTabViewController.m */; };
+		04752FDA19D2F21F0098105B /* RoadRescueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04752FD919D2F21F0098105B /* RoadRescueViewController.m */; };
 		047760F919B1950900B1DA26 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477607A19B1950900B1DA26 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		047760FA19B1950900B1DA26 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477607D19B1950900B1DA26 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		047760FB19B1950900B1DA26 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477607F19B1950900B1DA26 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -274,6 +276,10 @@
 		0465E60C19D04C0300D6A640 /* ServerURLUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerURLUtil.h; sourceTree = "<group>"; };
 		0465E60D19D04C0300D6A640 /* ServerURLUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerURLUtil.m; sourceTree = "<group>"; };
 		0465E60F19D04EEE00D6A640 /* CarBrand.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CarBrand.plist; sourceTree = "<group>"; };
+		04752FD519D2EE020098105B /* MainTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabViewController.h; sourceTree = "<group>"; };
+		04752FD619D2EE020098105B /* MainTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabViewController.m; sourceTree = "<group>"; };
+		04752FD819D2F21F0098105B /* RoadRescueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoadRescueViewController.h; sourceTree = "<group>"; };
+		04752FD919D2F21F0098105B /* RoadRescueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoadRescueViewController.m; sourceTree = "<group>"; };
 		0477607919B1950900B1DA26 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		0477607A19B1950900B1DA26 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		0477607B19B1950900B1DA26 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -615,6 +621,8 @@
 				0481636819B208D100138CC9 /* UserAccount */,
 				04ED25F519BB0EA200139CD0 /* IntroductionViewController.h */,
 				04ED25F619BB0EA200139CD0 /* IntroductionViewController.m */,
+				04752FD519D2EE020098105B /* MainTabViewController.h */,
+				04752FD619D2EE020098105B /* MainTabViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1088,6 +1096,8 @@
 				0481636519B208D100138CC9 /* VehicleExaminationViewController.m */,
 				0481636619B208D100138CC9 /* VehiclePanelViewController.h */,
 				0481636719B208D100138CC9 /* VehiclePanelViewController.m */,
+				04752FD819D2F21F0098105B /* RoadRescueViewController.h */,
+				04752FD919D2F21F0098105B /* RoadRescueViewController.m */,
 			);
 			path = Function;
 			sourceTree = "<group>";
@@ -1363,6 +1373,7 @@
 				04ED260719BB44F000139CD0 /* CATextLayer+NumberJump.m in Sources */,
 				0477612B19B1950900B1DA26 /* UIButton+WebCache.m in Sources */,
 				0481637019B208D100138CC9 /* VehicleExaminationViewController.m in Sources */,
+				04752FDA19D2F21F0098105B /* RoadRescueViewController.m in Sources */,
 				040CFAC519BC0D6D000FCE06 /* InsuranceCompanyViewController.m in Sources */,
 				0465E60819D0458A00D6A640 /* ServerSettingViewController.m in Sources */,
 				0477613119B1950900B1DA26 /* UIView+WebCacheOperation.m in Sources */,
@@ -1400,6 +1411,7 @@
 				047760FC19B1950900B1DA26 /* ASIDownloadCache.m in Sources */,
 				040CFABE19BC0956000FCE06 /* CarInfoDetailTableViewController.m in Sources */,
 				04E412F619BD6AF5005F2798 /* PaperFoldView.m in Sources */,
+				04752FD719D2EE020098105B /* MainTabViewController.m in Sources */,
 				047760FA19B1950900B1DA26 /* ASIDataCompressor.m in Sources */,
 				0477610219B1950900B1DA26 /* ASICloudFilesCDNRequest.m in Sources */,
 				04ED25FD19BB18BF00139CD0 /* MainIndexViewController.m in Sources */,

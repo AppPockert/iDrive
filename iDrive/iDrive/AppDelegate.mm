@@ -31,21 +31,25 @@
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	NSString *identifier;
 
-	if ([userDefaults boolForKey:kFirstLaunched]) {
-		if (![userDefaults objectForKey:kUserInfo]) {
-			identifier = kLoginNav;
+	do {
+		if ([userDefaults boolForKey:kFirstLaunched]) {
+			if (![userDefaults objectForKey:kUserInfo]) {
+				identifier = kLoginNav;
+			}
+			else {
+				self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:kMainTab];
+				break;
+			}
 		}
 		else {
-			identifier = kMainIndexNav;
+			identifier = kIntroductionNav;
 		}
-	}
-	else {
-		identifier = kIntroductionNav;
-	}
 
-	_navigationController = [storyboard instantiateViewControllerWithIdentifier:identifier];
+		_navigationController = [storyboard instantiateViewControllerWithIdentifier:identifier];
+		self.window.rootViewController = _navigationController;
+	}
+	while (0);
 
-	self.window.rootViewController = _navigationController;
 	[self.window makeKeyAndVisible];
 
 	// 初始化百度地图
