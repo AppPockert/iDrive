@@ -10,4 +10,8 @@
 
 @implementation TravelActionRequestParameter
 
+- (NSString *)urlByAppendParameter {
+	return [ServerURLUtil getFullURL:kTravelAction];
+}
+
 @end
