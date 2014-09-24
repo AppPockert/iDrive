@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class UserInfo;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+- (UserInfo *)getUserInfo;
+- (void)saveUserInfo:(UserInfo *)userInfo;
 
 @end

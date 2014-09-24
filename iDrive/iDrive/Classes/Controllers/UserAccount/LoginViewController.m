@@ -15,6 +15,7 @@
 #import "RegisterViewController.h"
 #import "RequestService.h"
 #import "TravelActionRequestParameter.h"
+#import "GetCarInfoRequestParameter.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 {
@@ -75,6 +76,8 @@
 - (IBAction)login:(id)sender {
 	[self.view endEditing:YES];
 
+	[self performSegueWithIdentifier:kCarInfo sender:nil];
+
 //	if (![NSStringUtil isValidate:self.account.text]) {
 //		[self.view makeToast:@"帐号不能为空"];
 //		return;
@@ -110,6 +113,7 @@
 
 
 	RequestService *servive = [[RequestService alloc] init];
+	servive.tag = 1;
 //	LoginRequestParameter *parameter = [[LoginRequestParameter alloc] init];
 //	parameter.userTelephone = self.account.text;
 //	parameter.userPassword = self.password.text;
@@ -120,12 +124,24 @@
 }
 
 - (void)handleResult:(id)result of:(RequestService *)service {
-	[self performSegueWithIdentifier:kCarInfo sender:nil];
-	if ([result isKindOfClass:[NSArray class]] && [result[0] isEqualToString:@"success"]) {
-		[self performSegueWithIdentifier:kCarInfo sender:nil];
+//	[self performSegueWithIdentifier:kCarInfo sender:nil];
+	if (service.tag == 1) {
+		if ([result isKindOfClass:[NSArray class]] && [result[0] isEqualToString:@"success"]) {
+			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+			    RequestService *servive = [[RequestService alloc] init];
+			    servive.tag = 2;
+
+			    GetCarInfoRequestParameter *parameter = [[GetCarInfoRequestParameter alloc] init];
+			    parameter.userId = self.account.text;
+
+			    [self sendRequestTo:service with:parameter];
+			});
+		}
+		else {
+			[self.view makeToast:@"登录失败"];
+		}
 	}
 	else {
-		[self.view makeToast:@"登录失败"];
 	}
 }
 

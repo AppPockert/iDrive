@@ -98,6 +98,18 @@
 	}
 }
 
+- (UserInfo *)getUserInfo {
+	NSData *data = [[NSUserDefaults standardUserDefaults]objectForKey:kUserInfo];
+	UserInfo *userInfo = (UserInfo *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
+	return userInfo;
+}
+
+- (void)saveUserInfo:(UserInfo *)userInfo {
+	NSData *data = [NSKeyedArchiver archivedDataWithRootObject:userInfo];
+	[[NSUserDefaults standardUserDefaults] setObject:data forKey:kUserInfo];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
 #ifndef __OPTIMIZE__
 #pragma mark - 设置测试服务器地址
 

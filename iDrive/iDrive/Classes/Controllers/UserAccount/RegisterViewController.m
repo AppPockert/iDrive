@@ -88,6 +88,12 @@
 #pragma mark
 
 - (void)handleResult:(id)result of:(RequestService *)service {
+	if ([result isKindOfClass:[NSArray class]] && [result[0] isEqualToString:@"success"]) {
+		[self performSegueWithIdentifier:kCarInfo sender:nil];
+	}
+	else {
+		[self.view makeToast:@"注册失败"];
+	}
 }
 
 @end

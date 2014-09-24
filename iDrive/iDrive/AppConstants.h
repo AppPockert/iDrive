@@ -22,6 +22,7 @@
 #define kCarBrand         @"CarBrand"         // 汽车品牌
 #define kInsuranceCompany @"InsuranceCompany" // 保险公司
 #define kItinerayDetial   @"ItinerayDetial"   // 行程详情
+#define kAutoInsurance    @"AutoInsurance"    // 车险信息
 
 #define kServerSetting    @"ServerSetting"
 
@@ -70,7 +71,7 @@
 #define kExaminationInfoUrl      @"/EasyCarServer/struts/carInfoAction!queryCarTestInfo?carId=%@"
 
 
-#define kTravelAction             @"/EasyCarServer/struts/carInfoAction!queryCarInfo?userId=1"
+#define kTravelAction             @"/EasyCarServer/struts/carInfoAction!queryCarInfo?userTelephone='13770519290'"
 #define kSaveCarIno               @"/EasyCarServer/struts/carInfoAction!addCarInfo?carLicenseid=%@&carModel=%@&carMotorid=%@&carUsercompany=%@&carInsurancemaintainInfo=%@&carTestInfo=%@&carObdRt=%@&carDriver=%@"
 
 #endif

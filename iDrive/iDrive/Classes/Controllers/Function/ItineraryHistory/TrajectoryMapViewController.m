@@ -16,6 +16,7 @@
 @property (strong, nonatomic) BMKMapView *mapView;
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 
@@ -28,6 +29,13 @@
 	_mapView.delegate = self;
 
 	[self.backgroundView addSubview:_mapView];
+
+	if (self.trajectoryType == TrajectoryTypeHistory) {
+		self.titleLabel.text = @"行程管理";
+	}
+	else {
+		// 请求实时轨迹点
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated {
