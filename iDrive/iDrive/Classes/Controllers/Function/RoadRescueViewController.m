@@ -8,7 +8,16 @@
 
 #import "RoadRescueViewController.h"
 
-@interface RoadRescueViewController ()
+@interface RoadRescueViewController ()<UIScrollViewDelegate>
+{
+    int maxpages;
+}
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIButton *lastPage;
+@property (weak, nonatomic) IBOutlet UIButton *nextPage;
+
+@property (nonatomic) int currPage;
 
 @end
 
@@ -26,13 +35,47 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    maxpages = 5;
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    CGFloat width = self.scrollView.frame.size.width;
+    self.scrollView.contentSize = CGSizeMake(width*maxpages, 0);
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)actionNextPage:(id)sender
+{
+    if (self.currPage < 4) {
+        CGFloat width = self.scrollView.frame.size.width;
+        [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x+width, 0) animated:YES];
+    }
+}
+
+- (IBAction)actionLastPage:(id)sender
+{
+    if (self.currPage > 0) {
+        CGFloat width = self.scrollView.frame.size.width;
+        [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x-width, 0) animated:YES];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat width = self.scrollView.frame.size.width;
+    int page = scrollView.contentOffset.x/width;
+    if (page != self.currPage) {
+        self.lastPage.hidden = (page <= 0);
+        self.nextPage.hidden = (page >= 4);
+        self.currPage = page;
+    }
 }
 
 /*
