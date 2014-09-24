@@ -11,9 +11,16 @@
 #import "CheckItemListView.h"
 
 @interface VehicleExaminationViewController ()
+{
+	int progress;
+	NSTimer *timer;
+}
 
+@property (weak, nonatomic) IBOutlet UIView *examView;
 @property (weak, nonatomic) IBOutlet UIButton *beginExamBtn;    // 开始体检
 @property (weak, nonatomic) IBOutlet GPLoadingView *indicator;  // 等待指示器
+@property (weak, nonatomic) IBOutlet UILabel *stautsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *progressLabel;
 
 @property (strong, nonatomic) CheckItemListView *checkListView; // 检测列表
 
@@ -29,6 +36,7 @@
 	[self.view addSubview:_checkListView];
 
 	self.checkListView.hidden = YES;
+	self.indicator.lineColor = [UIColor yellowColor];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,10 +48,30 @@
 
 // 开始检测
 - (IBAction)beginExam:(id)sender {
+	self.beginExamBtn.userInteractionEnabled = NO;
+	[self.beginExamBtn setTitle:@"" forState:UIControlStateNormal];
 	[self.indicator startAnimation];
+
+	[self.stautsLabel setHidden:NO];
+
+	progress = 0;
+	timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(doCheck:) userInfo:nil repeats:YES];
+
+	[self.examView bringSubviewToFront:self.progressLabel];
+	[self.progressLabel setText:@"0%"];
 }
 
 #pragma mark -
+
+- (void)doCheck:(NSTimer *)sender {
+	progress++;
+	[self.progressLabel setText:[NSString stringWithFormat:@"%i%%", progress * 10]];
+
+	if (progress == 10) {
+		[timer invalidate];
+		[self.examView setHidden:YES];
+	}
+}
 
 - (void)handleResult:(id)result of:(RequestService *)service {
 }
