@@ -297,7 +297,7 @@
         <!--Introduction View Controller-->
         <scene sceneID="vVr-1w-axO">
             <objects>
-                <viewController id="xvE-sr-Ud8" customClass="IntroductionViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="xvE-sr-Ud8" customClass="IntroductionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0kX-ST-KdM"/>
                         <viewControllerLayoutGuide type="bottom" id="Zg7-GA-aDe"/>
@@ -306,58 +306,77 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OYK-0R-oa1">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSk-DB-xZt">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="393"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rhe-Y1-yY0">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
-                                                <size key="value" width="960" height="320"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </scrollView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5O1-gG-AMm">
-                                        <rect key="frame" x="0.0" y="440" width="320" height="128"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="首次欢迎页图一" translatesAutoresizingMaskIntoConstraints="NO" id="lF7-v1-A6m">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="392"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="首次欢迎页图二" translatesAutoresizingMaskIntoConstraints="NO" id="CYE-PS-sYV">
+                                        <rect key="frame" x="320" y="0.0" width="320" height="392"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="首次欢迎页图三" translatesAutoresizingMaskIntoConstraints="NO" id="fYz-br-oJR">
+                                        <rect key="frame" x="640" y="0.0" width="320" height="392"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W18-Pa-xwa">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DX2-2l-ThO">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ygy-Bp-owf">
-                                        <rect key="frame" x="40" y="220" width="240" height="128"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOe-nv-AYh">
-                                        <rect key="frame" x="40" y="220" width="240" height="128"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eXe-S0-8pw">
-                                <rect key="frame" x="93" y="261" width="134" height="46"/>
-                                <color key="backgroundColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
-                                <state key="normal" title="立即体验">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                                <constraints>
+                                    <constraint firstItem="fYz-br-oJR" firstAttribute="leading" secondItem="CYE-PS-sYV" secondAttribute="trailing" id="6vN-Ax-kpR"/>
+                                    <constraint firstItem="CYE-PS-sYV" firstAttribute="leading" secondItem="lF7-v1-A6m" secondAttribute="trailing" id="8x9-f7-HJq"/>
+                                    <constraint firstAttribute="bottom" secondItem="CYE-PS-sYV" secondAttribute="bottom" id="BgV-oZ-HwT"/>
+                                    <constraint firstItem="fYz-br-oJR" firstAttribute="top" secondItem="qSk-DB-xZt" secondAttribute="top" id="QDp-9K-TUm"/>
+                                    <constraint firstAttribute="bottom" secondItem="fYz-br-oJR" secondAttribute="bottom" id="RSG-If-e8w"/>
+                                    <constraint firstItem="lF7-v1-A6m" firstAttribute="top" secondItem="qSk-DB-xZt" secondAttribute="top" id="SJQ-nd-BLo"/>
+                                    <constraint firstAttribute="bottom" secondItem="lF7-v1-A6m" secondAttribute="bottom" id="T1e-ZP-KKm"/>
+                                    <constraint firstItem="CYE-PS-sYV" firstAttribute="leading" secondItem="lF7-v1-A6m" secondAttribute="trailing" id="VQo-kJ-9ir"/>
+                                    <constraint firstItem="fYz-br-oJR" firstAttribute="leading" secondItem="CYE-PS-sYV" secondAttribute="trailing" id="abo-9G-9ON"/>
+                                    <constraint firstAttribute="trailing" secondItem="fYz-br-oJR" secondAttribute="trailing" constant="640" id="cpU-BX-5LN"/>
+                                    <constraint firstItem="CYE-PS-sYV" firstAttribute="top" secondItem="qSk-DB-xZt" secondAttribute="top" id="emg-z1-CZE"/>
+                                    <constraint firstItem="lF7-v1-A6m" firstAttribute="leading" secondItem="qSk-DB-xZt" secondAttribute="leading" id="jsK-2V-fTW"/>
+                                </constraints>
                                 <connections>
-                                    <segue destination="qI1-r1-KbO" kind="push" id="7iy-4s-r5A"/>
+                                    <outlet property="delegate" destination="xvE-sr-Ud8" id="toz-Ny-uvo"/>
                                 </connections>
-                            </button>
+                            </scrollView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="欢迎页小按钮一1" translatesAutoresizingMaskIntoConstraints="NO" id="kgH-Cw-qZe">
+                                <rect key="frame" x="107" y="483" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="欢迎页小按钮二2" translatesAutoresizingMaskIntoConstraints="NO" id="Z8Q-9Z-ceL">
+                                <rect key="frame" x="145" y="483" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="欢迎页小按钮三2" translatesAutoresizingMaskIntoConstraints="NO" id="1UP-f7-OnW">
+                                <rect key="frame" x="183" y="483" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="详尽的地图令你掌握周围" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="220" translatesAutoresizingMaskIntoConstraints="NO" id="Pd3-4Z-soc">
+                                <rect key="frame" x="50" y="407" width="220" height="56"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Zg7-GA-aDe" firstAttribute="top" secondItem="qSk-DB-xZt" secondAttribute="bottom" constant="175" id="QaO-Zo-Cy9"/>
+                            <constraint firstItem="qSk-DB-xZt" firstAttribute="leading" secondItem="47C-Fn-Y0t" secondAttribute="leading" id="WcB-ft-ZNe"/>
+                            <constraint firstItem="qSk-DB-xZt" firstAttribute="top" secondItem="47C-Fn-Y0t" secondAttribute="top" id="bpR-Wz-3x0"/>
+                            <constraint firstAttribute="trailing" secondItem="qSk-DB-xZt" secondAttribute="trailing" id="hle-Z9-X8s"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="uAR-4z-yC2"/>
                     <connections>
-                        <outlet property="arrow" destination="Ygy-Bp-owf" id="c2P-9x-FEa"/>
-                        <outlet property="car" destination="QOe-nv-AYh" id="iLf-E7-MlS"/>
-                        <outlet property="pageController" destination="5O1-gG-AMm" id="wxS-tj-FL8"/>
-                        <outlet property="splashView" destination="W18-Pa-xwa" id="B27-XO-pqt"/>
+                        <outlet property="info" destination="Pd3-4Z-soc" id="B06-JH-eA5"/>
+                        <outlet property="page1" destination="kgH-Cw-qZe" id="5hi-Qw-BQu"/>
+                        <outlet property="page2" destination="Z8Q-9Z-ceL" id="YkD-Ml-tO6"/>
+                        <outlet property="page3" destination="1UP-f7-OnW" id="sPu-3z-5WU"/>
+                        <outlet property="scrollView" destination="qSk-DB-xZt" id="fax-yx-QKF"/>
+                        <segue destination="qI1-r1-KbO" kind="push" identifier="Login" id="GRb-Yo-YZf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dxJ-OH-wKL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2092,8 +2111,14 @@
         <image name="圆盘菜单顶部箭头" width="23" height="18"/>
         <image name="底部工具条按钮图标一" width="26" height="22"/>
         <image name="底部工具条按钮图标二" width="24" height="24"/>
+        <image name="欢迎页小按钮一1" width="30" height="30"/>
+        <image name="欢迎页小按钮三2" width="30" height="30"/>
+        <image name="欢迎页小按钮二2" width="30" height="30"/>
         <image name="车LOGO" width="68" height="68"/>
         <image name="返回按钮" width="23" height="28"/>
+        <image name="首次欢迎页图一" width="320" height="392"/>
+        <image name="首次欢迎页图三" width="320" height="392"/>
+        <image name="首次欢迎页图二" width="320" height="392"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -2104,6 +2129,6 @@
         <segue reference="IjR-c9-HHW"/>
         <segue reference="yEA-BG-gxe"/>
         <segue reference="ffg-F8-hY8"/>
-        <segue reference="7iy-4s-r5A"/>
+        <segue reference="GRb-Yo-YZf"/>
     </inferredMetricsTieBreakers>
 </document>
