@@ -71,7 +71,7 @@
 #define kExaminationInfoUrl      @"/EasyCarServer/struts/carInfoAction!queryCarTestInfo?carId=%@"
 
 
-#define kTravelAction             @"/EasyCarServer/struts/carInfoAction!queryCarInfo?userTelephone='13770519290'"
+#define kTravelAction             @"/EasyCarServer/struts/carInfoAction!queryCarTestInfo?equipmentSNnum='2'"
 #define kSaveCarIno               @"/EasyCarServer/struts/carInfoAction!addCarInfo?carLicenseid=%@&carModel=%@&carMotorid=%@&carUsercompany=%@&carInsurancemaintainInfo=%@&carTestInfo=%@&carObdRt=%@&carDriver=%@"
 
 #endif

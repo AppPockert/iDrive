@@ -44,5 +44,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UILaunchImageFile~iphone</key>
+	<string>启动画面.png</string>
 </dict>
 </plist>
