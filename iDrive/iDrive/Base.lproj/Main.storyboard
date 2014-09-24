@@ -782,7 +782,7 @@
         <!--Car Brand View Controller-->
         <scene sceneID="X9N-P0-0J8">
             <objects>
-                <viewController id="ztm-iO-wcp" customClass="CarBrandViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="ztm-iO-wcp" customClass="CarBrandViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DbB-m4-F8u"/>
                         <viewControllerLayoutGuide type="bottom" id="8jd-av-TRr"/>
@@ -794,30 +794,61 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W7A-g0-4jF">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oR9-LZ-4ei">
-                                        <rect key="frame" x="0.0" y="-25" width="320" height="504"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Se-D9-afe">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="0.5" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="输入车型关键字" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xvO-r2-3pX">
-                                        <rect key="frame" x="30" y="28" width="260" height="30"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="窄蓝色提示框背景" translatesAutoresizingMaskIntoConstraints="NO" id="wrT-Wg-eHX">
+                                        <rect key="frame" x="10" y="28" width="300" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入车型关键字" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xvO-r2-3pX">
+                                        <rect key="frame" x="20" y="36" width="260" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="search"/>
                                         <connections>
                                             <outlet property="delegate" destination="ztm-iO-wcp" id="dwT-fK-n31"/>
                                         </connections>
                                     </textField>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="60r-vk-FVs">
-                                        <rect key="frame" x="30" y="44" width="260" height="372"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="车型搜索" translatesAutoresizingMaskIntoConstraints="NO" id="oqz-Ba-Qrg">
+                                        <rect key="frame" x="40" y="164" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="60r-vk-FVs">
+                                        <rect key="frame" x="10" y="75" width="300" height="289"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <view key="tableFooterView" contentMode="scaleToFill" id="ghG-Yr-wQU">
+                                            <rect key="frame" x="0.0" y="66" width="300" height="44"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
                                         <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CarBrandCell" id="cRq-Q4-kTC">
-                                                <rect key="frame" x="0.0" y="55" width="260" height="44"/>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CarBrandCell" id="cRq-Q4-kTC" customClass="CarBrandsTableViewCell">
+                                                <rect key="frame" x="0.0" y="22" width="300" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cRq-Q4-kTC" id="Y5z-iG-d1V">
-                                                    <rect key="frame" x="0.0" y="0.0" width="260" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="一般横条背景" translatesAutoresizingMaskIntoConstraints="NO" id="s8m-pZ-Xxt">
+                                                            <rect key="frame" x="0.0" y="0.0" width="300" height="42"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </imageView>
+                                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ST-8s-QhR">
+                                                            <rect key="frame" x="20" y="11" width="260" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 </tableViewCellContentView>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <outlet property="carBrandName" destination="9ST-8s-QhR" id="5QY-4h-XJW"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
@@ -825,8 +856,17 @@
                                             <outlet property="delegate" destination="ztm-iO-wcp" id="6qW-6e-1ww"/>
                                         </connections>
                                     </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9U-9q-VCY">
+                                        <rect key="frame" x="265" y="33" width="35" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="搜索放大镜">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="doSearch:" destination="ztm-iO-wcp" eventType="touchUpInside" id="S44-Ka-Rx2"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dbh-4V-JFO">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
@@ -864,7 +904,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="uQM-bK-3PI"/>
                     <connections>
-                        <outlet property="bgView" destination="oR9-LZ-4ei" id="6UG-Kf-i48"/>
+                        <outlet property="bgView" destination="3Se-D9-afe" id="zB9-aA-6Ig"/>
                         <outlet property="searchField" destination="xvO-r2-3pX" id="k8H-RJ-X3g"/>
                         <outlet property="searchResultTable" destination="60r-vk-FVs" id="haj-bY-DzS"/>
                     </connections>
@@ -2255,12 +2295,14 @@
         <image name="圆盘菜单顶部箭头" width="23" height="18"/>
         <image name="底部工具条按钮图标一" width="26" height="22"/>
         <image name="底部工具条按钮图标二" width="24" height="24"/>
+        <image name="搜索放大镜" width="35" height="35"/>
         <image name="欢迎页小按钮一1" width="30" height="30"/>
         <image name="欢迎页小按钮三2" width="30" height="30"/>
         <image name="欢迎页小按钮二2" width="30" height="30"/>
         <image name="浅咖啡色标题背景" width="300" height="45"/>
         <image name="窄蓝色提示框背景" width="300" height="45"/>
         <image name="车LOGO" width="68" height="68"/>
+        <image name="车型搜索" width="189" height="124"/>
         <image name="返回按钮" width="23" height="28"/>
         <image name="首次欢迎页图一" width="320" height="392"/>
         <image name="首次欢迎页图三" width="320" height="392"/>

@@ -8,11 +8,12 @@
 
 #import "CarBrandViewController.h"
 #import "PlistFilePathManager.h"
+#import "CarBrandsTableViewCell.h"
 
 #define FileName    @"CarBrand.plist"
 #define Idintifier  @"CarBrandCell"
 
-@interface CarBrandViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface CarBrandViewController () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (weak, nonatomic) IBOutlet UITextField *searchField; // 搜索输入框
@@ -33,18 +34,10 @@
 	_allCarBrands = [NSArray arrayWithContentsOfFile:path];
 	_searchResults = [[NSMutableArray alloc] initWithCapacity:5];
 
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
-
 	UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss:)];
 	[self.bgView addGestureRecognizer:tap];
 
 	self.identifer = kCarBrand;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - UITableViewDataSource
@@ -54,8 +47,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Idintifier forIndexPath:indexPath];
-	cell.textLabel.text = self.searchResults[indexPath.row];
+	CarBrandsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Idintifier forIndexPath:indexPath];
+	cell.carBrandName.text = self.searchResults[indexPath.row];
 	return cell;
 }
 
@@ -71,9 +64,13 @@
 	}
 }
 
-#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	[self doSearch:nil];
+	return YES;
+}
 
-- (void)textDidChange:(id)sender {
+- (IBAction)doSearch:(id)sender {
+	[self.view endEditing:YES];
 	if (self.searchField.text && ![self.searchField.text isEqualToString:@""]) {
 		NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF CONTAINS[cd] %@", self.searchField.text];
 		_searchResults = [NSMutableArray arrayWithArray:[_allCarBrands filteredArrayUsingPredicate:predicate]];
@@ -89,6 +86,10 @@
 #pragma mark -
 
 - (void)dismiss:(id)sender {
+	[self.view endEditing:YES];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
 	[self.view endEditing:YES];
 }
 
