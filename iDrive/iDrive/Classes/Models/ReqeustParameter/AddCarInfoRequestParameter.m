@@ -10,4 +10,9 @@
 
 @implementation AddCarInfoRequestParameter
 
+- (NSString *)urlByAppendParameter {
+	NSString *url = [NSString stringWithFormat:kSaveCarIno, self.carLicenseid, self.carModel, self.carMotorid, self.carUsercompany, self.carInsurancemaintainInfo, self.carTestInfo, self.carObdRt, self.carDriver];
+	return [ServerURLUtil getFullURL:url];
+}
+
 @end

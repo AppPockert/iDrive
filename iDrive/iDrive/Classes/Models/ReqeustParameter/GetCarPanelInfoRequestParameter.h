@@ -13,4 +13,6 @@
  */
 @interface GetCarPanelInfoRequestParameter : RequestParameter
 
+@property (strong, nonatomic) NSString *equipmentSNnum;
+
 @end

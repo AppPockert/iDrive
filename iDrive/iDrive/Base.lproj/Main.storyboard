@@ -235,9 +235,9 @@
                                 <rect key="frame" x="10" y="108" width="300" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号或QQ号码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KHR-y0-hDB" customClass="JVFloatLabeledTextField">
-                                <rect key="frame" x="111" y="108" width="189" height="44"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号/QQ号码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KHR-y0-hDB">
+                                <rect key="frame" x="111" y="109" width="189" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                 <connections>
                                     <outlet property="delegate" destination="qI1-r1-KbO" id="veV-jE-al5"/>
@@ -253,9 +253,9 @@
                                 <rect key="frame" x="10" y="161" width="300" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ta-gH-rCe" customClass="JVFloatLabeledTextField">
-                                <rect key="frame" x="111" y="160" width="189" height="44"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5ta-gH-rCe">
+                                <rect key="frame" x="111" y="162" width="189" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" keyboardType="alphabet" returnKeyType="done" secureTextEntry="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="qI1-r1-KbO" id="yc6-DW-UqV"/>
@@ -415,8 +415,8 @@
                                         <rect key="frame" x="10" y="0.0" width="300" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号/QQ号码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4yq-vo-rcL" customClass="JVFloatLabeledTextField">
-                                        <rect key="frame" x="142" y="0.0" width="158" height="44"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="手机号/QQ号码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4yq-vo-rcL">
+                                        <rect key="frame" x="142" y="2" width="158" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
                                     </textField>
@@ -436,7 +436,7 @@
                                         <rect key="frame" x="10" y="0.0" width="300" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wpa-Xq-r9k" customClass="JVFloatLabeledTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wpa-Xq-r9k">
                                         <rect key="frame" x="142" y="0.0" width="157" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" secureTextEntry="YES"/>
@@ -457,7 +457,7 @@
                                         <rect key="frame" x="10" y="0.0" width="300" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="重复密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hZW-1L-RQN" customClass="JVFloatLabeledTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="重复密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hZW-1L-RQN">
                                         <rect key="frame" x="142" y="0.0" width="160" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next" secureTextEntry="YES"/>
@@ -478,7 +478,7 @@
                                         <rect key="frame" x="10" y="0.0" width="300" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="爱开车编号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GbL-Mb-Iog" customClass="JVFloatLabeledTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="爱开车编号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GbL-Mb-Iog">
                                         <rect key="frame" x="142" y="0.0" width="160" height="44"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
@@ -649,7 +649,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tkj-uo-qkO">
+                            <containerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tkj-uo-qkO">
                                 <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="0.5" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -671,7 +671,7 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.6588235294" green="0.7725490196" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QS1-12-aCc">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QS1-12-aCc">
                                 <rect key="frame" x="0.0" y="519" width="320" height="203"/>
                                 <subviews>
                                     <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="z8f-Xi-5b4">
@@ -899,10 +899,10 @@
             </objects>
             <point key="canvasLocation" x="1497" y="2374"/>
         </scene>
-        <!--Auto Insurance View Controller-->
+        <!--View Controller-->
         <scene sceneID="Nsz-8I-HqO">
             <objects>
-                <viewController id="8Df-0l-Uh6" customClass="AutoInsuranceViewController" sceneMemberID="viewController">
+                <viewController id="8Df-0l-Uh6" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m5w-3p-LKo"/>
                         <viewControllerLayoutGuide type="bottom" id="3Y5-6O-6eQ"/>
@@ -2823,9 +2823,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Q8y-Sc-bsi"/>
-        <segue reference="GRb-Yo-YZf"/>
         <segue reference="IcP-iJ-BiE"/>
+        <segue reference="GRb-Yo-YZf"/>
+        <segue reference="Q8y-Sc-bsi"/>
         <segue reference="Jv7-3e-aie"/>
     </inferredMetricsTieBreakers>
 </document>

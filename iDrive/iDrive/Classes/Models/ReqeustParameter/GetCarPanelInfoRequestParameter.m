@@ -10,4 +10,9 @@
 
 @implementation GetCarPanelInfoRequestParameter
 
+- (NSString *)urlByAppendParameter {
+	NSString *url = [NSString stringWithFormat:kCarPanel, self.equipmentSNnum];
+	return [ServerURLUtil getFullURL:url];
+}
+
 @end

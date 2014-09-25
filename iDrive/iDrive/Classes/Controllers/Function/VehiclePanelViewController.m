@@ -9,8 +9,12 @@
 #import "VehiclePanelViewController.h"
 #import "WMGaugeView.h"
 #import "SCGIFImageView.h"
+#import "GetCarPanelInfoRequestParameter.h"
+#import "UserInfo.h"
+#import "RequestService.h"
 
 @interface VehiclePanelViewController ()
+
 @property (weak, nonatomic) IBOutlet UILabel *voltage;
 @property (weak, nonatomic) IBOutlet UIView *temperature;
 @property (weak, nonatomic) IBOutlet UILabel *tempLabel;
@@ -36,24 +40,34 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
+
 	[self.temperature addSubview:[self gifImageNamed:@"温度计表动画背景.gif" atFrame:self.temperature.bounds]];
 	[self.iFuelConsumptionView addSubview:[self gifImageNamed:@"瞬时油耗动画.gif" atFrame:CGRectMake(0, 0, 130, 57)]];
+
+	GetCarPanelInfoRequestParameter *parameter = [[GetCarPanelInfoRequestParameter alloc] init];
+	parameter.equipmentSNnum = [[kAppDelegate getUserInfo] SN];
+
+	[self sendRequestTo:[[RequestService alloc] init] with:parameter];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-
-	[self setSolarterm:70];
-	[self setEngieLoad:50];
-	[self setiFuelConsumption:90];
-	[self setaFuelConsumption:60];
-	[self setengieSpeed:45];
-	[self setrunningSpeed:120];
 }
 
 #pragma mark -
 
 - (void)handleResult:(id)result of:(RequestService *)service {
+	if ([result isKindOfClass:[NSDictionary class]]) {
+		self.voltage.text = result[@"batteryVoltage"];
+		self.tempLabel.text = [NSString stringWithFormat:@"%@%%", result[@"coolantTemperature"]];
+
+		[self setSolarterm:[result[@"throttlePercentage"] intValue]];
+		[self setEngieLoad:[result[@"engineLoad"] intValue]];
+		[self setiFuelConsumption:[result[@"instantOilConsumption"] intValue]];
+		[self setaFuelConsumption:[result[@"avlOilConsumption"] intValue]];
+		[self setengieSpeed:[result[@"rotateSpeed"] intValue]];
+		[self setrunningSpeed:[result[@"carSpeed"] intValue]];
+	}
 }
 
 - (SCGIFImageView *)gifImageNamed:(NSString *)imgName atFrame:(CGRect)frame {

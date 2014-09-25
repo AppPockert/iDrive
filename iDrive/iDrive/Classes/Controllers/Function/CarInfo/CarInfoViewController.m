@@ -9,6 +9,9 @@
 #import "CarInfoViewController.h"
 #import "CarInfoDetailTableViewController.h"
 #import "SelectableViewController.h"
+#import "AddCarInfoRequestParameter.h"
+#import "RequestService.h"
+#import "UserInfo.h"
 
 @interface CarInfoDetailTableViewController ()
 
@@ -138,8 +141,24 @@
 
 // 保存车辆信息
 - (void)saveCarInfo {
-#warning 暂时直接迁移到主页面，等能和服务器交互后，再替换
-	[self performSegueWithIdentifier:kMainIndex sender:nil];
+	AddCarInfoRequestParameter *parameter = [[AddCarInfoRequestParameter alloc] init];
+	parameter.carLicenseid = self.detail.carLicense.text;
+	parameter.carModel = self.detail.carBrandLabel.text;
+	parameter.carDriver = self.detail.driverField.text;
+	parameter.carInsurancemaintainInfo = self.detail.autoInsuranceLabel.text;
+
+	[self sendRequestTo:[[RequestService alloc] init] with:parameter];
+}
+
+- (void)handleResult:(id)result of:(RequestService *)service {
+	if ([result isKindOfClass:[NSArray class]] && [result[0] isEqualToString:@"success"]) {
+		UserInfo *user = [kAppDelegate getUserInfo];
+		user.carLicense = self.detail.carLicense.text;
+		[kAppDelegate saveUserInfo:user];
+	}
+	else {
+		[self.view makeToast:@"保存失败"];
+	}
 }
 
 @end

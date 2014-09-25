@@ -24,8 +24,6 @@
 		040C8F4519B0CED000E3C43B /* RegexHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C8EEC19B0CED000E3C43B /* RegexHelper.m */; };
 		040C8F4719B0CED000E3C43B /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 040C8F3019B0CED000E3C43B /* mapapi.bundle */; };
 		040C8F4819B0CED000E3C43B /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 040C8F3119B0CED000E3C43B /* readme.txt */; };
-		040C8F4919B0CED000E3C43B /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 040C8F3319B0CED000E3C43B /* libbaidumapapi.a */; };
-		040C8F4A19B0CED000E3C43B /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 040C8F3519B0CED000E3C43B /* libbaidumapapi.a */; };
 		040C8F4B19B0CED000E3C43B /* JVFloatLabeledTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C8F3819B0CED000E3C43B /* JVFloatLabeledTextField.m */; };
 		040C8F4C19B0CED000E3C43B /* JVFloatLabeledTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C8F3A19B0CED000E3C43B /* JVFloatLabeledTextView.m */; };
 		040C8F4D19B0CED000E3C43B /* WMGaugeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040C8F3D19B0CED000E3C43B /* WMGaugeView.m */; };
@@ -66,7 +64,6 @@
 		0475301419D390C10098105B /* 平均油耗动画.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0475301319D390C10098105B /* 平均油耗动画.gif */; };
 		0475301619D390CE0098105B /* 瞬时油耗动画.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0475301519D390CE0098105B /* 瞬时油耗动画.gif */; };
 		0475301A19D3954B0098105B /* SCGIFImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475301919D3954B0098105B /* SCGIFImageView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		0475301D19D3B14A0098105B /* AutoInsuranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0475301C19D3B14A0098105B /* AutoInsuranceViewController.m */; };
 		047760F919B1950900B1DA26 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477607A19B1950900B1DA26 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		047760FA19B1950900B1DA26 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477607D19B1950900B1DA26 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		047760FB19B1950900B1DA26 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477607F19B1950900B1DA26 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -124,6 +121,10 @@
 		0481637219B208D100138CC9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481636A19B208D100138CC9 /* LoginViewController.m */; };
 		0481637319B208D100138CC9 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481636C19B208D100138CC9 /* RegisterViewController.m */; };
 		0481637619B209DE00138CC9 /* BMKStartOrEndPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481637519B209DE00138CC9 /* BMKStartOrEndPolyline.m */; };
+		048532E719D3D6CA00CE6A7E /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 040C8F3319B0CED000E3C43B /* libbaidumapapi.a */; };
+		048532E819D3D6D500CE6A7E /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 040C8F3519B0CED000E3C43B /* libbaidumapapi.a */; };
+		048532EE19D43A1000CE6A7E /* YLGIFImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 048532EB19D43A1000CE6A7E /* YLGIFImage.m */; };
+		048532EF19D43A1000CE6A7E /* YLImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048532ED19D43A1000CE6A7E /* YLImageView.m */; };
 		04929A2A19B2C0AA00427371 /* GPLoadingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04929A2519B2C0AA00427371 /* GPLoadingButton.m */; };
 		04929A2B19B2C0AA00427371 /* GPLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04929A2719B2C0AA00427371 /* GPLoadingView.m */; };
 		04929A2C19B2C0AA00427371 /* GPRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04929A2919B2C0AA00427371 /* GPRoundView.m */; };
@@ -332,8 +333,6 @@
 		0475301519D390CE0098105B /* 瞬时油耗动画.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "瞬时油耗动画.gif"; sourceTree = "<group>"; };
 		0475301819D3954B0098105B /* SCGIFImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGIFImageView.h; sourceTree = "<group>"; };
 		0475301919D3954B0098105B /* SCGIFImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCGIFImageView.m; sourceTree = "<group>"; };
-		0475301B19D3B14A0098105B /* AutoInsuranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoInsuranceViewController.h; sourceTree = "<group>"; };
-		0475301C19D3B14A0098105B /* AutoInsuranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoInsuranceViewController.m; sourceTree = "<group>"; };
 		0477607919B1950900B1DA26 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		0477607A19B1950900B1DA26 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		0477607B19B1950900B1DA26 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -450,6 +449,10 @@
 		0481636C19B208D100138CC9 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		0481637419B209DE00138CC9 /* BMKStartOrEndPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKStartOrEndPolyline.h; sourceTree = "<group>"; };
 		0481637519B209DE00138CC9 /* BMKStartOrEndPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMKStartOrEndPolyline.m; sourceTree = "<group>"; };
+		048532EA19D43A1000CE6A7E /* YLGIFImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLGIFImage.h; sourceTree = "<group>"; };
+		048532EB19D43A1000CE6A7E /* YLGIFImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLGIFImage.m; sourceTree = "<group>"; };
+		048532EC19D43A1000CE6A7E /* YLImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLImageView.h; sourceTree = "<group>"; };
+		048532ED19D43A1000CE6A7E /* YLImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLImageView.m; sourceTree = "<group>"; };
 		04929A2419B2C0AA00427371 /* GPLoadingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPLoadingButton.h; sourceTree = "<group>"; };
 		04929A2519B2C0AA00427371 /* GPLoadingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPLoadingButton.m; sourceTree = "<group>"; };
 		04929A2619B2C0AA00427371 /* GPLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPLoadingView.h; sourceTree = "<group>"; };
@@ -540,6 +543,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048532E819D3D6D500CE6A7E /* libbaidumapapi.a in Frameworks */,
+				048532E719D3D6CA00CE6A7E /* libbaidumapapi.a in Frameworks */,
 				0477613719B1974D00B1DA26 /* libz.1.2.5.dylib in Frameworks */,
 				0477613519B1973800B1DA26 /* MobileCoreServices.framework in Frameworks */,
 				0477613319B195FE00B1DA26 /* libxml2.dylib in Frameworks */,
@@ -550,9 +555,7 @@
 				040C8F5219B0D32800E3C43B /* CoreLocation.framework in Frameworks */,
 				040C8EA619B0CE3000E3C43B /* CoreGraphics.framework in Frameworks */,
 				040C8EA819B0CE3000E3C43B /* UIKit.framework in Frameworks */,
-				040C8F4A19B0CED000E3C43B /* libbaidumapapi.a in Frameworks */,
 				040C8EA419B0CE3000E3C43B /* Foundation.framework in Frameworks */,
-				040C8F4919B0CED000E3C43B /* libbaidumapapi.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,6 +750,7 @@
 		040C8EF219B0CED000E3C43B /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				048532E919D43A1000CE6A7E /* YLGIFImageView */,
 				0475301719D3954B0098105B /* SCGIFImageView */,
 				04752FE719D341000098105B /* Wheel */,
 				0477607819B1950900B1DA26 /* ASIHttpRequest */,
@@ -1200,8 +1204,6 @@
 				04752FDF19D317890098105B /* CarAbnormalViewController.m */,
 				0475300819D371CC0098105B /* BehaviorAnalysisViewController.h */,
 				0475300919D371CC0098105B /* BehaviorAnalysisViewController.m */,
-				0475301B19D3B14A0098105B /* AutoInsuranceViewController.h */,
-				0475301C19D3B14A0098105B /* AutoInsuranceViewController.m */,
 			);
 			path = Function;
 			sourceTree = "<group>";
@@ -1215,6 +1217,17 @@
 				0481636C19B208D100138CC9 /* RegisterViewController.m */,
 			);
 			path = UserAccount;
+			sourceTree = "<group>";
+		};
+		048532E919D43A1000CE6A7E /* YLGIFImageView */ = {
+			isa = PBXGroup;
+			children = (
+				048532EA19D43A1000CE6A7E /* YLGIFImage.h */,
+				048532EB19D43A1000CE6A7E /* YLGIFImage.m */,
+				048532EC19D43A1000CE6A7E /* YLImageView.h */,
+				048532ED19D43A1000CE6A7E /* YLImageView.m */,
+			);
+			path = YLGIFImageView;
 			sourceTree = "<group>";
 		};
 		04929A2219B2B64E00427371 /* Setting */ = {
@@ -1375,6 +1388,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = autointelligence;
 				TargetAttributes = {
+					040C8E9F19B0CE3000E3C43B = {
+						DevelopmentTeam = UNYP6J9V9Q;
+					};
 					040C8EC319B0CE3000E3C43B = {
 						TestTargetID = 040C8E9F19B0CE3000E3C43B;
 					};
@@ -1465,6 +1481,7 @@
 				04AF3B8319C5C49800C53563 /* CheckItemListView.m in Sources */,
 				04AEC7DD19CD9D2F00266B18 /* GetInsuranceCompanyRequestParameter.m in Sources */,
 				047760F919B1950900B1DA26 /* ASIAuthenticationDialog.m in Sources */,
+				048532EE19D43A1000CE6A7E /* YLGIFImage.m in Sources */,
 				04752FDD19D2FEFE0098105B /* TravelActionRequestParameter.m in Sources */,
 				040CFAC819BC17E1000FCE06 /* CarBrandViewController.m in Sources */,
 				04AEC7D719CD9B7300266B18 /* GetCarInfoRequestParameter.m in Sources */,
@@ -1511,6 +1528,7 @@
 				04752FE619D32A360098105B /* AutoInsuranceViewController.m in Sources */,
 				04752FF619D341000098105B /* CDCircleOverlayView.m in Sources */,
 				04752FF819D341000098105B /* CDIconView.m in Sources */,
+				048532EF19D43A1000CE6A7E /* YLImageView.m in Sources */,
 				04752FF919D341000098105B /* Common.m in Sources */,
 				0477612519B1950900B1DA26 /* SDWebImageCompat.m in Sources */,
 				0481637619B209DE00138CC9 /* BMKStartOrEndPolyline.m in Sources */,
@@ -1520,7 +1538,6 @@
 				04E412F019BD6AF5005F2798 /* FacingView.m in Sources */,
 				0477612219B1950900B1DA26 /* MKAnnotationView+WebCache.m in Sources */,
 				0477610D19B1950900B1DA26 /* ASIS3BucketRequest.m in Sources */,
-				0475301D19D3B14A0098105B /* AutoInsuranceViewController.m in Sources */,
 				0481637119B208D100138CC9 /* VehiclePanelViewController.m in Sources */,
 				0477610019B1950900B1DA26 /* ASINetworkQueue.m in Sources */,
 				0477610419B1950900B1DA26 /* ASICloudFilesContainerRequest.m in Sources */,
@@ -1687,6 +1704,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDrive/iDrive-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1699,9 +1718,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iDrive/Libs/BaiduMap_IOSSDK_v2.3.0_Lib/Release$(EFFECTIVE_PLATFORM_NAME)",
+					"$(PROJECT_DIR)/iDrive/Libs/BaiduMap_IOSSDK_v2.3.0_Lib/Release-iphoneos",
+					"$(PROJECT_DIR)/iDrive/Libs/BaiduMap_IOSSDK_v2.3.0_Lib/Release-iphonesimulator",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1710,6 +1732,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDrive/iDrive-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1722,9 +1746,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iDrive/Libs/BaiduMap_IOSSDK_v2.3.0_Lib/Release$(EFFECTIVE_PLATFORM_NAME)",
+					"$(PROJECT_DIR)/iDrive/Libs/BaiduMap_IOSSDK_v2.3.0_Lib/Release-iphoneos",
+					"$(PROJECT_DIR)/iDrive/Libs/BaiduMap_IOSSDK_v2.3.0_Lib/Release-iphonesimulator",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

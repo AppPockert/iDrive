@@ -16,6 +16,7 @@
 #import "RequestService.h"
 #import "TravelActionRequestParameter.h"
 #import "GetCarInfoRequestParameter.h"
+#import "UserInfo.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
 {
@@ -76,55 +77,41 @@
 - (IBAction)login:(id)sender {
 	[self.view endEditing:YES];
 
-	[self performSegueWithIdentifier:kCarInfo sender:nil];
+	if (![NSStringUtil isValidate:self.account.text]) {
+		[self.view makeToast:@"帐号不能为空"];
+		return;
+	}
+	else {
+		NSString *errMsg = [RegexHelper check:self.account.text with:RegexTypePhone];
+		if (errMsg) {
+			[self.view makeToast:errMsg];
+			return;
+		}
+	}
 
-//	if (![NSStringUtil isValidate:self.account.text]) {
-//		[self.view makeToast:@"帐号不能为空"];
-//		return;
-//	}
-//	else {
-//		NSString *errMsg = [RegexHelper check:self.account.text with:RegexTypePhone];
-//		if (errMsg) {
-//			[self.view makeToast:errMsg];
-//			return;
-//		}
-//	}
-//
-//	if (![NSStringUtil isValidate:self.password.text]) {
-//		[self.view makeToast:@"密码不能为空"];
-//		return;
-//	}
-//	else {
-//		NSString *errMsg = [RegexHelper check:self.password.text with:RegexTypePassword];
-//		if (errMsg) {
-//			[self.view makeToast:errMsg];
-//			return;
-//		}
-//	}
-
-#warning 暂时写死，等服务器通了再替换成与服务器交互
-	// test
-//	if ([self.account.text isEqualToString:@"13611113333"] && [self.password.text isEqualToString:@"123456"]) {
-//		[self performSegueWithIdentifier:kCarInfo sender:nil];
-//	}
-//	else {
-//		[self.view makeToast:@"手机号码未注册"];
-//	}
+	if (![NSStringUtil isValidate:self.password.text]) {
+		[self.view makeToast:@"密码不能为空"];
+		return;
+	}
+	else {
+		NSString *errMsg = [RegexHelper check:self.password.text with:RegexTypePassword];
+		if (errMsg) {
+			[self.view makeToast:errMsg];
+			return;
+		}
+	}
 
 
 	RequestService *servive = [[RequestService alloc] init];
 	servive.tag = 1;
-//	LoginRequestParameter *parameter = [[LoginRequestParameter alloc] init];
-//	parameter.userTelephone = self.account.text;
-//	parameter.userPassword = self.password.text;
-
-	TravelActionRequestParameter *parameter = [[TravelActionRequestParameter alloc] init];
+	LoginRequestParameter *parameter = [[LoginRequestParameter alloc] init];
+	parameter.userTelephone = self.account.text;
+	parameter.userPassword = self.password.text;
 
 	[self sendRequestTo:servive with:parameter];
 }
 
 - (void)handleResult:(id)result of:(RequestService *)service {
-//	[self performSegueWithIdentifier:kCarInfo sender:nil];
 	if (service.tag == 1) {
 		if ([result isKindOfClass:[NSArray class]] && [result[0] isEqualToString:@"success"]) {
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -142,6 +129,23 @@
 		}
 	}
 	else {
+		if ([result isKindOfClass:[NSDictionary class]]) {
+			UserInfo *userInfo = [[UserInfo alloc] init];
+			userInfo.userTelephone = self.account.text;
+			userInfo.userPassword = self.password.text;
+			userInfo.SN = result[@"equipmentSNnum"];
+
+			if (result[@"carLicenseid"] && ![result[@"carLicenseid"] isKindOfClass:[NSNull class]]) {
+				userInfo.carLicense = result[@"carLicenseid"];
+
+				[self performSegueWithIdentifier:kMainIndex sender:nil];
+			}
+			else {
+				[self performSegueWithIdentifier:kCarInfo sender:nil];
+			}
+
+			[kAppDelegate saveUserInfo:userInfo];
+		}
 	}
 }
 

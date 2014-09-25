@@ -74,5 +74,6 @@
 #define kTravelAction             @"/EasyCarServer/struts/carTravelAction!doSelectLastTravelInfo?equipmentSNnum='1'"
 #define kSaveCarIno               @"/EasyCarServer/struts/carInfoAction!addCarInfo?carLicenseid=%@&carModel=%@&carMotorid=%@&carUsercompany=%@&carInsurancemaintainInfo=%@&carTestInfo=%@&carObdRt=%@&carDriver=%@"
 #define kBehaviorAnalysis         @"/EasyCarServer/struts/carTravelAction!selectCartreval?equipmentSNnum=%@"
+#define kCarPanel                 @"/EasyCarServer/struts/carTravelAction!selectCarControl?equipmentSNnum=%@"
 
 #endif

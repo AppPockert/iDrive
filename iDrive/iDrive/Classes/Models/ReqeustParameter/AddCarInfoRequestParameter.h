@@ -12,4 +12,13 @@
  */
 @interface AddCarInfoRequestParameter : RequestParameter
 
+@property (strong, nonatomic) NSString *carLicenseid;
+@property (strong, nonatomic) NSString *carModel;
+@property (strong, nonatomic) NSString *carMotorid;
+@property (strong, nonatomic) NSString *carUsercompany;
+@property (strong, nonatomic) NSString *carInsurancemaintainInfo;
+@property (strong, nonatomic) NSString *carTestInfo;
+@property (strong, nonatomic) NSString *carObdRt;
+@property (strong, nonatomic) NSString *carDriver;
+
 @end

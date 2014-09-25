@@ -12,6 +12,8 @@
 #import "RegexHelper.h"
 #import "RequestService.h"
 #import "RegisterRequestParameter.h"
+#import "UserInfo.h"
+#import "CarInfoViewController.h"
 
 @interface RegisterViewController ()
 
@@ -89,10 +91,24 @@
 
 - (void)handleResult:(id)result of:(RequestService *)service {
 	if ([result isKindOfClass:[NSArray class]] && [result[0] isEqualToString:@"success"]) {
+		UserInfo *userInfo = [[UserInfo alloc] init];
+		userInfo.userTelephone = self.account.text;
+		userInfo.userPassword = self.password.text;
+		userInfo.SN = self.deviceNo.text;
+
+		[kAppDelegate saveUserInfo:userInfo];
+
 		[self performSegueWithIdentifier:kCarInfo sender:nil];
 	}
 	else {
 		[self.view makeToast:@"注册失败"];
+	}
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:kCarInfo]) {
+		CarInfoViewController *controller = segue.destinationViewController;
+		controller.pushFromLogin = YES;
 	}
 }
 
