@@ -8,78 +8,123 @@
 
 #import "VehiclePanelViewController.h"
 #import "WMGaugeView.h"
+#import "SCGIFImageView.h"
 
 @interface VehiclePanelViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *voltage;
+@property (weak, nonatomic) IBOutlet UIView *temperature;
+@property (weak, nonatomic) IBOutlet UILabel *tempLabel;
+@property (weak, nonatomic) IBOutlet UILabel *solarTerm; // 节气门开度
+@property (weak, nonatomic) IBOutlet UILabel *engineLoad; // 发动机负荷
+@property (weak, nonatomic) IBOutlet UIView *solarTermView;
+@property (weak, nonatomic) IBOutlet UIView *engineLoadView;
 
-@property (weak, nonatomic) IBOutlet WMGaugeView *gauge1;
-@property (weak, nonatomic) IBOutlet WMGaugeView *gauge2;
-@property (weak, nonatomic) IBOutlet WMGaugeView *gauge3;
-@property (weak, nonatomic) IBOutlet WMGaugeView *gauge4;
+@property (weak, nonatomic) IBOutlet UILabel *iFuelConsumption; // 瞬时油耗
+@property (weak, nonatomic) IBOutlet UILabel *aFuelConsumption; //平均油耗
+@property (weak, nonatomic) IBOutlet UIView *iFuelConsumptionView;
+@property (weak, nonatomic) IBOutlet UIView *aFuelConsumptionView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *engieSpeed; // 发动机转速
+@property (weak, nonatomic) IBOutlet UIImageView *runningSpeed; // 行驶车速
+
 
 @end
 
 @implementation VehiclePanelViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-	if (self) {
-		// Custom initialization
-	}
-	return self;
-}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	_gauge1.maxValue = 240.0;
-	_gauge1.showRangeLabels = YES;
-	_gauge1.rangeValues = @[@50,                  @90,                @130,               @240.0];
-	_gauge1.rangeColors = @[RGB(232, 111, 33),    RGB(232, 231, 33),  RGB(27, 202, 33),   RGB(231, 32, 43)];
-	_gauge1.rangeLabels = @[@"VERY LOW",          @"LOW",             @"OK",              @"OVER FILL"];
-	_gauge1.unitOfMeasurement = @"psi";
-	_gauge1.showUnitOfMeasurement = YES;
 
+	[self.temperature addSubview:[self gifImageNamed:@"温度计表动画背景.gif" atFrame:self.temperature.bounds]];
+	[self.iFuelConsumptionView addSubview:[self gifImageNamed:@"瞬时油耗动画.gif" atFrame:CGRectMake(0, 0, 130, 57)]];
+}
 
-	_gauge2.maxValue = 240.0;
-	_gauge2.showRangeLabels = YES;
-	_gauge2.rangeValues = @[@50,                  @90,                @130,               @240.0];
-	_gauge2.rangeColors = @[RGB(232, 111, 33),    RGB(232, 231, 33),  RGB(27, 202, 33),   RGB(231, 32, 43)];
-	_gauge2.rangeLabels = @[@"VERY LOW",          @"LOW",             @"OK",              @"OVER FILL"];
-	_gauge2.unitOfMeasurement = @"psi";
-	_gauge2.showUnitOfMeasurement = YES;
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
 
-
-	_gauge3.maxValue = 240.0;
-	_gauge3.showRangeLabels = YES;
-	_gauge3.rangeValues = @[@50,                  @90,                @130,               @240.0];
-	_gauge3.rangeColors = @[RGB(232, 111, 33),    RGB(232, 231, 33),  RGB(27, 202, 33),   RGB(231, 32, 43)];
-	_gauge3.rangeLabels = @[@"VERY LOW",          @"LOW",             @"OK",              @"OVER FILL"];
-	_gauge3.unitOfMeasurement = @"psi";
-	_gauge3.showUnitOfMeasurement = YES;
-
-
-	_gauge4.maxValue = 100.0;
-	_gauge4.scaleDivisions = 10;
-	_gauge4.scaleSubdivisions = 5;
-	_gauge4.scaleStartAngle = 30;
-	_gauge4.scaleEndAngle = 280;
-	_gauge4.innerBackgroundStyle = WMGaugeViewInnerBackgroundStyleFlat;
-	_gauge4.showScaleShadow = NO;
-	_gauge4.scaleFont = [UIFont fontWithName:@"AvenirNext-UltraLight" size:0.065];
-	_gauge4.scalesubdivisionsaligment = WMGaugeViewSubdivisionsAlignmentCenter;
-	_gauge4.scaleSubdivisionsWidth = 0.002;
-	_gauge4.scaleSubdivisionsLength = 0.04;
-	_gauge4.scaleDivisionsWidth = 0.007;
-	_gauge4.scaleDivisionsLength = 0.07;
-	_gauge4.needleStyle = WMGaugeViewNeedleStyleFlatThin;
-	_gauge4.needleWidth = 0.012;
-	_gauge4.needleHeight = 0.4;
-	_gauge4.needleScrewStyle = WMGaugeViewNeedleScrewStylePlain;
-	_gauge4.needleScrewRadius = 0.05;
+	[self setSolarterm:70];
+	[self setEngieLoad:50];
+	[self setiFuelConsumption:90];
+	[self setaFuelConsumption:60];
+	[self setengieSpeed:45];
+	[self setrunningSpeed:120];
 }
 
 #pragma mark -
 
 - (void)handleResult:(id)result of:(RequestService *)service {
+}
+
+- (SCGIFImageView *)gifImageNamed:(NSString *)imgName atFrame:(CGRect)frame {
+	NSString *filePath = [[NSBundle mainBundle] pathForResource:imgName ofType:nil];
+	SCGIFImageView *gifImageView = [[SCGIFImageView alloc] initWithGIFFile:filePath];
+	gifImageView.frame = frame;
+
+	return gifImageView;
+}
+
+// 设置节气门开度
+- (void)setSolarterm:(int)value {
+	[UIView animateWithDuration:.5 animations: ^{
+	    CGRect frame = self.solarTermView.frame;
+	    frame.origin.y = 113 - 57 * value / 100;
+	    self.solarTermView.frame = frame;
+	}];
+
+	[self.solarTerm setText:[NSString stringWithFormat:@"%i%%", value]];
+}
+
+// 设置发动机负荷
+- (void)setEngieLoad:(int)value {
+	[UIView animateWithDuration:.5 animations: ^{
+	    CGRect frame = self.engineLoadView.frame;
+	    frame.origin.y = 113 - 57 * value / 100;
+	    self.engineLoadView.frame = frame;
+	}];
+	[self.engineLoad setText:[NSString stringWithFormat:@"%i%%", value]];
+}
+
+// 设置瞬时油耗
+- (void)setiFuelConsumption:(int)value {
+	self.iFuelConsumption.text = [NSString stringWithFormat:@"%d", value];
+
+	CGRect frame = self.iFuelConsumptionView.frame;
+	frame.size.width = 130 * value / 100;
+	self.iFuelConsumptionView.frame = frame;
+}
+
+// 设置平均油耗
+- (void)setaFuelConsumption:(int)value {
+	self.aFuelConsumption.text = [NSString stringWithFormat:@"%d", value];
+
+	__block CGRect frame = self.aFuelConsumptionView.frame;
+	frame.origin.y = 113 - 57 * value / 100;
+	frame.size.width = 0;
+	self.aFuelConsumptionView.frame = frame;
+
+	[UIView animateWithDuration:.5 animations: ^{
+	    frame.size.width = 128;
+	    self.aFuelConsumptionView.frame = frame;
+	}];
+}
+
+// 设置发动机转速
+- (void)setengieSpeed:(int)speed {
+	self.engieSpeed.transform = CGAffineTransformIdentity;
+	[UIView animateWithDuration:0.5 animations: ^{
+	    CGAffineTransform transform = CGAffineTransformMakeRotation((speed - 30) * 3 * M_PI / 180.f);
+	    self.engieSpeed.transform = transform;
+	}];
+}
+
+// 设置行驶车速
+- (void)setrunningSpeed:(int)speed {
+	self.runningSpeed.transform = CGAffineTransformIdentity;
+	[UIView animateWithDuration:0.5 animations: ^{
+	    CGAffineTransform transform = CGAffineTransformMakeRotation((speed - 80) * 9  * M_PI / (8 * 180.f));
+	    self.runningSpeed.transform = transform;
+	}];
 }
 
 @end
