@@ -119,6 +119,9 @@
 		0481637219B208D100138CC9 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481636A19B208D100138CC9 /* LoginViewController.m */; };
 		0481637319B208D100138CC9 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481636C19B208D100138CC9 /* RegisterViewController.m */; };
 		0481637619B209DE00138CC9 /* BMKStartOrEndPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481637519B209DE00138CC9 /* BMKStartOrEndPolyline.m */; };
+		0481D11719E41F5D00856CD8 /* RescueInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481D11619E41F5D00856CD8 /* RescueInfoViewController.m */; };
+		0481D11A19E4237B00856CD8 /* AutoInsuranceAndMaintenanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481D11919E4237B00856CD8 /* AutoInsuranceAndMaintenanceViewController.m */; };
+		0481D11D19E4257300856CD8 /* MaintenanceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481D11C19E4257300856CD8 /* MaintenanceDetailViewController.m */; };
 		048532EE19D43A1000CE6A7E /* YLGIFImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 048532EB19D43A1000CE6A7E /* YLGIFImage.m */; };
 		048532EF19D43A1000CE6A7E /* YLImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 048532ED19D43A1000CE6A7E /* YLImageView.m */; };
 		04929A2A19B2C0AA00427371 /* GPLoadingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04929A2519B2C0AA00427371 /* GPLoadingButton.m */; };
@@ -386,6 +389,12 @@
 		0481636C19B208D100138CC9 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
 		0481637419B209DE00138CC9 /* BMKStartOrEndPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKStartOrEndPolyline.h; sourceTree = "<group>"; };
 		0481637519B209DE00138CC9 /* BMKStartOrEndPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMKStartOrEndPolyline.m; sourceTree = "<group>"; };
+		0481D11519E41F5D00856CD8 /* RescueInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RescueInfoViewController.h; sourceTree = "<group>"; };
+		0481D11619E41F5D00856CD8 /* RescueInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RescueInfoViewController.m; sourceTree = "<group>"; };
+		0481D11819E4237B00856CD8 /* AutoInsuranceAndMaintenanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoInsuranceAndMaintenanceViewController.h; sourceTree = "<group>"; };
+		0481D11919E4237B00856CD8 /* AutoInsuranceAndMaintenanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoInsuranceAndMaintenanceViewController.m; sourceTree = "<group>"; };
+		0481D11B19E4257300856CD8 /* MaintenanceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MaintenanceDetailViewController.h; sourceTree = "<group>"; };
+		0481D11C19E4257300856CD8 /* MaintenanceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MaintenanceDetailViewController.m; sourceTree = "<group>"; };
 		048532EA19D43A1000CE6A7E /* YLGIFImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLGIFImage.h; sourceTree = "<group>"; };
 		048532EB19D43A1000CE6A7E /* YLGIFImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLGIFImage.m; sourceTree = "<group>"; };
 		048532EC19D43A1000CE6A7E /* YLImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLImageView.h; sourceTree = "<group>"; };
@@ -1112,6 +1121,12 @@
 				04752FDF19D317890098105B /* CarAbnormalViewController.m */,
 				0475300819D371CC0098105B /* BehaviorAnalysisViewController.h */,
 				0475300919D371CC0098105B /* BehaviorAnalysisViewController.m */,
+				0481D11519E41F5D00856CD8 /* RescueInfoViewController.h */,
+				0481D11619E41F5D00856CD8 /* RescueInfoViewController.m */,
+				0481D11819E4237B00856CD8 /* AutoInsuranceAndMaintenanceViewController.h */,
+				0481D11919E4237B00856CD8 /* AutoInsuranceAndMaintenanceViewController.m */,
+				0481D11B19E4257300856CD8 /* MaintenanceDetailViewController.h */,
+				0481D11C19E4257300856CD8 /* MaintenanceDetailViewController.m */,
 			);
 			path = Function;
 			sourceTree = "<group>";
@@ -1479,6 +1494,7 @@
 				040C8F4319B0CED000E3C43B /* UIView+Toast.m in Sources */,
 				0477610319B1950900B1DA26 /* ASICloudFilesContainer.m in Sources */,
 				04ED260119BB3A4700139CD0 /* UIPopoverListView.m in Sources */,
+				0481D11D19E4257300856CD8 /* MaintenanceDetailViewController.m in Sources */,
 				04ED260E19BB671F00139CD0 /* InsuranceCompanyCell.m in Sources */,
 				0475300A19D371CC0098105B /* BehaviorAnalysisViewController.m in Sources */,
 				04752FF419D341000098105B /* CDCircle.m in Sources */,
@@ -1495,6 +1511,7 @@
 				04AEC7DA19CD9BB200266B18 /* ModifyCarInfoRequestParameter.m in Sources */,
 				04D908A819D1C6E500A4DF4C /* RealTimeTrajectoryRequestParameter.m in Sources */,
 				0477612819B1950900B1DA26 /* SDWebImageDownloaderOperation.m in Sources */,
+				0481D11719E41F5D00856CD8 /* RescueInfoViewController.m in Sources */,
 				040C8F4D19B0CED000E3C43B /* WMGaugeView.m in Sources */,
 				04752FF719D341000098105B /* CDCircleThumb.m in Sources */,
 				0475301A19D3954B0098105B /* SCGIFImageView.m in Sources */,
@@ -1570,6 +1587,7 @@
 				04E412F519BD6AF5005F2798 /* PaperFoldSwipeHintView.m in Sources */,
 				04AF3B8619C5C80B00C53563 /* CheckItemView.m in Sources */,
 				0481637319B208D100138CC9 /* RegisterViewController.m in Sources */,
+				0481D11A19E4237B00856CD8 /* AutoInsuranceAndMaintenanceViewController.m in Sources */,
 				04AEC7C819CD60E800266B18 /* ItineraryHistory.m in Sources */,
 				0477610A19B1950900B1DA26 /* Reachability.m in Sources */,
 				0477612619B1950900B1DA26 /* SDWebImageDecoder.m in Sources */,

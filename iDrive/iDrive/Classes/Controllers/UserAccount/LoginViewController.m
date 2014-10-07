@@ -30,14 +30,6 @@
 
 @implementation LoginViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-	if (self) {
-		// Custom initialization
-	}
-	return self;
-}
-
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
@@ -45,11 +37,6 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
 	_tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
-}
-
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
-	// Dispose of any resources that can be recreated.
 }
 
 - (void)dealloc {
@@ -76,9 +63,6 @@
 
 - (IBAction)login:(id)sender {
 	[self.view endEditing:YES];
-
-	[self performSegueWithIdentifier:kCarInfo sender:nil];
-	return;
 
 	if (![NSStringUtil isValidate:self.account.text]) {
 		[self.view makeToast:@"帐号不能为空"];

@@ -23,6 +23,7 @@
 #define kInsuranceCompany @"InsuranceCompany" // 保险公司
 #define kItinerayDetial   @"ItinerayDetial"   // 行程详情
 #define kAutoInsurance    @"AutoInsurance"    // 车险信息
+#define kMaintenance      @"Maintenance"      // 保养信息
 
 #define kServerSetting    @"ServerSetting"
 
