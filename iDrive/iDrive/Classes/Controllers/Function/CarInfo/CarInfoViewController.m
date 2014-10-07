@@ -35,6 +35,7 @@
 	BOOL isShowDatePicker;
 	int currDatePicker;
 }
+@property (weak, nonatomic) IBOutlet UIView *detailViewController;
 
 @property (strong, nonatomic) CarInfoDetailTableViewController *detail; // 车辆信息详情
 
@@ -49,7 +50,7 @@
 	[super viewDidLoad];
 
 
-	{ // 设置完成按钮的标题
+	{ // 设置完成按钮的标题，页面高度
 		NSString *buttonTitle;
 		if (self.isPushFromLogin) {
 			buttonTitle = @"保存";
@@ -75,23 +76,29 @@
 	         || [segue.identifier isEqualToString:kAutoInsurance]) {
 		SelectableViewController *controller = segue.destinationViewController;
 		controller.delegate = self;
+		controller.selectedItem = [[self lableForItem:segue.identifier] text];
+	}
+}
+
+- (UILabel *)lableForItem:(NSString *)identifer {
+	// 车辆品牌
+	if ([identifer isEqualToString:kCarBrand]) {
+		return self.detail.carBrandLabel;
+	}
+	// 保险公司
+	else if ([identifer isEqualToString:kInsuranceCompany]) {
+		return self.detail.insuranceCompanyLabel;
+	}
+	// 车险信息
+	else {
+		return self.detail.autoInsuranceLabel;
 	}
 }
 
 #pragma mark - SelectableViewControllerDelegate
 
 - (void)didSelectObject:(id)object with:(NSString *)identifer {
-	// 车辆品牌
-	if ([identifer isEqualToString:kCarBrand]) {
-		self.detail.carBrandLabel.text = object;
-	}
-	// 保险公司
-	else if ([identifer isEqualToString:kInsuranceCompany]) {
-		self.detail.insuranceCompanyLabel.text = object;
-	}
-	else {
-		self.detail.autoInsuranceLabel.text = object;
-	}
+	[[self lableForItem:identifer] setText:object];
 }
 
 #pragma mark
@@ -120,9 +127,9 @@
 
 	if (!isShowDatePicker) {
 		isShowDatePicker = YES;
-		[UIView animateWithDuration:.5 animations: ^{
+		[UIView animateWithDuration:.25 animations: ^{
 		    CGRect rect = self.datePickerView.frame;
-		    rect.origin.y = rect.origin.y - rect.size.height - 50;
+		    rect.origin.y = rect.origin.y - 253;
 		    self.datePickerView.frame = rect;
 		}];
 	}
@@ -131,9 +138,9 @@
 - (void)hideDatePicker {
 	if (isShowDatePicker) {
 		isShowDatePicker = NO;
-		[UIView animateWithDuration:.5 animations: ^{
+		[UIView animateWithDuration:.25 animations: ^{
 		    CGRect rect = self.datePickerView.frame;
-		    rect.origin.y = rect.origin.y + rect.size.height + 50;
+		    rect.origin.y = rect.origin.y + 253;
 		    self.datePickerView.frame = rect;
 		}];
 	}

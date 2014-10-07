@@ -13,5 +13,6 @@
 @interface InsuranceCompanyCell : UITableViewCell
 
 @property (strong, nonatomic) NSDictionary *companyInfo;
+@property (assign, nonatomic) BOOL isCurrentCompany;
 
 @end

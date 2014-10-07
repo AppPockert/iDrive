@@ -12,6 +12,7 @@
 
 - (void)saveCarInfo;
 - (void)showDatePicker:(int)datePickerTag;
+- (BOOL)isPushFromLogin;
 
 @end
 
@@ -41,6 +42,19 @@
 
 //	[self.tableView setTableFooterView:[UIView new]];
 //	self.tableView.scrollEnabled = (kScreenHeight < kScreenHeight568);
+}
+
+- (void)viewDidLayoutSubviews {
+	[super viewDidLayoutSubviews];
+	BOOL isPushFromLogin = [self.parentViewController isPushFromLogin];
+	CGRect frame = self.tableView.frame;
+	if (isPushFromLogin) {
+		frame.size.height = kScreenHeight - kNavBarHeight;
+	}
+	else {
+		frame.size.height = kScreenHeight - kNavBarHeight - KTabBarHeight;
+	}
+	self.tableView.frame = frame;
 }
 
 #pragma mark

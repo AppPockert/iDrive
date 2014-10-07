@@ -17,4 +17,6 @@
 - (UserInfo *)getUserInfo;
 - (void)saveUserInfo:(UserInfo *)userInfo;
 
+- (void)shouldCheckCarAbnormal:(BOOL)check;
+
 @end

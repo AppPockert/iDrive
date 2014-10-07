@@ -45,13 +45,9 @@
 	InsuranceCompanyCell *cell = [tableView dequeueReusableCellWithIdentifier:kInsuranceCompany forIndexPath:indexPath];
 
 	cell.companyInfo = self.dataSource[indexPath.row];
-	cell.selectedBackgroundView.backgroundColor = [UIColor greenColor];
+	cell.isCurrentCompany = [self.selectedItem isEqualToString:cell.companyInfo[@"name"]];
 
 	return cell;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return 60.f;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

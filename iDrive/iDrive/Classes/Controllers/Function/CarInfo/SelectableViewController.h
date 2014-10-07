@@ -19,5 +19,6 @@
 
 @property (assign, nonatomic) id <SelectableViewControllerDelegate> delegate;
 @property (strong, nonatomic) NSString *identifer; // 标识符，标识当前选择画面的类型
+@property (strong, nonatomic) id selectedItem;
 
 @end

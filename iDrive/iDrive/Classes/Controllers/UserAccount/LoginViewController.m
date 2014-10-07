@@ -77,6 +77,9 @@
 - (IBAction)login:(id)sender {
 	[self.view endEditing:YES];
 
+	[self performSegueWithIdentifier:kCarInfo sender:nil];
+	return;
+
 	if (![NSStringUtil isValidate:self.account.text]) {
 		[self.view makeToast:@"帐号不能为空"];
 		return;
@@ -118,6 +121,7 @@
 			    RequestService *servive = [[RequestService alloc] init];
 			    servive.tag = 2;
 
+			    // 获取车辆信息
 			    GetCarInfoRequestParameter *parameter = [[GetCarInfoRequestParameter alloc] init];
 			    parameter.userId = self.account.text;
 
@@ -161,11 +165,6 @@
 
 - (void)dismissKeyboard:(id)sender {
 	[self.view endEditing:YES];
-}
-
-#pragma mark
-
-- (void)saveUserInfo {
 }
 
 #pragma mark

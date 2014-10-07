@@ -36,7 +36,9 @@
 
 #define kUserInfo         @"UserInfo"
 #define kFirstLaunched    @"FirstLaunched"
+#define kCarAbnormal      @"CarAbnormal"
 
+#define TestVersion       1
 #define TestServer        @"TestServer"
 
 #pragma mark - Common
@@ -45,6 +47,7 @@
 #define kScreenHeight     ([[UIScreen mainScreen] bounds].size.height)
 #define kScreenWidth      320.f // 暂不对应iphone6的宽屏
 #define kNavBarHeight     64.f  // 包含状态栏
+#define KTabBarHeight     49.f
 
 #define kScreenHeight568  568.f
 #define kScreenHeight480  480.f
@@ -75,5 +78,6 @@
 #define kSaveCarIno               @"/EasyCarServer/struts/carInfoAction!addCarInfo?carLicenseid=%@&carModel=%@&carMotorid=%@&carUsercompany=%@&carInsurancemaintainInfo=%@&carTestInfo=%@&carObdRt=%@&carDriver=%@"
 #define kBehaviorAnalysis         @"/EasyCarServer/struts/carTravelAction!selectCartreval?equipmentSNnum=%@"
 #define kCarPanel                 @"/EasyCarServer/struts/carTravelAction!selectCarControl?equipmentSNnum=%@"
+#define kCarAbnormalUrl           @""
 
 #endif

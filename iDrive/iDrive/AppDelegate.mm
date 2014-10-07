@@ -11,8 +11,9 @@
 #import "UserInfo.h"
 #import "PlistFilePathManager.h"
 #import "ServerSettingViewController.h"
+#import "ASIHTTPRequest.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <ASIHTTPRequestDelegate>
 
 @property (strong, nonatomic) UINavigationController *navigationController;
 
@@ -55,7 +56,11 @@
 	// 初始化百度地图
 	[self initMap];
 
-#ifndef __OPTIMIZE__
+	if ([userDefaults boolForKey:kCarAbnormal]) {
+		[self checkCarAbnormal];
+	}
+
+#if TestVersion
 	[self setTestServer];
 #endif
 
@@ -110,7 +115,30 @@
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-#ifndef __OPTIMIZE__
+- (void)shouldCheckCarAbnormal:(BOOL)check {
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(checkCarAbnormal) object:nil];
+	if (check) {
+		[self checkCarAbnormal];
+	}
+}
+
+- (void)checkCarAbnormal {
+#warning 替换url
+	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:nil]];
+	ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+	request.delegate = self;
+	[request startAsynchronous];
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request {
+	[self performSelector:@selector(checkCarAbnormal) withObject:nil afterDelay:300.f];
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request {
+	[self performSelector:@selector(checkCarAbnormal) withObject:nil afterDelay:300.f];
+}
+
+#if TestVersion
 #pragma mark - 设置测试服务器地址
 
 - (void)setTestServer {
