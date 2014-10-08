@@ -12,4 +12,6 @@
 
 @interface ItineraryHistoryViewController : BaseViewController
 
+@property (strong, nonatomic) NSMutableArray *dataSource; // 历史行程记录列表
+
 @end

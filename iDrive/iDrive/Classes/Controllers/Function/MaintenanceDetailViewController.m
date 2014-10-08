@@ -11,6 +11,7 @@
 @interface UIViewController (CarInfo)
 
 - (void)showDatePicker:(int)datePickerTag;
+- (void)save;
 
 @end
 
@@ -76,6 +77,12 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
 	[self.tableView endEditing:YES];
+}
+
+#pragma mark - 保存
+
+- (IBAction)save:(id)sender {
+	[self.parentViewController save];
 }
 
 @end

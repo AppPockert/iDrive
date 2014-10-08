@@ -7,11 +7,20 @@
 //
 
 #import "ItineraryHistoryRequestParameter.h"
+#import "UserInfo.h"
 
 @implementation ItineraryHistoryRequestParameter
 
+- (id)init {
+	self = [super init];
+	if (self) {
+		self.equipmentSNnum = [[kAppDelegate getUserInfo] SN];
+	}
+	return self;
+}
+
 - (NSString *)urlByAppendParameter {
-	NSString *url = [NSString stringWithFormat:kItineraryHistoryUrl, self.tdCarId, self.startTime, self.endTime];
+	NSString *url = [NSString stringWithFormat:kItineraryHistoryUrl, self.equipmentSNnum, self.startTime, self.endTime];
 	return [ServerURLUtil getFullURL:url];
 }
 

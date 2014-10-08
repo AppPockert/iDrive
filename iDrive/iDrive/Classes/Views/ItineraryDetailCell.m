@@ -22,9 +22,23 @@
 - (void)setHistory:(ItineraryHistory *)history {
 	_history = history;
 
-	self.time.text = history.time;
-	self.mileage.text = history.mileage;
-	self.fuelConsumption.text = history.fuelConsumption;
+	self.time.text = [self formateTimeWithStart:history.startTime end:history.endTime];
+	self.mileage.text = [NSString stringWithFormat:@"%@KM", history.mileage];
+	self.fuelConsumption.text = [NSString stringWithFormat:@"%@L", history.fuelConsumption];
+}
+
+- (NSString *)formateTimeWithStart:(NSString *)startTime end:(NSString *)endTime {
+	NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
+	[dateformatter setTimeZone:[NSTimeZone systemTimeZone]];
+	[dateformatter setFormatterBehavior:NSDateFormatterBehaviorDefault];
+	[dateformatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"]];
+	[dateformatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+
+	NSDate *start = [dateformatter dateFromString:startTime];
+	NSDate *end = [dateformatter dateFromString:endTime];
+
+	long interval = [end timeIntervalSinceDate:start];
+	return [NSString stringWithFormat:@"%lih%lim", interval / 3600, (interval % 3600) / 60];
 }
 
 @end

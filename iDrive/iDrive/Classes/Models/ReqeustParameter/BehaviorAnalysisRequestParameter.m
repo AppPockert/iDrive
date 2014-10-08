@@ -7,8 +7,17 @@
 //
 
 #import "BehaviorAnalysisRequestParameter.h"
+#import "UserInfo.h"
 
 @implementation BehaviorAnalysisRequestParameter
+
+- (id)init {
+	self = [super init];
+	if (self) {
+		self.equipmentSNnum = [[kAppDelegate getUserInfo] SN];
+	}
+	return self;
+}
 
 - (NSString *)urlByAppendParameter {
 	NSString *url = [NSString stringWithFormat:kBehaviorAnalysis, self.equipmentSNnum];

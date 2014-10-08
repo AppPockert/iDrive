@@ -11,9 +11,12 @@
  */
 @interface ItineraryHistory : NSObject
 
-@property (strong, nonatomic) NSString *time; // 时长
-@property (strong, nonatomic) NSString *mileage; // 里程
+@property (strong, nonatomic) NSString *startTime;       // 起始时间
+@property (strong, nonatomic) NSString *endTime;         // 结束时间
+@property (strong, nonatomic) NSString *mileage;         // 里程
 @property (strong, nonatomic) NSString *fuelConsumption; // 油耗
-@property (strong, nonatomic) NSArray *coordinates; // 历史坐标点
+@property (strong, nonatomic) NSArray *coordinates;      // 历史坐标点
+@property (strong, nonatomic) NSString *avgSpeed;        // 平均速度
+@property (strong, nonatomic) NSString *avgOilCost;      // 平均油耗
 
 @end

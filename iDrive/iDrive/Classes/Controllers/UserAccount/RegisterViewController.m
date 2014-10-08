@@ -36,6 +36,9 @@
 #pragma mark
 
 - (IBAction)registerAction:(id)sender {
+	[self.view endEditing:YES];
+
+	// check用户名
 	if (![NSStringUtil isValidate:self.account.text]) {
 		[self.view makeToast:@"手机号不能为空"];
 		return;
@@ -48,6 +51,7 @@
 		}
 	}
 
+	// check密码
 	if (![NSStringUtil isValidate:self.password.text]) {
 		[self.view makeToast:@"密码不能为空"];
 		return;
@@ -60,6 +64,7 @@
 		}
 	}
 
+	// check重复密码
 	if (![NSStringUtil isValidate:self.repeatPassword.text]) {
 		[self.view makeToast:@"请输入确认密码"];
 		return;
@@ -71,6 +76,7 @@
 		}
 	}
 
+	// check爱开车编号
 	if (![NSStringUtil isValidate:self.deviceNo.text]) {
 		[self.view makeToast:@"请输入\"爱开车\"编号"];
 		return;
@@ -79,6 +85,7 @@
 		// check“爱开车”编号格式正确性
 	}
 
+	// 向服务器提交注册请求
 	RegisterRequestParameter *parameter = [[RegisterRequestParameter alloc] init];
 	parameter.userTelephone = self.account.text;
 	parameter.userPassword = self.password.text;
@@ -104,6 +111,8 @@
 		[self.view makeToast:@"注册失败"];
 	}
 }
+
+#pragma mark - 页面跳转
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:kCarInfo]) {

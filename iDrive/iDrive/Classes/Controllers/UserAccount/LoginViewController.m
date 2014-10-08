@@ -18,6 +18,9 @@
 #import "GetCarInfoRequestParameter.h"
 #import "UserInfo.h"
 
+const int LoginRequest = 1;
+const int CarInfoRequest = 2;
+
 @interface LoginViewController () <UITextFieldDelegate>
 {
 	UITapGestureRecognizer *_tap;
@@ -63,7 +66,11 @@
 
 - (IBAction)login:(id)sender {
 	[self.view endEditing:YES];
+//
+//	[self performSegueWithIdentifier:kMainIndex sender:nil];
+//	return;
 
+	// check账号
 	if (![NSStringUtil isValidate:self.account.text]) {
 		[self.view makeToast:@"帐号不能为空"];
 		return;
@@ -76,6 +83,7 @@
 		}
 	}
 
+	// check密码
 	if (![NSStringUtil isValidate:self.password.text]) {
 		[self.view makeToast:@"密码不能为空"];
 		return;
@@ -88,9 +96,9 @@
 		}
 	}
 
-
+	// 向服务器提交登录请求
 	RequestService *servive = [[RequestService alloc] init];
-	servive.tag = 1;
+	servive.tag = LoginRequest;
 	LoginRequestParameter *parameter = [[LoginRequestParameter alloc] init];
 	parameter.userTelephone = self.account.text;
 	parameter.userPassword = self.password.text;
@@ -99,23 +107,26 @@
 }
 
 - (void)handleResult:(id)result of:(RequestService *)service {
-	if (service.tag == 1) {
-		if ([result isKindOfClass:[NSArray class]] && [result[0] isEqualToString:@"success"]) {
+	// 登录结果处理
+	if (service.tag == LoginRequest) {
+		if ([result isKindOfClass:[NSArray class]] && [result[0] isEqualToString:@"SUCCESS"]) {
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-			    RequestService *servive = [[RequestService alloc] init];
-			    servive.tag = 2;
+			    // 登录成功后，再去服务器获取当前用户的车辆信息
+			    RequestService *carInfoService = [[RequestService alloc] init];
+			    carInfoService.tag = CarInfoRequest;
 
-			    // 获取车辆信息
+			    // 获取车辆信息时的参数
 			    GetCarInfoRequestParameter *parameter = [[GetCarInfoRequestParameter alloc] init];
 			    parameter.userId = self.account.text;
 
-			    [self sendRequestTo:service with:parameter];
+			    [self sendRequestTo:carInfoService with:parameter];
 			});
 		}
 		else {
 			[self.view makeToast:@"登录失败"];
 		}
 	}
+	// 获取车辆信息结果处理
 	else {
 		if ([result isKindOfClass:[NSDictionary class]]) {
 			UserInfo *userInfo = [[UserInfo alloc] init];
@@ -126,9 +137,11 @@
 			if (result[@"carLicenseid"] && ![result[@"carLicenseid"] isKindOfClass:[NSNull class]]) {
 				userInfo.carLicense = result[@"carLicenseid"];
 
+				// 用户提交过车辆信息，则直接跳转到主页面
 				[self performSegueWithIdentifier:kMainIndex sender:nil];
 			}
 			else {
+				// 用户未提交过车辆信息，则跳转到车辆信息页面
 				[self performSegueWithIdentifier:kCarInfo sender:nil];
 			}
 
@@ -137,7 +150,7 @@
 	}
 }
 
-#pragma mark
+#pragma mark - 取消键盘事件
 
 - (void)keyboardWillShow:(id)sender {
 	[self.view addGestureRecognizer:_tap];
@@ -151,7 +164,7 @@
 	[self.view endEditing:YES];
 }
 
-#pragma mark
+#pragma mark - 页面跳转
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:kCarInfo]) {

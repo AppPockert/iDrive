@@ -10,6 +10,8 @@
 #import "BMapKit.h"
 #import "BMKStartOrEndPointAnnotation.h"
 #import "BMKStartOrEndPolyline.h"
+#import "RequestService.h"
+#import "RealTimeTrajectoryRequestParameter.h"
 
 @interface TrajectoryMapViewController () <BMKMapViewDelegate>
 
@@ -17,6 +19,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *avgSpeed;
+@property (weak, nonatomic) IBOutlet UILabel *avgOilCost;
 
 @end
 
@@ -25,16 +29,19 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	_mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0.f, 0.f, kScreenWidth, kScreenHeight - kNavBarHeight)];
+	_mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0.f, 0.f, kScreenWidth, kScreenHeight - kNavBarHeight - KTabBarHeight)];
 	_mapView.delegate = self;
+	_mapView.showMapScaleBar = YES;
 
 	[self.backgroundView addSubview:_mapView];
 
 	if (self.trajectoryType == TrajectoryTypeHistory) {
 		self.titleLabel.text = @"行程管理";
+		[self setLineInfo];
 	}
 	else {
 		// 请求实时轨迹点
+		[self inqueryRealTimeTrajectory];
 	}
 }
 
@@ -50,9 +57,30 @@
 
 	[self.mapView viewWillDisappear];
 	self.mapView.delegate = nil;
+
+	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(inqueryRealTimeTrajectory) object:nil];
 }
 
-#pragma mark - BMKMapViewDelegate
+#pragma mark
+
+// 设置轨迹
+- (void)setLineInfo {
+	self.avgSpeed.text = [NSString stringWithFormat:@"%@km/h", self.history.avgSpeed];
+	self.avgOilCost.text = [NSString stringWithFormat:@"%@L/km", self.history.avgOilCost];
+	[_mapView addOverlay:[self createLine:self.history.coordinates]];
+}
+
+// 生成百度地图的轨迹的线
+- (BMKStartOrEndPolyline *)createLine:(NSArray *)points {
+	return nil;
+}
+
+// 请求实时轨迹信息
+- (void)inqueryRealTimeTrajectory {
+	RealTimeTrajectoryRequestParameter *parameter = [[RealTimeTrajectoryRequestParameter alloc] init];
+	parameter.equipmentSNnum = @"6334128330095";
+	[self sendRequestTo:[[RequestService alloc] init] with:parameter];
+}
 
 #pragma mark - BMKMapViewDelegate
 
@@ -68,13 +96,17 @@
 		BMKStartOrEndPointAnnotation *startAnnotation = [[BMKStartOrEndPointAnnotation alloc]init];
 		startAnnotation.coordinate = BMKCoordinateForMapPoint(startPoint);
 		startAnnotation.type = PointTypeStart;
-		[self addAnnotation:startAnnotation with:line];
+		startAnnotation.title = self.history.startTime;
+		[mapView addAnnotation:startAnnotation];
+//		[self addAnnotation:startAnnotation with:line];
 
 		// 终点
 		BMKStartOrEndPointAnnotation *endAnnotation = [[BMKStartOrEndPointAnnotation alloc]init];
 		endAnnotation.coordinate = BMKCoordinateForMapPoint(endPoint);
 		endAnnotation.type = PointTypeEnd;
-		[self addAnnotation:endAnnotation with:line];
+		endAnnotation.title = self.history.endTime;
+		[mapView addAnnotation:endAnnotation];
+//		[self addAnnotation:endAnnotation with:line];
 	}
 	BMKOverlayPathView *path = [[BMKOverlayPathView alloc] initWithOverlay:overlay];
 	return path;
@@ -101,24 +133,25 @@
 
 #pragma mark -
 
-- (void)addAnnotation:(BMKPointAnnotation *)annotation with:(BMKStartOrEndPolyline *)line {
-	CLLocation *location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
-	CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-	[geocoder reverseGeocodeLocation:location completionHandler: ^(NSArray *placemarks, NSError *error) {
-	    CLPlacemark *place = placemarks[0];
-	    if (place.administrativeArea && place.locality && place && place.subLocality && place.thoroughfare) {
-	        // 获取地理信息
-		}
-	    else {
-	        // 获取地理信息失败
-		}
-	}];
-	[self.mapView addAnnotation:annotation];
-}
+//- (void)addAnnotation:(BMKPointAnnotation *)annotation with:(BMKStartOrEndPolyline *)line {
+//	CLLocation *location = [[CLLocation alloc] initWithLatitude:annotation.coordinate.latitude longitude:annotation.coordinate.longitude];
+//	CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+//	[geocoder reverseGeocodeLocation:location completionHandler: ^(NSArray *placemarks, NSError *error) {
+//	    CLPlacemark *place = placemarks[0];
+//	    if (place.administrativeArea && place.locality && place && place.subLocality && place.thoroughfare) {
+//	        // 获取地理信息
+//		}
+//	    else {
+//	        // 获取地理信息失败
+//		}
+//	}];
+//	[self.mapView addAnnotation:annotation];
+//}
 
 #pragma mark -
 
 - (void)handleResult:(id)result of:(RequestService *)service {
+	NSLog(@"%@", result);
 }
 
 @end

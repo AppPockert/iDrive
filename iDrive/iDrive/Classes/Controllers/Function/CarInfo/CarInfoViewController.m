@@ -10,8 +10,10 @@
 #import "CarInfoDetailTableViewController.h"
 #import "SelectableViewController.h"
 #import "AddCarInfoRequestParameter.h"
+#import "ModifyCarInfoRequestParameter.h"
 #import "RequestService.h"
 #import "UserInfo.h"
+
 
 @interface CarInfoDetailTableViewController ()
 
@@ -25,10 +27,12 @@
 @property (nonatomic) UILabel *maintenanceDueDate;    // 保养到期日
 @property (nonatomic) UITextField *maintenanceMaMi;   // 保养到期里程
 
-@property (nonatomic) UIButton *doneBtn;
-
+@property (nonatomic) UIButton *doneBtn;  // 「完成」按钮
 
 @end
+
+const int AddCarInfo = 1;
+const int ModifyCarInfo = 2;
 
 @interface CarInfoViewController () <SelectableViewControllerDelegate>
 {
@@ -41,6 +45,7 @@
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *dataPicker;
 @property (weak, nonatomic) IBOutlet UIView *datePickerView;
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
 @end
 
@@ -50,7 +55,7 @@
 	[super viewDidLoad];
 
 
-	{ // 设置完成按钮的标题，页面高度
+	{ // 设置完成按钮的标题
 		NSString *buttonTitle;
 		if (self.isPushFromLogin) {
 			buttonTitle = @"保存";
@@ -61,6 +66,7 @@
 
 		[self.detail.doneBtn setTitle:buttonTitle forState:UIControlStateNormal];
 	}
+	self.backBtn.hidden = !self.isPushFromLogin;
 }
 
 #pragma mark
@@ -101,7 +107,7 @@
 	[[self lableForItem:identifer] setText:object];
 }
 
-#pragma mark
+#pragma mark - 时间选择
 
 - (IBAction)actionDone:(id)sender {
 	if (currDatePicker == 1) {
@@ -146,22 +152,49 @@
 	}
 }
 
-// 保存车辆信息
-- (void)saveCarInfo {
-	AddCarInfoRequestParameter *parameter = [[AddCarInfoRequestParameter alloc] init];
-	parameter.carLicenseid = self.detail.carLicense.text;
-	parameter.carModel = self.detail.carBrandLabel.text;
-	parameter.carDriver = self.detail.driverField.text;
-	parameter.carInsurancemaintainInfo = self.detail.autoInsuranceLabel.text;
+#pragma mark - 保存车辆信息
 
-	[self sendRequestTo:[[RequestService alloc] init] with:parameter];
+- (void)saveCarInfo {
+	RequestService *service = [[RequestService alloc] init];
+
+	// 追加车辆信息
+	if (self.isPushFromLogin) {
+		service.tag = AddCarInfo;
+
+		AddCarInfoRequestParameter *parameter = [[AddCarInfoRequestParameter alloc] init];
+		parameter.carLicenseid = self.detail.carLicense.text;
+		parameter.carModel = self.detail.carBrandLabel.text;
+		parameter.carDriver = self.detail.driverField.text;
+		parameter.carInsurancemaintainInfo = self.detail.autoInsuranceLabel.text;
+
+		[self sendRequestTo:service with:parameter];
+	}
+	// 保存车辆信息
+	else {
+		service.tag = ModifyCarInfo;
+
+		ModifyCarInfoRequestParameter *parameter = [[ModifyCarInfoRequestParameter alloc] init];
+
+		[self sendRequestTo:service with:parameter];
+	}
 }
+
+#pragma mark
 
 - (void)handleResult:(id)result of:(RequestService *)service {
 	if ([result isKindOfClass:[NSArray class]] && [result[0] isEqualToString:@"success"]) {
 		UserInfo *user = [kAppDelegate getUserInfo];
 		user.carLicense = self.detail.carLicense.text;
 		[kAppDelegate saveUserInfo:user];
+
+		// 追加车辆信息成功后跳转到首页面
+		if (service.tag == AddCarInfo) {
+			[self performSegueWithIdentifier:kMainIndex sender:nil];
+		}
+		// 修改车辆信息成功后返回上一个页面
+		else {
+			[self.navigationController popViewControllerAnimated:YES];
+		}
 	}
 	else {
 		[self.view makeToast:@"保存失败"];

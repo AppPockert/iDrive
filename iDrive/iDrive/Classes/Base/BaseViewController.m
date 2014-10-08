@@ -97,8 +97,13 @@ static char RequestServiceDelegate;
 #pragma mark - RequestServiceDelegate
 
 - (void)service:(RequestService *)service didCompleted:(id)result {
-	[self handleResult:result of:service];
+	if (service.resultCode != 200) {
+		[self.view makeToast:@"服务器错误"];
+	}
 
+	if (result) {
+		[self handleResult:result of:service];
+	}
 	[HUD hide:self.shouldAutoHideHUD];
 }
 

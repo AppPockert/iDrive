@@ -13,7 +13,7 @@
  */
 @interface ItineraryHistoryRequestParameter : RequestParameter
 
-@property (strong, nonatomic) NSString *tdCarId; // 车辆ID
+@property (strong, nonatomic) NSString *equipmentSNnum; // 车辆ID
 @property (strong, nonatomic) NSString *startTime; //起始时间
 @property (strong, nonatomic) NSString *endTime; //结束时间
 

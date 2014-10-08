@@ -7,6 +7,9 @@
 //
 
 #import "InquiryItineraryViewController.h"
+#import "ItineraryHistoryRequestParameter.h"
+#import "RequestService.h"
+#import "ItineraryHistoryViewController.h"
 
 @interface InquiryItineraryViewController ()
 {
@@ -18,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *endData;
 @property (weak, nonatomic) IBOutlet UIDatePicker *dataPicker;
 @property (weak, nonatomic) IBOutlet UIView *datePickerView;
+
+@property (strong, nonatomic) NSMutableArray *historyList;
 
 @end
 
@@ -33,7 +38,8 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+	_historyList = [[NSMutableArray alloc] initWithCapacity:5];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,11 +49,11 @@
 
 - (IBAction)actionChooseDatePicker:(UIButton *)b {
 	currDatePicker = (int)b.tag;
-	if (b.tag == 1) { //起始
+	if (b.tag == 1) { // 起始时间
 		self.dataPicker.minimumDate = nil;
 		self.dataPicker.maximumDate = [NSDate date];
 	}
-	else { //结束
+	else { // 结束时间
 		if ([self.startData.titleLabel.text isEqualToString:@"选择日期"]) {
 			[self.view makeToast:@"请先选择开始日期"];
 			return;
@@ -81,7 +87,7 @@
 - (void)showDatePicker {
 	if (!isShowDatePicker) {
 		isShowDatePicker = YES;
-		[UIView animateWithDuration:.5 animations: ^{
+		[UIView animateWithDuration:.25 animations: ^{
 		    CGRect rect = self.datePickerView.frame;
 		    rect.origin.y = rect.origin.y - rect.size.height - 50;
 		    self.datePickerView.frame = rect;
@@ -92,7 +98,7 @@
 - (void)hideDatePicker {
 	if (isShowDatePicker) {
 		isShowDatePicker = NO;
-		[UIView animateWithDuration:.5 animations: ^{
+		[UIView animateWithDuration:.25 animations: ^{
 		    CGRect rect = self.datePickerView.frame;
 		    rect.origin.y = rect.origin.y + rect.size.height + 50;
 		    self.datePickerView.frame = rect;
@@ -100,15 +106,25 @@
 	}
 }
 
-/*
-   #pragma mark - Navigation
+- (IBAction)search:(id)sender {
+	ItineraryHistoryRequestParameter *parameter = [[ItineraryHistoryRequestParameter alloc] init];
+	parameter.startTime = self.startData.titleLabel.text;
+	parameter.endTime = self.endData.titleLabel.text;
+	parameter.equipmentSNnum = @"6334128330095";
+	[self sendRequestTo:[[RequestService alloc] init] with:parameter];
+}
 
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-   {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-   }
- */
+- (void)handleResult:(id)result of:(RequestService *)service {
+	NSLog(@"%@", result);
+}
+
+#pragma mark
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:kHistoryList]) {
+		ItineraryHistoryViewController *history = segue.destinationViewController;
+		history.dataSource = self.historyList;
+	}
+}
 
 @end

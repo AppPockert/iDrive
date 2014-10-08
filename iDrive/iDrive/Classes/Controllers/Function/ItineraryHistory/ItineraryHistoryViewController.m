@@ -14,7 +14,6 @@
 @interface ItineraryHistoryViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
-@property (strong, nonatomic) NSMutableArray *dataSource;
 
 @end
 
@@ -22,8 +21,6 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-
-	_dataSource = [[NSMutableArray alloc] initWithCapacity:5];
 }
 
 #pragma mark -
@@ -50,7 +47,7 @@
 	if ([segue.identifier isEqualToString:kItinerayDetial]) {
 		TrajectoryMapViewController *trajector = segue.destinationViewController;
 		trajector.trajectoryType = TrajectoryTypeHistory;
-		trajector.pointsForLine = ((ItineraryDetailCell *)sender).history.coordinates;
+		trajector.history = ((ItineraryDetailCell *)sender).history;
 	}
 }
 

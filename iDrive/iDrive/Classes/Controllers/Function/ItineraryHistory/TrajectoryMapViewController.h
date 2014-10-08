@@ -15,9 +15,11 @@ typedef NS_ENUM (int, TrajectoryType) {
 	TrajectoryTypeHistory
 };
 
+#import "ItineraryHistory.h"
+
 @interface TrajectoryMapViewController : BaseViewController
 
 @property (assign, nonatomic) TrajectoryType trajectoryType; // 行程类型
-@property (strong, nonatomic) NSArray *pointsForLine; // 轨迹点
+@property (strong, nonatomic) ItineraryHistory *history; // 轨迹点
 
 @end

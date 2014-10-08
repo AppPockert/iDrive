@@ -7,11 +7,20 @@
 //
 
 #import "RealTimeTrajectoryRequestParameter.h"
+#import "UserInfo.h"
 
 @implementation RealTimeTrajectoryRequestParameter
 
+- (id)init {
+	self = [super init];
+	if (self) {
+		self.equipmentSNnum = [[kAppDelegate getUserInfo] SN];
+	}
+	return self;
+}
+
 - (NSString *)urlByAppendParameter {
-	NSString *url = [NSString stringWithFormat:kRealTimeTrajectoryUrl, self.tdCarId];
+	NSString *url = [NSString stringWithFormat:kRealTimeTrajectoryUrl, self.equipmentSNnum];
 	return [ServerURLUtil getFullURL:url];
 }
 

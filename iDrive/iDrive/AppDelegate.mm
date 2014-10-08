@@ -33,15 +33,19 @@
 	NSString *identifier;
 
 	do {
+		// 程序启动过
 		if ([userDefaults boolForKey:kFirstLaunched]) {
-			if (![userDefaults objectForKey:kUserInfo]) {
+			// 未登录
+			if (![self getUserInfo].carLicense) {
 				identifier = kLoginNav;
 			}
+			// 已登录
 			else {
 				self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:kMainTab];
 				break;
 			}
 		}
+		// 程序首次启动
 		else {
 			identifier = kIntroductionNav;
 		}

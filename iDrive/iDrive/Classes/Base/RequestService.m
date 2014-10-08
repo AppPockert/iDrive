@@ -50,18 +50,23 @@
 
 	NSData *response = request.responseData;
 
-	NSError *error = nil;
-	id JSON = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
+	if (response) {
+		NSError *error = nil;
+		id JSON = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
 
-	if (error) {
-		NSLog(@"%@", error);
+		if (error) {
+			NSLog(@"%@", error);
 
-		_resultCode = error.code;
+			_resultCode = error.code;
+			return nil;
+		}
+
+		NSLog(@"Response:%@ for '%@'", JSON, self.url);
+		return JSON;
+	}
+	else {
 		return nil;
 	}
-
-	NSLog(@"Response:%@ for '%@'", JSON, self.url);
-	return JSON;
 }
 
 @end

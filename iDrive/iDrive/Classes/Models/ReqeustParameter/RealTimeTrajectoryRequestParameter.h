@@ -13,6 +13,6 @@
  */
 @interface RealTimeTrajectoryRequestParameter : RequestParameter
 
-@property (strong, nonatomic) NSString *tdCarId;
+@property (strong, nonatomic) NSString *equipmentSNnum;
 
 @end

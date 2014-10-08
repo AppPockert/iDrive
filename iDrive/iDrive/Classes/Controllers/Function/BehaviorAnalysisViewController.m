@@ -13,13 +13,13 @@
 
 @interface BehaviorAnalysisViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *carBrand; // 车型
-@property (weak, nonatomic) IBOutlet UILabel *oilConsumptionPM; // 百公里油耗
-@property (weak, nonatomic) IBOutlet UILabel *oilConsumption; // 瞬时油耗
-@property (weak, nonatomic) IBOutlet UILabel *averageSpeed; // 平均速度
+@property (weak, nonatomic) IBOutlet UILabel *carBrand;          // 车型
+@property (weak, nonatomic) IBOutlet UILabel *oilConsumptionPM;  // 百公里油耗
+@property (weak, nonatomic) IBOutlet UILabel *oilConsumption;    // 瞬时油耗
+@property (weak, nonatomic) IBOutlet UILabel *averageSpeed;      // 平均速度
 @property (weak, nonatomic) IBOutlet UILabel *rapidAcceleration; // 急加速
 @property (weak, nonatomic) IBOutlet UILabel *rapidDeceleration; // 急减速
-@property (weak, nonatomic) IBOutlet UILabel *sharpTurn; // 急转弯
+@property (weak, nonatomic) IBOutlet UILabel *sharpTurn;         // 急转弯
 
 
 @end

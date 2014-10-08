@@ -7,8 +7,17 @@
 //
 
 #import "GetCarPanelInfoRequestParameter.h"
+#import "UserInfo.h"
 
 @implementation GetCarPanelInfoRequestParameter
+
+- (id)init {
+	self = [super init];
+	if (self) {
+		self.equipmentSNnum = [[kAppDelegate getUserInfo] SN];
+	}
+	return self;
+}
 
 - (NSString *)urlByAppendParameter {
 	NSString *url = [NSString stringWithFormat:kCarPanel, self.equipmentSNnum];

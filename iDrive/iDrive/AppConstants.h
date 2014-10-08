@@ -24,6 +24,7 @@
 #define kItinerayDetial   @"ItinerayDetial"   // 行程详情
 #define kAutoInsurance    @"AutoInsurance"    // 车险信息
 #define kMaintenance      @"Maintenance"      // 保养信息
+#define kHistoryList      @"HistoryList"      // 历史行程列表
 
 #define kServerSetting    @"ServerSetting"
 
@@ -65,13 +66,14 @@
 
 #pragma mark - Request API
 
-#define kBaseURL                 @"http://180.109.214.190:9003"
+//#define kBaseURL                 @"http://121.40.85.106:8081"
+#define kBaseURL                 @"http://117.89.131.226:7788"
 
 #define kLoginRequestUrl         @"/EasyCarServer/struts/loginAction!doLogin?userTelephone=%@&userPassword=%@"
 #define kRegisterRequestUrl      @"/EasyCarServer/struts/registerAction!doRegister?userCarlicense=%@&userIdcard=%@&userPassword=%@&userTelephone=%@&userTianyitongid=%@"
 #define kCarInfoRequestUrl       @"/EasyCarServer/struts/carInfoAction!queryCarInfo?userId=%@"
-#define kRealTimeTrajectoryUrl   @"/EasyCarServer/struts/carTravelAction!doSelectLastTravelInfo?tdCarId=%@"
-#define kItineraryHistoryUrl     @"/EasyCarServer/struts/carTravelAction!doSelectTravelInfoList?tdCarId=%@&startTime=%@&endTime=%@"
+#define kRealTimeTrajectoryUrl   @"/EasyCarServer/struts/carTravelAction!doSelectLastTravelInfo?equipmentSNnum=%@"
+#define kItineraryHistoryUrl     @"/EasyCarServer/struts/carTravelAction!doSelectTravelInfoList?equipmentSNnum=%@&startTime=%@&endTime=%@"
 #define kExaminationInfoUrl      @"/EasyCarServer/struts/carInfoAction!queryCarTestInfo?carId=%@"
 
 
