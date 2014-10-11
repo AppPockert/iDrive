@@ -11,3 +11,14 @@
 @implementation ItineraryHistory
 
 @end
+
+@implementation Coordinate
+
+- (CLLocationCoordinate2D)toCoordinate {
+	CLLocationCoordinate2D coordinate;
+	coordinate.latitude = [self.lat doubleValue];
+	coordinate.longitude = [self.lng doubleValue];
+	return coordinate;
+}
+
+@end

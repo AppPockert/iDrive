@@ -7,11 +7,20 @@
 //
 
 #import "AddCarInfoRequestParameter.h"
+#import "UserInfo.h"
 
 @implementation AddCarInfoRequestParameter
 
+- (id)init {
+	self = [super init];
+	if (self) {
+		self.equipmentSNnum = [[kAppDelegate getUserInfo] SN];
+	}
+	return self;
+}
+
 - (NSString *)urlByAppendParameter {
-	NSString *url = [NSString stringWithFormat:kSaveCarIno, self.carLicenseid, self.carModel, self.carMotorid, self.carUsercompany, self.carInsurancemaintainInfo, self.carTestInfo, self.carObdRt, self.carDriver];
+	NSString *url = [NSString stringWithFormat:kSaveCarIno, self.insuranceCompany, self.insuranceType, self.ciiInsurancetimeLeft, self.ciiMaintaintimeLeft, self.ciiMaintaindistanceLeft, self.carLicenseid, self.carModel, self.carDriver, self.equipmentSNnum];
 	return [ServerURLUtil getFullURL:url];
 }
 

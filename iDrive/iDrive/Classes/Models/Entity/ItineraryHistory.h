@@ -20,3 +20,14 @@
 @property (strong, nonatomic) NSString *avgOilCost;      // 平均油耗
 
 @end
+
+#import <CoreLocation/CoreLocation.h>
+
+@interface Coordinate : NSObject
+
+@property (strong, nonatomic) NSString *lat;
+@property (strong, nonatomic) NSString *lng;
+
+- (CLLocationCoordinate2D)toCoordinate;
+
+@end

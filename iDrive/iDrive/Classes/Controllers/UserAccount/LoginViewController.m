@@ -110,6 +110,14 @@ const int CarInfoRequest = 2;
 	// 登录结果处理
 	if (service.tag == LoginRequest) {
 		if ([result isKindOfClass:[NSArray class]] && [result[0] isEqualToString:@"SUCCESS"]) {
+			UserInfo *userInfo = [[UserInfo alloc] init];
+			userInfo.userTelephone = self.account.text;
+			userInfo.userPassword = self.password.text;
+			[kAppDelegate saveUserInfo:userInfo];
+			[self performSegueWithIdentifier:kMainIndex sender:nil];
+
+			return;
+
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 			    // 登录成功后，再去服务器获取当前用户的车辆信息
 			    RequestService *carInfoService = [[RequestService alloc] init];

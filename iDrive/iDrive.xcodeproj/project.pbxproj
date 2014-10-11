@@ -113,6 +113,7 @@
 		0477614519B1C75400B1DA26 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477614319B1C75400B1DA26 /* UserInfo.m */; };
 		0477614B19B1C95D00B1DA26 /* TestLoginService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477614A19B1C95D00B1DA26 /* TestLoginService.m */; };
 		0477614E19B1D2B900B1DA26 /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0477614D19B1D2B900B1DA26 /* BaseModel.m */; };
+		047D511719E8C6E1003F01BB /* CDTouchUpGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D511619E8C6E1003F01BB /* CDTouchUpGestureRecognizer.m */; };
 		0481635619B200D600138CC9 /* BMKStartOrEndPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481635519B200D600138CC9 /* BMKStartOrEndPointAnnotation.m */; };
 		0481637019B208D100138CC9 /* VehicleExaminationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481636519B208D100138CC9 /* VehicleExaminationViewController.m */; };
 		0481637119B208D100138CC9 /* VehiclePanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0481636719B208D100138CC9 /* VehiclePanelViewController.m */; };
@@ -377,6 +378,8 @@
 		0477614A19B1C95D00B1DA26 /* TestLoginService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestLoginService.m; sourceTree = "<group>"; };
 		0477614C19B1D2B900B1DA26 /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		0477614D19B1D2B900B1DA26 /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		047D511519E8C6E1003F01BB /* CDTouchUpGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDTouchUpGestureRecognizer.h; sourceTree = "<group>"; };
+		047D511619E8C6E1003F01BB /* CDTouchUpGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDTouchUpGestureRecognizer.m; sourceTree = "<group>"; };
 		0481635419B200D600138CC9 /* BMKStartOrEndPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKStartOrEndPointAnnotation.h; sourceTree = "<group>"; };
 		0481635519B200D600138CC9 /* BMKStartOrEndPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMKStartOrEndPointAnnotation.m; sourceTree = "<group>"; };
 		0481636419B208D100138CC9 /* VehicleExaminationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VehicleExaminationViewController.h; sourceTree = "<group>"; };
@@ -845,11 +848,12 @@
 		04752FE719D341000098105B /* Wheel */ = {
 			isa = PBXGroup;
 			children = (
-				04752FFA19D3485C0098105B /* iPod Click.aiff */,
 				04752FE819D341000098105B /* CDCircle.h */,
 				04752FE919D341000098105B /* CDCircle.m */,
 				04752FEA19D341000098105B /* CDCircleGestureRecognizer.h */,
 				04752FEB19D341000098105B /* CDCircleGestureRecognizer.m */,
+				047D511519E8C6E1003F01BB /* CDTouchUpGestureRecognizer.h */,
+				047D511619E8C6E1003F01BB /* CDTouchUpGestureRecognizer.m */,
 				04752FEC19D341000098105B /* CDCircleOverlayView.h */,
 				04752FED19D341000098105B /* CDCircleOverlayView.m */,
 				04752FEE19D341000098105B /* CDCircleThumb.h */,
@@ -858,6 +862,7 @@
 				04752FF119D341000098105B /* CDIconView.m */,
 				04752FF219D341000098105B /* Common.h */,
 				04752FF319D341000098105B /* Common.m */,
+				04752FFA19D3485C0098105B /* iPod Click.aiff */,
 			);
 			path = Wheel;
 			sourceTree = "<group>";
@@ -1587,6 +1592,7 @@
 				04E412F519BD6AF5005F2798 /* PaperFoldSwipeHintView.m in Sources */,
 				04AF3B8619C5C80B00C53563 /* CheckItemView.m in Sources */,
 				0481637319B208D100138CC9 /* RegisterViewController.m in Sources */,
+				047D511719E8C6E1003F01BB /* CDTouchUpGestureRecognizer.m in Sources */,
 				0481D11A19E4237B00856CD8 /* AutoInsuranceAndMaintenanceViewController.m in Sources */,
 				04AEC7C819CD60E800266B18 /* ItineraryHistory.m in Sources */,
 				0477610A19B1950900B1DA26 /* Reachability.m in Sources */,
@@ -1730,8 +1736,8 @@
 					armv7,
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: jian ma (UNYP6J9V9Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jian ma (UNYP6J9V9Q)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDrive/iDrive-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1761,8 +1767,8 @@
 					armv7,
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: jian ma (UNYP6J9V9Q)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: jian ma (UNYP6J9V9Q)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iDrive/iDrive-Prefix.pch";
 				HEADER_SEARCH_PATHS = (

@@ -13,7 +13,8 @@
 #import "ModifyCarInfoRequestParameter.h"
 #import "RequestService.h"
 #import "UserInfo.h"
-
+#import "NSStringUtil.h"
+#import "RegexHelper.h"
 
 @interface CarInfoDetailTableViewController ()
 
@@ -66,7 +67,7 @@ const int ModifyCarInfo = 2;
 
 		[self.detail.doneBtn setTitle:buttonTitle forState:UIControlStateNormal];
 	}
-	self.backBtn.hidden = !self.isPushFromLogin;
+	self.backBtn.hidden = self.isPushFromLogin;
 }
 
 #pragma mark
@@ -155,6 +156,21 @@ const int ModifyCarInfo = 2;
 #pragma mark - 保存车辆信息
 
 - (void)saveCarInfo {
+	[self performSegueWithIdentifier:kMainIndex sender:nil];
+	return;
+
+	if (![NSStringUtil isValidate:self.detail.carLicense.text]) {
+		[self.view makeToast:@"请输入车牌号"];
+		return;
+	}
+	else {
+		NSString *errMsg = [RegexHelper check:self.detail.carLicense.text with:RegexTypeCarLicense];
+		if (errMsg) {
+			[self.view makeToast:errMsg];
+			return;
+		}
+	}
+
 	RequestService *service = [[RequestService alloc] init];
 
 	// 追加车辆信息
@@ -165,7 +181,13 @@ const int ModifyCarInfo = 2;
 		parameter.carLicenseid = self.detail.carLicense.text;
 		parameter.carModel = self.detail.carBrandLabel.text;
 		parameter.carDriver = self.detail.driverField.text;
-		parameter.carInsurancemaintainInfo = self.detail.autoInsuranceLabel.text;
+		parameter.insuranceType = self.detail.autoInsuranceLabel.text;
+		parameter.insuranceCompany = self.detail.insuranceCompanyLabel.text;
+		parameter.ciiInsurancetimeLeft = self.detail.insuranceExpire.text;
+		parameter.ciiMaintaintimeLeft = self.detail.maintenanceDueDate.text;
+		parameter.ciiMaintaindistanceLeft = self.detail.maintenanceMaMi.text;
+
+		parameter.equipmentSNnum = @"6334128330095";
 
 		[self sendRequestTo:service with:parameter];
 	}
@@ -174,6 +196,16 @@ const int ModifyCarInfo = 2;
 		service.tag = ModifyCarInfo;
 
 		ModifyCarInfoRequestParameter *parameter = [[ModifyCarInfoRequestParameter alloc] init];
+		parameter.carLicenseid = self.detail.carLicense.text;
+		parameter.carModel = self.detail.carBrandLabel.text;
+		parameter.carDriver = self.detail.driverField.text;
+		parameter.insuranceType = self.detail.autoInsuranceLabel.text;
+		parameter.insuranceCompany = self.detail.insuranceCompanyLabel.text;
+		parameter.ciiInsurancetimeLeft = self.detail.insuranceExpire.text;
+		parameter.ciiMaintaintimeLeft = self.detail.maintenanceDueDate.text;
+		parameter.ciiMaintaindistanceLeft = self.detail.maintenanceMaMi.text;
+
+		parameter.equipmentSNnum = @"6334128330095";
 
 		[self sendRequestTo:service with:parameter];
 	}

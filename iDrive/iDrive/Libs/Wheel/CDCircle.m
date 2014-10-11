@@ -14,6 +14,9 @@
 #import "CDCircleGestureRecognizer.h"
 #import "CDCircleThumb.h"
 #import "CDCircleOverlayView.h"
+#import "CDTouchUpGestureRecognizer.h"
+#import "UIImage+ColorAtPixel.h"
+
 @implementation CDCircle
 @synthesize circle, recognizer, path, numberOfSegments, separatorStyle, overlayView, separatorColor, ringWidth, circleColor, thumbs, overlay;
 @synthesize delegate, dataSource;
@@ -34,7 +37,6 @@
 		self.separatorStyle = CDCircleThumbsSeparatorBasic;
 		self.ringWidth = width;
 		self.circleColor = [UIColor clearColor];
-
 
 		CGRect rect1 = CGRectMake(0, 0, CGRectGetHeight(frame) - (2 * ringWidth), CGRectGetWidth(frame) - (2 * ringWidth));
 		self.thumbs = [NSMutableArray array];
@@ -76,9 +78,7 @@
 	CGPoint centerPoint = CGPointMake(rect.size.width / 2, rect.size.height / 2);
 
 
-
-
-	CGFloat deltaAngle;
+	CGFloat deltaAngle = 0.f;
 
 	for (int i = 0; i < self.numberOfSegments; i++) {
 		CDCircleThumb *thumb = [self.thumbs objectAtIndex:i];
@@ -104,7 +104,6 @@
 		//set position of the thumb
 		thumb.layer.position = CGPointMake(x, yi);
 
-
 		perSectionDegrees += totalRotation;
 
 		[self addSubview:thumb];
@@ -120,6 +119,76 @@
 			[self setTransform:CGAffineTransformRotate([self transform], [arecognizer rotation])];
 		}
 	}
+}
+
+#pragma - SingleTapGestureRecognizer
+
+- (void)setSingleTapEnabled:(BOOL)singleTapEnabled {
+	_singleTapEnabled = singleTapEnabled;
+
+	if (singleTapEnabled) {
+		_singleTapRecoginzer = [[CDTouchUpGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapped:)];
+		[self addGestureRecognizer:_singleTapRecoginzer];
+	}
+	else {
+		[self removeGestureRecognizer:_singleTapRecoginzer];
+		_singleTapRecoginzer = nil;
+	}
+}
+
+- (void)singleTapped:(CDTouchUpGestureRecognizer *)touchUpRecoginzer {
+	CGPoint touchPoint = [touchUpRecoginzer locationInView:self];
+	CDCircleThumb *touchedThumb;
+	for (CDCircleThumb *thumb in[self thumbs]) {
+		if (CGRectContainsPoint(thumb.frame, touchPoint)) {
+			CGPoint pointInTuhmb = [touchUpRecoginzer locationInView:thumb];
+			if ([self isAlphaVisibleAtPoint:pointInTuhmb forThumb:thumb]) {
+				NSLog(@"Thumb %i tapped, current thumb %i", thumb.tag, self.recognizer.currentThumb.tag);
+				touchedThumb = thumb;
+				break;
+			}
+		}
+	}
+
+	if (touchedThumb) {
+		[self rotateTo:touchedThumb];
+	}
+}
+
+- (BOOL)isAlphaVisibleAtPoint:(CGPoint)point forThumb:(CDCircleThumb *)thumb {
+	CGSize iSize = thumb.iconView.image.size;
+	CGSize bSize = thumb.iconView.bounds.size;
+	point.x *= (bSize.width != 0) ? (iSize.width / bSize.width) : 1;
+	point.y *= (bSize.height != 0) ? (iSize.height / bSize.height) : 1;
+
+	CGColorRef pixelColor = [[thumb.iconView.image colorAtPixel:point] CGColor];
+	CGFloat alpha = CGColorGetAlpha(pixelColor);
+	return alpha >= 0.1f;
+}
+
+- (void)rotateTo:(CDCircleThumb *)thumb {
+	if (self.recognizer.currentThumb.tag == thumb.tag) {
+		return;
+	}
+
+	float rotation;
+	int direction;
+	if (self.recognizer.currentThumb.tag < thumb.tag) {
+		direction = ABS(self.recognizer.currentThumb.tag - thumb.tag) >= self.numberOfSegments / 2.f ? 1 : -1;
+	}
+	else {
+		direction = ABS(self.recognizer.currentThumb.tag - thumb.tag) >= self.numberOfSegments / 2.f ? -1 : 1;
+	}
+
+	int different = MIN(ABS(self.recognizer.currentThumb.tag - thumb.tag), ABS(self.recognizer.currentThumb.tag - thumb.tag + self.numberOfSegments));
+	rotation = direction * different * (360.f / self.numberOfSegments);
+
+	[UIView animateWithDuration:0.25f animations: ^{
+	    [self setTransform:CGAffineTransformRotate([self transform], degreesToRadians(rotation))];
+	} completion: ^(BOOL finished) {
+	    self.recognizer.currentThumb = thumb;
+	    [self.delegate circle:self didMoveToSegment:thumb.tag thumb:thumb];
+	}];
 }
 
 @end

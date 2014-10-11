@@ -49,7 +49,7 @@
 	[super viewWillAppear:animated];
 
 	[self.mapView viewWillAppear];
-	self.mapView.delegate = nil;
+	self.mapView.delegate = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -67,12 +67,23 @@
 - (void)setLineInfo {
 	self.avgSpeed.text = [NSString stringWithFormat:@"%@km/h", self.history.avgSpeed];
 	self.avgOilCost.text = [NSString stringWithFormat:@"%@L/km", self.history.avgOilCost];
-	[_mapView addOverlay:[self createLine:self.history.coordinates]];
+	[self createLine:self.history.coordinates];
 }
 
 // 生成百度地图的轨迹的线
-- (BMKStartOrEndPolyline *)createLine:(NSArray *)points {
-	return nil;
+- (void)createLine:(NSArray *)points {
+	//轨迹点
+	CLLocationCoordinate2D *temppoints = malloc(sizeof(CLLocationCoordinate2D) * points.count);
+
+	for (int i = 0; i < points.count; i++) {
+		Coordinate *coord = points[i];
+		temppoints[i] = [coord toCoordinate];
+	}
+	// 通过points构建BMKPolyline
+	BMKStartOrEndPolyline *polyLine = (BMKStartOrEndPolyline *)[BMKStartOrEndPolyline polylineWithCoordinates:temppoints count:points.count];
+	// 添加路线overlay
+	[_mapView addOverlay:polyLine];
+	[_mapView setCenterCoordinate:temppoints[0]];
 }
 
 // 请求实时轨迹信息
@@ -108,7 +119,10 @@
 		[mapView addAnnotation:endAnnotation];
 //		[self addAnnotation:endAnnotation with:line];
 	}
-	BMKOverlayPathView *path = [[BMKOverlayPathView alloc] initWithOverlay:overlay];
+	BMKPolylineView *path = [[BMKPolylineView alloc] initWithOverlay:overlay];
+	path.lineWidth = 8.f;
+	path.fillColor = [UIColor greenColor];
+	path.strokeColor = [UIColor greenColor];
 	return path;
 }
 
@@ -151,7 +165,35 @@
 #pragma mark -
 
 - (void)handleResult:(id)result of:(RequestService *)service {
-	NSLog(@"%@", result);
+	if ([result isKindOfClass:[NSDictionary class]] && [result allKeys] > 0) {
+		_history = [[ItineraryHistory alloc] init];
+		_history.avgOilCost = result[@"AvlOilConsumption"];
+		_history.avgSpeed = result[@"AvlSpeed"];
+		_history.fuelConsumption = result[@"CurrentOilConsumption"];
+		_history.mileage = result[@"Mileage"];
+		_history.startTime = result[@"startTime"];
+		_history.endTime = result[@"endTime"];
+		_history.coordinates = [self getCoordinates:result[@"gpsList"]];
+
+		[self setLineInfo];
+
+		[self performSelector:@selector(inqueryRealTimeTrajectory) withObject:nil afterDelay:120];
+	}
+	else {
+		[self.view makeToast:@"获取实时轨迹失败,请稍后重试"];
+	}
+}
+
+- (NSArray *)getCoordinates:(NSArray *)gpsList {
+	NSMutableArray *coords = [[NSMutableArray alloc] initWithCapacity:5];
+	for (NSString *gps in gpsList) {
+		NSArray *gpsSp = [gps componentsSeparatedByString:@","];
+		Coordinate *c = [[Coordinate alloc] init];
+		c.lat = gpsSp[2];
+		c.lng = gpsSp[1];
+		[coords addObject:c];
+	}
+	return coords;
 }
 
 @end

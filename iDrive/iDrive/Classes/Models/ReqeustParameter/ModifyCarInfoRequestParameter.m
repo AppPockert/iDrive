@@ -7,7 +7,16 @@
 //
 
 #import "ModifyCarInfoRequestParameter.h"
+#import "UserInfo.h"
 
 @implementation ModifyCarInfoRequestParameter
+
+- (id)init {
+	self = [super init];
+	if (self) {
+		self.equipmentSNnum = [[kAppDelegate getUserInfo] SN];
+	}
+	return self;
+}
 
 @end

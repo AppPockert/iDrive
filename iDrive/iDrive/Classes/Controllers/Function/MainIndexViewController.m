@@ -27,6 +27,8 @@
 	CDCircle *circle = [[CDCircle alloc] initWithFrame:CGRectMake(14, 199.5, 291, 291) numberOfSegments:9 ringWidth:91.5f];
 	circle.dataSource = self;
 	circle.delegate = self;
+	circle.singleTapEnabled = YES;
+
 	CDCircleOverlayView *overlay = [[CDCircleOverlayView alloc] initWithCircle:circle];
 
 	[self.view addSubview:circle];
@@ -61,6 +63,7 @@
 #pragma mark - Circle delegate & data source
 
 - (void)circle:(CDCircle *)circle didMoveToSegment:(NSInteger)segment thumb:(CDCircleThumb *)thumb {
+	NSLog(@"%@", IntroductionImgs[segment]);
 	[self.introduction setImage:[UIImage imageNamed:IntroductionImgs[segment]]];
 
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{

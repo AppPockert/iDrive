@@ -36,7 +36,7 @@
 		// 程序启动过
 		if ([userDefaults boolForKey:kFirstLaunched]) {
 			// 未登录
-			if (![self getUserInfo].carLicense) {
+			if ([userDefaults objectForKey:kUserInfo]) {
 				identifier = kLoginNav;
 			}
 			// 已登录

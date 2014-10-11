@@ -78,7 +78,10 @@
 
 
 #define kTravelAction             @"/EasyCarServer/struts/carTravelAction!doSelectLastTravelInfo?equipmentSNnum='1'"
-#define kSaveCarIno               @"/EasyCarServer/struts/carInfoAction!addCarInfo?carLicenseid=%@&carModel=%@&carMotorid=%@&carUsercompany=%@&carInsurancemaintainInfo=%@&carTestInfo=%@&carObdRt=%@&carDriver=%@"
+#define kSaveCarIno               @"/EasyCarServer/struts/carInfoAction!addCarInfo?icName=%@&ciiInsuranceType=%@&ciiInsurancetimeLeft=%@&ciiMaintaintimeLeft=%@&ciiMaintaindistanceLeft=%@&carLicenseid=%@&carModel=%@&carDriver=%@&userTianyitongid=%@"
+
+//#define kSaveCarInfo @"/EasyCarServer/struts/carInfoAction!addCarInfo?icName=zhongguo&ciiInsuranceType=1&ciiInsurancetimeLeft=2014-10-08%2014:23:41&ciiMaintaintimeLeft=2014-10-08%2014:23:41&ciiMaintaindistanceLeft=1000.0&carLicenseid=A123&carModel=BMW&carDriver=zhangsan&userTianyitongid=6219034133056"
+
 #define kBehaviorAnalysis         @"/EasyCarServer/struts/carTravelAction!selectCartreval?equipmentSNnum=%@"
 #define kCarPanel                 @"/EasyCarServer/struts/carTravelAction!selectCarControl?equipmentSNnum=%@"
 #define kCarAbnormalUrl           @""

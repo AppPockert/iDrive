@@ -25,6 +25,7 @@
 @synthesize rotation = rotation_, controlPoint;
 @synthesize ended;
 @synthesize currentThumb;
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
 	CDCircle *view = (CDCircle *)[self view];
 	UITouch *touch = [touches anyObject];
@@ -92,9 +93,7 @@
 			}
 		}
 
-
-
-		[UIView animateWithDuration:flipintime delay:0.f options:UIViewAnimationCurveEaseOut animations: ^{
+		[UIView animateWithDuration:flipintime delay:0.f options:UIViewAnimationOptionCurveEaseOut animations: ^{
 		    [view setTransform:CGAffineTransformRotate(view.transform, angle)];
 		} completion: ^(BOOL finished) {
 		    for (CDCircleThumb * thumb in view.thumbs) {
@@ -114,8 +113,6 @@
 		                [UIView animateWithDuration:0.2f animations: ^{
 		                    [view setTransform:CGAffineTransformRotate(current, deltaAngle)];
 						}];
-
-
 
 
 		                SystemSoundID soundID;
@@ -139,7 +136,6 @@
 
 
 		currentTransformAngle = 0;
-
 
 
 		[self setState:UIGestureRecognizerStateEnded];

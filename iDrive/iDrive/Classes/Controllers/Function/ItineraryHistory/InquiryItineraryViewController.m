@@ -10,6 +10,11 @@
 #import "ItineraryHistoryRequestParameter.h"
 #import "RequestService.h"
 #import "ItineraryHistoryViewController.h"
+#import "RealTimeTrajectoryRequestParameter.h"
+#import "ItineraryHistory.h"
+
+const int Start = 1;
+const int End = 2;
 
 @interface InquiryItineraryViewController ()
 {
@@ -28,18 +33,19 @@
 
 @implementation InquiryItineraryViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-	if (self) {
-		// Custom initialization
-	}
-	return self;
-}
-
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
 	_historyList = [[NSMutableArray alloc] initWithCapacity:5];
+
+	// 设置初始值
+	[self.startData setTitle:[self getTheDate] forState:UIControlStateNormal];
+	[self.endData setTitle:[self getTheDate] forState:UIControlStateNormal];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	[self.historyList removeAllObjects];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,28 +55,39 @@
 
 - (IBAction)actionChooseDatePicker:(UIButton *)b {
 	currDatePicker = (int)b.tag;
-	if (b.tag == 1) { // 起始时间
+	// 起始时间
+	if (b.tag == Start) {
 		self.dataPicker.minimumDate = nil;
 		self.dataPicker.maximumDate = [NSDate date];
 	}
-	else { // 结束时间
-		if ([self.startData.titleLabel.text isEqualToString:@"选择日期"]) {
-			[self.view makeToast:@"请先选择开始日期"];
-			return;
-		}
-		else {
-			NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-			dateFormatter.dateFormat = @"yyyy-MM-dd";
-			self.dataPicker.minimumDate = [dateFormatter dateFromString:self.startData.titleLabel.text];
-			self.dataPicker.maximumDate = [self.dataPicker.minimumDate dateByAddingTimeInterval:60 * 60 * 24 * 30];
-		}
+	// 结束时间
+	else {
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		dateFormatter.dateFormat = @"yyyy-MM-dd";
+		self.dataPicker.minimumDate = [dateFormatter dateFromString:self.startData.titleLabel.text];
+		NSDate *oneMouthLater = [self.dataPicker.minimumDate dateByAddingTimeInterval:2592000];
+		self.dataPicker.maximumDate = [oneMouthLater earlierDate:[NSDate date]];
 	}
 	[self showDatePicker];
 }
 
 - (IBAction)actionDone:(id)sender {
-	if (currDatePicker == 1) {
+	if (currDatePicker == Start) {
 		[self.startData setTitle:[self getTheDate] forState:UIControlStateNormal];
+
+		NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+		dateFormatter.dateFormat = @"yyyy-MM-dd";
+		NSDate *startDate = [dateFormatter dateFromString:self.startData.titleLabel.text];
+		NSDate *endDate = [dateFormatter dateFromString:self.endData.titleLabel.text];
+
+
+		if ([endDate timeIntervalSinceDate:startDate] > 2592000) {
+			endDate = [startDate dateByAddingTimeInterval:2592000];
+			[self.endData setTitle:[dateFormatter stringFromDate:endDate] forState:UIControlStateNormal];
+		}
+		else if ([endDate timeIntervalSinceDate:startDate] < 0) {
+			[self.endData setTitle:self.startData.titleLabel.text forState:UIControlStateNormal];
+		}
 	}
 	else {
 		[self.endData setTitle:[self getTheDate] forState:UIControlStateNormal];
@@ -89,7 +106,7 @@
 		isShowDatePicker = YES;
 		[UIView animateWithDuration:.25 animations: ^{
 		    CGRect rect = self.datePickerView.frame;
-		    rect.origin.y = rect.origin.y - rect.size.height - 50;
+		    rect.origin.y = rect.origin.y - rect.size.height - 99;
 		    self.datePickerView.frame = rect;
 		}];
 	}
@@ -100,22 +117,53 @@
 		isShowDatePicker = NO;
 		[UIView animateWithDuration:.25 animations: ^{
 		    CGRect rect = self.datePickerView.frame;
-		    rect.origin.y = rect.origin.y + rect.size.height + 50;
+		    rect.origin.y = rect.origin.y + rect.size.height + 99;
 		    self.datePickerView.frame = rect;
 		}];
 	}
 }
 
 - (IBAction)search:(id)sender {
-	ItineraryHistoryRequestParameter *parameter = [[ItineraryHistoryRequestParameter alloc] init];
-	parameter.startTime = self.startData.titleLabel.text;
-	parameter.endTime = self.endData.titleLabel.text;
+//	ItineraryHistoryRequestParameter *parameter = [[ItineraryHistoryRequestParameter alloc] init];
+//	parameter.startTime = self.startData.titleLabel.text;
+//	parameter.endTime = self.endData.titleLabel.text;
+//	parameter.equipmentSNnum = @"6334128330095";
+//	[self sendRequestTo:[[RequestService alloc] init] with:parameter];
+
+	RealTimeTrajectoryRequestParameter *parameter = [[RealTimeTrajectoryRequestParameter alloc] init];
 	parameter.equipmentSNnum = @"6334128330095";
 	[self sendRequestTo:[[RequestService alloc] init] with:parameter];
 }
 
 - (void)handleResult:(id)result of:(RequestService *)service {
-	NSLog(@"%@", result);
+	if ([result isKindOfClass:[NSDictionary class]] && [result allKeys] > 0) {
+		ItineraryHistory *_history = [[ItineraryHistory alloc] init];
+		_history.avgOilCost = result[@"AvlOilConsumption"];
+		_history.avgSpeed = result[@"AvlSpeed"];
+		_history.fuelConsumption = result[@"CurrentOilConsumption"];
+		_history.mileage = result[@"Mileage"];
+		_history.startTime = result[@"startTime"];
+		_history.endTime = result[@"endTime"];
+		_history.coordinates = [self getCoordinates:result[@"gpsList"]];
+
+		[self.historyList addObject:_history];
+		[self performSegueWithIdentifier:kHistoryList sender:nil];
+	}
+	else {
+		[self.view makeToast:@"查询失败,请稍后重试"];
+	}
+}
+
+- (NSArray *)getCoordinates:(NSArray *)gpsList {
+	NSMutableArray *coords = [[NSMutableArray alloc] initWithCapacity:5];
+	for (NSString *gps in gpsList) {
+		NSArray *gpsSp = [gps componentsSeparatedByString:@","];
+		Coordinate *c = [[Coordinate alloc] init];
+		c.lat = gpsSp[2];
+		c.lng = gpsSp[1];
+		[coords addObject:c];
+	}
+	return coords;
 }
 
 #pragma mark
