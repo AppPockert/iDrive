@@ -129,6 +129,7 @@
 	if (singleTapEnabled) {
 		_singleTapRecoginzer = [[CDTouchUpGestureRecognizer alloc] initWithTarget:self action:@selector(singleTapped:)];
 		[self addGestureRecognizer:_singleTapRecoginzer];
+		[self.recognizer requireGestureRecognizerToFail:_singleTapRecoginzer];
 	}
 	else {
 		[self removeGestureRecognizer:_singleTapRecoginzer];
@@ -168,6 +169,7 @@
 
 - (void)rotateTo:(CDCircleThumb *)thumb {
 	if (self.recognizer.currentThumb.tag == thumb.tag) {
+		[self.delegate circle:self didMoveToSegment:thumb.tag thumb:thumb];
 		return;
 	}
 

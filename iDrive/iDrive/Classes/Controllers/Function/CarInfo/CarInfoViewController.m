@@ -15,10 +15,11 @@
 #import "UserInfo.h"
 #import "NSStringUtil.h"
 #import "RegexHelper.h"
+#import "GetCarInfoRequestParameter.h"
 
 @interface CarInfoDetailTableViewController ()
 
-@property (nonatomic) UITextField *carLicense;        // 车牌号
+@property (nonatomic) NSString *fullCarLicense;       // 车牌号
 @property (nonatomic) UILabel *carBrandLabel;         // 车品牌
 @property (nonatomic) UITextField *driverField;       // 驾驶员
 @property (nonatomic) UITextField *mileageField;      // 行驶里程
@@ -34,6 +35,7 @@
 
 const int AddCarInfo = 1;
 const int ModifyCarInfo = 2;
+const int GetCarInfo = 3;
 
 @interface CarInfoViewController () <SelectableViewControllerDelegate>
 {
@@ -55,19 +57,32 @@ const int ModifyCarInfo = 2;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-
 	{ // 设置完成按钮的标题
 		NSString *buttonTitle;
-		if (self.isPushFromLogin) {
-			buttonTitle = @"保存";
+		if (self.shouldUpdate) {
+			buttonTitle = @"完成修改";
 		}
 		else {
-			buttonTitle = @"完成修改";
+			buttonTitle = @"保存";
 		}
 
 		[self.detail.doneBtn setTitle:buttonTitle forState:UIControlStateNormal];
 	}
-	self.backBtn.hidden = self.isPushFromLogin;
+	self.backBtn.hidden = !self.shouldUpdate;
+
+	// 已经是登陆状态进入该页面
+	if (self.shouldUpdate) {
+		RequestService *service = [[RequestService alloc] init];
+		service.tag = GetCarInfo;
+		GetCarInfoRequestParameter *parameter = [[GetCarInfoRequestParameter alloc] init];
+		parameter.userId = @"13770519290";
+		[self sendRequestTo:service with:parameter];
+	}
+
+	// 已填写过，但是未完成
+	if (!self.isFirstTimeToFill) {
+		[self.view makeToast:@"请填写完车辆信息"];
+	}
 }
 
 #pragma mark
@@ -156,15 +171,12 @@ const int ModifyCarInfo = 2;
 #pragma mark - 保存车辆信息
 
 - (void)saveCarInfo {
-	[self performSegueWithIdentifier:kMainIndex sender:nil];
-	return;
-
-	if (![NSStringUtil isValidate:self.detail.carLicense.text]) {
+	if (self.detail.fullCarLicense.length < 2) {
 		[self.view makeToast:@"请输入车牌号"];
 		return;
 	}
 	else {
-		NSString *errMsg = [RegexHelper check:self.detail.carLicense.text with:RegexTypeCarLicense];
+		NSString *errMsg = [RegexHelper check:self.detail.fullCarLicense with:RegexTypeCarLicense];
 		if (errMsg) {
 			[self.view makeToast:errMsg];
 			return;
@@ -174,11 +186,11 @@ const int ModifyCarInfo = 2;
 	RequestService *service = [[RequestService alloc] init];
 
 	// 追加车辆信息
-	if (self.isPushFromLogin) {
+	if (!self.shouldUpdate) {
 		service.tag = AddCarInfo;
 
 		AddCarInfoRequestParameter *parameter = [[AddCarInfoRequestParameter alloc] init];
-		parameter.carLicenseid = self.detail.carLicense.text;
+		parameter.carLicenseid = self.detail.fullCarLicense;
 		parameter.carModel = self.detail.carBrandLabel.text;
 		parameter.carDriver = self.detail.driverField.text;
 		parameter.insuranceType = self.detail.autoInsuranceLabel.text;
@@ -196,7 +208,7 @@ const int ModifyCarInfo = 2;
 		service.tag = ModifyCarInfo;
 
 		ModifyCarInfoRequestParameter *parameter = [[ModifyCarInfoRequestParameter alloc] init];
-		parameter.carLicenseid = self.detail.carLicense.text;
+		parameter.carLicenseid = self.detail.fullCarLicense;
 		parameter.carModel = self.detail.carBrandLabel.text;
 		parameter.carDriver = self.detail.driverField.text;
 		parameter.insuranceType = self.detail.autoInsuranceLabel.text;
@@ -206,6 +218,7 @@ const int ModifyCarInfo = 2;
 		parameter.ciiMaintaindistanceLeft = self.detail.maintenanceMaMi.text;
 
 		parameter.equipmentSNnum = @"6334128330095";
+		parameter.userTelphone = @"13770519290";
 
 		[self sendRequestTo:service with:parameter];
 	}
@@ -214,22 +227,79 @@ const int ModifyCarInfo = 2;
 #pragma mark
 
 - (void)handleResult:(id)result of:(RequestService *)service {
-	if ([result isKindOfClass:[NSArray class]] && [result[0] isEqualToString:@"success"]) {
-		UserInfo *user = [kAppDelegate getUserInfo];
-		user.carLicense = self.detail.carLicense.text;
-		[kAppDelegate saveUserInfo:user];
+	// 获取车辆信息
+	if (service.tag == GetCarInfo) {
+		if ([result isKindOfClass:[NSDictionary class]]) {
+			if ([[result allKeys] containsObject:@"error"]) {
+				if ([result[@"error"] isEqualToString:@"error"]) {
+					[self.view makeToast:@"服务器错误"];
+					return;
+				}
 
-		// 追加车辆信息成功后跳转到首页面
-		if (service.tag == AddCarInfo) {
-			[self performSegueWithIdentifier:kMainIndex sender:nil];
-		}
-		// 修改车辆信息成功后返回上一个页面
-		else {
-			[self.navigationController popViewControllerAnimated:YES];
+				if (result[@"carLicense"]) {
+					self.detail.fullCarLicense = result[@"carLicense"];
+				}
+			}
+			else {
+				// 车牌
+				if (result[@"carLicense"]) {
+					self.detail.fullCarLicense = result[@"carLicense"];
+				}
+				// 车型
+				if (result[@"carModel"]) {
+					self.detail.carBrandLabel.text = result[@"carModel"];
+				}
+				// 驾驶员
+				if (result[@"carDriver"]) {
+					self.detail.driverField.text = result[@"carDriver"];
+				}
+				// 行驶公里数
+				if (result[@"sumMileage"]) {
+					self.detail.mileageField.text = [NSString stringWithFormat:@"%@", result[@"sumMileage"]];
+				}
+				// 保险公司
+				if (result[@"IcName"]) {
+					self.detail.insuranceCompanyLabel.text = result[@"IcName"];
+				}
+				// 保险类型
+				if (result[@"CiiInsuranceType"]) {
+					self.detail.autoInsuranceLabel.text = [NSString stringWithFormat:@"%@", result[@"CiiInsuranceType"]];
+				}
+				// 保险到期日
+				if (result[@"CiiInsurancetimeLeft"]) {
+					self.detail.insuranceExpire.text = result[@"CiiInsurancetimeLeft"];
+				}
+				// 保养到期日
+				if (result[@"CiiMaintaintimeLeft"]) {
+					self.detail.maintenanceDueDate.text = result[@"CiiMaintaintimeLeft"];
+				}
+				// 保养到期里程
+				if (result[@"CiiMaintaindistanceLeft"]) {
+					self.detail.maintenanceMaMi.text = [NSString stringWithFormat:@"%@", result[@"CiiMaintaindistanceLeft"]];
+				}
+			}
 		}
 	}
+	// 保存/追加车辆信息
 	else {
-		[self.view makeToast:@"保存失败"];
+		if ([result isKindOfClass:[NSArray class]] && [result[0] isEqualToString:@"success"]) {
+			UserInfo *user = [kAppDelegate getUserInfo];
+			user.carLicense = self.detail.fullCarLicense;
+			[kAppDelegate saveUserInfo:user];
+
+			// 追加车辆信息成功后跳转到首页面
+			if (service.tag == AddCarInfo) {
+				[self performSegueWithIdentifier:kMainIndex sender:nil];
+			}
+			// 修改车辆信息成功后返回上一个页面
+			else {
+				[self.navigationController popViewControllerAnimated:YES];
+			}
+			[self.view makeToast:@"保存成功"];
+		}
+		else {
+			[self.view makeToast:@"保存失败"];
+		}
 	}
 }
 

@@ -32,28 +32,36 @@
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	NSString *identifier;
 
-	do {
-		// 程序启动过
-		if ([userDefaults boolForKey:kFirstLaunched]) {
-			// 未登录
-			if ([userDefaults objectForKey:kUserInfo]) {
-				identifier = kLoginNav;
-			}
-			// 已登录
-			else {
-				self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:kMainTab];
-				break;
-			}
-		}
-		// 程序首次启动
-		else {
-			identifier = kIntroductionNav;
-		}
+//	ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://117.89.132.12:7788/EasyCarServer/struts/carTravelAction!car_JDBCinit"]];
+//	[request startSynchronous];
+//	id response = request.responseData;
+//
+//	NSError *error;
+//	id JSON = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
 
-		_navigationController = [storyboard instantiateViewControllerWithIdentifier:identifier];
-		self.window.rootViewController = _navigationController;
+	// 程序启动过
+	if ([userDefaults boolForKey:kFirstLaunched]) {
+		// 已登录
+		if ([self getUserInfo]) {
+			if ([[self getUserInfo] carLicense]) {
+				identifier = kMainTabNav;
+			}
+			else {
+				identifier = kCarInfoNav;
+			}
+		}
+		// 未登录
+		else {
+			identifier = kLoginNav;
+		}
 	}
-	while (0);
+	// 程序首次启动
+	else {
+		identifier = kIntroductionNav;
+	}
+
+	_navigationController = [storyboard instantiateViewControllerWithIdentifier:identifier];
+	self.window.rootViewController = _navigationController;
 
 	[self.window makeKeyAndVisible];
 
@@ -93,7 +101,7 @@
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-#pragma mark
+#pragma mark - 百度地图
 
 /**
  *  初始化百度地图
@@ -104,6 +112,20 @@
 	BOOL ret = [_mapManager start:@"G5nD4yh2tSuoUWL8sjSuh7GL"  generalDelegate:nil];
 	if (!ret) {
 		NSLog(@"manager start failed!");
+	}
+}
+
+#pragma mark
+
+- (void)logout {
+	[[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserInfo];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+
+	for (UIViewController *controller in[self.navigationController viewControllers]) {
+		if ([NSStringFromClass([controller class]) isEqualToString:@"MainTabViewController"]) {
+			[controller performSegueWithIdentifier:kLogout sender:nil];
+			break;
+		}
 	}
 }
 
@@ -128,10 +150,10 @@
 
 - (void)checkCarAbnormal {
 #warning 替换url
-	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:nil]];
-	ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
-	request.delegate = self;
-	[request startAsynchronous];
+//	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:nil]];
+//	ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
+//	request.delegate = self;
+//	[request startAsynchronous];
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request {

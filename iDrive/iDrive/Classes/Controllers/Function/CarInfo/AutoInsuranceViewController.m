@@ -26,7 +26,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kAutoInsurance forIndexPath:indexPath];
-	cell.textLabel.text = @"A1";
+	cell.textLabel.text = @"1";
 	return cell;
 }
 
@@ -34,7 +34,7 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 
 	if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectObject:with:)]) {
-		[self.delegate didSelectObject:@"A1" with:self.identifer];
+		[self.delegate didSelectObject:@"1" with:self.identifer];
 
 		[self.navigationController popViewControllerAnimated:YES];
 	}

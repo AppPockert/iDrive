@@ -20,7 +20,7 @@
 }
 
 - (NSString *)urlByAppendParameter {
-	NSString *url = [NSString stringWithFormat:kSaveCarIno, self.insuranceCompany, self.insuranceType, self.ciiInsurancetimeLeft, self.ciiMaintaintimeLeft, self.ciiMaintaindistanceLeft, self.carLicenseid, self.carModel, self.carDriver, self.equipmentSNnum];
+	NSString *url = [NSString stringWithFormat:kAddCarIno, self.insuranceCompany, self.insuranceType, self.ciiInsurancetimeLeft, self.ciiMaintaintimeLeft, self.ciiMaintaindistanceLeft, self.carLicenseid, self.carModel, self.carDriver, self.equipmentSNnum];
 	return [ServerURLUtil getFullURL:url];
 }
 

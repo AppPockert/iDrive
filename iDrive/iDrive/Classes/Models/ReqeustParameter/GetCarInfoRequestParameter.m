@@ -7,8 +7,17 @@
 //
 
 #import "GetCarInfoRequestParameter.h"
+#import "UserInfo.h"
 
 @implementation GetCarInfoRequestParameter
+
+- (id)init {
+	self = [super init];
+	if (self) {
+		self.userId = [[kAppDelegate getUserInfo] userTelephone];
+	}
+	return self;
+}
 
 - (NSString *)urlByAppendParameter {
 	NSString *url = [NSString stringWithFormat:kCarInfoRequestUrl, self.userId];

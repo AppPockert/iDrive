@@ -19,4 +19,9 @@
 	return self;
 }
 
+- (NSString *)urlByAppendParameter {
+	NSString *url = [NSString stringWithFormat:kSaveCarIno, self.insuranceCompany, self.insuranceType, self.ciiInsurancetimeLeft, self.ciiMaintaintimeLeft, self.ciiMaintaindistanceLeft, self.carLicenseid, self.carModel, self.carDriver, self.equipmentSNnum, self.userTelphone];
+	return [ServerURLUtil getFullURL:url];
+}
+
 @end

@@ -109,14 +109,14 @@ const int CarInfoRequest = 2;
 - (void)handleResult:(id)result of:(RequestService *)service {
 	// 登录结果处理
 	if (service.tag == LoginRequest) {
-		if ([result isKindOfClass:[NSArray class]] && [result[0] isEqualToString:@"SUCCESS"]) {
-			UserInfo *userInfo = [[UserInfo alloc] init];
-			userInfo.userTelephone = self.account.text;
-			userInfo.userPassword = self.password.text;
-			[kAppDelegate saveUserInfo:userInfo];
-			[self performSegueWithIdentifier:kMainIndex sender:nil];
-
-			return;
+		if ([result isKindOfClass:[NSArray class]] && [result[0] isEqualToString:kResultSuccess]) {
+//			UserInfo *userInfo = [[UserInfo alloc] init];
+//			userInfo.userTelephone = self.account.text;
+//			userInfo.userPassword = self.password.text;
+//			[kAppDelegate saveUserInfo:userInfo];
+//			[self performSegueWithIdentifier:kMainIndex sender:nil];
+//
+//			return;
 
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 			    // 登录成功后，再去服务器获取当前用户的车辆信息
@@ -131,7 +131,7 @@ const int CarInfoRequest = 2;
 			});
 		}
 		else {
-			[self.view makeToast:@"登录失败"];
+			[self.view makeToast:@"账号或密码错误"];
 		}
 	}
 	// 获取车辆信息结果处理
@@ -177,7 +177,8 @@ const int CarInfoRequest = 2;
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:kCarInfo]) {
 		CarInfoViewController *controller = segue.destinationViewController;
-		controller.pushFromLogin = YES;
+		controller.shouldUpdate = NO;
+		controller.isFirstTimeToFill = YES;
 	}
 	else if ([segue.identifier isEqualToString:kRegister]) {
 		RegisterViewController *controller = segue.destinationViewController;

@@ -9,6 +9,9 @@
 #import "VehicleExaminationViewController.h"
 #import "GPLoadingView.h"
 #import "CheckItemListView.h"
+#import "PlistFilePathManager.h"
+
+#define  FileName    @"ExaminationItem.plist"
 
 @interface VehicleExaminationViewController ()
 {
@@ -24,6 +27,8 @@
 
 @property (strong, nonatomic) CheckItemListView *checkListView; // 检测列表
 
+@property (strong, nonatomic) NSMutableArray *checkList;
+
 @end
 
 @implementation VehicleExaminationViewController
@@ -37,6 +42,9 @@
 
 	self.checkListView.hidden = YES;
 	self.indicator.lineColor = [UIColor yellowColor];
+
+	NSString *path = [PlistFilePathManager getFullPath:FileName options:FilePathOptionTypeUserDocument | FilePathOptionTypeCopyFromBundle];
+	_checkList = [NSArray arrayWithContentsOfFile:path];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,8 +62,8 @@
 
 	[self.stautsLabel setHidden:NO];
 
-	progress = 0;
-	timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(doCheck:) userInfo:nil repeats:YES];
+	progress = -1;
+	timer = [NSTimer scheduledTimerWithTimeInterval:.25 target:self selector:@selector(doCheck:) userInfo:nil repeats:YES];
 
 	[self.examView bringSubviewToFront:self.progressLabel];
 	[self.progressLabel setText:@"0%"];
@@ -65,11 +73,17 @@
 
 - (void)doCheck:(NSTimer *)sender {
 	progress++;
-	[self.progressLabel setText:[NSString stringWithFormat:@"%i%%", progress * 10]];
+	[self.progressLabel setText:[NSString stringWithFormat:@"%i%%", 100 * (progress + 1) / self.checkList.count]];
+	[self.stautsLabel setText:[NSString stringWithFormat:@"正在检测: %@", self.checkList[progress]]];
 
-	if (progress == 10) {
+	if (progress == [self.checkList count] - 1) {
 		[timer invalidate];
-		[self.examView setHidden:YES];
+
+		[UIView animateWithDuration:0.2 delay:100 / self.checkList.count options:UIViewAnimationOptionCurveEaseInOut animations: ^{
+		    self.examView.alpha = 0;
+		} completion: ^(BOOL finished) {
+		    [self.examView setHidden:YES];
+		}];
 	}
 }
 

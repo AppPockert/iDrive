@@ -8,6 +8,7 @@
 
 #import "BaseViewController.h"
 #import "RequestService.h"
+#import "Reachability.h"
 
 #import <objc/runtime.h>
 
@@ -82,6 +83,11 @@ static char RequestServiceDelegate;
 }
 
 - (void)sendRequestTo:(RequestService *)service with:(RequestParameter *)parameter {
+	if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
+		[self.view makeToast:@"网络未设置，请检查网络设置后重试"];
+		return;
+	}
+
 	[HUD show:self.shouldAutoShowHUD];
 
 	service.delegate = self;

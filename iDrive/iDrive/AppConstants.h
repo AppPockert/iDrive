@@ -14,6 +14,7 @@
 #define kMainIndex        @"MainIndex"        // 首页
 #define kLogin            @"Login"            // 登陆
 #define kRegister         @"Register"         // 注册
+#define kLogout           @"Logout"           // 注销
 #define kItineraryHistory @"ItineraryHistory" // 历史轨迹
 #define kVehicleExam      @"VehicleExam"      // 车辆体检
 #define kRealTimeTraj     @"RealTimeTraj"     // 实时轨迹
@@ -32,13 +33,17 @@
 #define kLoginNav         @"LoginNav"
 #define kIntroductionNav  @"IntroductionNav"
 #define kMainTab          @"MainTab"
-
+#define kMainTabNav       @"MainTabNav"
+#define kCarInfoNav       @"CarInfoNav"
 
 #pragma mark - UserDefaultKey
 
 #define kUserInfo         @"UserInfo"
 #define kFirstLaunched    @"FirstLaunched"
 #define kCarAbnormal      @"CarAbnormal"
+
+
+#define kResultSuccess    @"success"
 
 #define TestVersion       1
 #define TestServer        @"TestServer"
@@ -67,21 +72,17 @@
 #pragma mark - Request API
 
 //#define kBaseURL                 @"http://121.40.85.106:8081"
-#define kBaseURL                 @"http://117.89.131.226:7788"
+#define kBaseURL                 @"http://117.89.132.12:7788"
 
 #define kLoginRequestUrl         @"/EasyCarServer/struts/loginAction!doLogin?userTelephone=%@&userPassword=%@"
 #define kRegisterRequestUrl      @"/EasyCarServer/struts/registerAction!doRegister?userCarlicense=%@&userIdcard=%@&userPassword=%@&userTelephone=%@&userTianyitongid=%@"
-#define kCarInfoRequestUrl       @"/EasyCarServer/struts/carInfoAction!queryCarInfo?userId=%@"
+#define kCarInfoRequestUrl       @"/EasyCarServer/struts/carInfoAction!queryCarInfo?userTelephone=%@"
 #define kRealTimeTrajectoryUrl   @"/EasyCarServer/struts/carTravelAction!doSelectLastTravelInfo?equipmentSNnum=%@"
 #define kItineraryHistoryUrl     @"/EasyCarServer/struts/carTravelAction!doSelectTravelInfoList?equipmentSNnum=%@&startTime=%@&endTime=%@"
 #define kExaminationInfoUrl      @"/EasyCarServer/struts/carInfoAction!queryCarTestInfo?carId=%@"
-
-
-#define kTravelAction             @"/EasyCarServer/struts/carTravelAction!doSelectLastTravelInfo?equipmentSNnum='1'"
-#define kSaveCarIno               @"/EasyCarServer/struts/carInfoAction!addCarInfo?icName=%@&ciiInsuranceType=%@&ciiInsurancetimeLeft=%@&ciiMaintaintimeLeft=%@&ciiMaintaindistanceLeft=%@&carLicenseid=%@&carModel=%@&carDriver=%@&userTianyitongid=%@"
-
-//#define kSaveCarInfo @"/EasyCarServer/struts/carInfoAction!addCarInfo?icName=zhongguo&ciiInsuranceType=1&ciiInsurancetimeLeft=2014-10-08%2014:23:41&ciiMaintaintimeLeft=2014-10-08%2014:23:41&ciiMaintaindistanceLeft=1000.0&carLicenseid=A123&carModel=BMW&carDriver=zhangsan&userTianyitongid=6219034133056"
-
+#define kTravelAction            @"/EasyCarServer/struts/carTravelAction!doSelectLastTravelInfo?equipmentSNnum='1'"
+#define kAddCarIno               @"/EasyCarServer/struts/carInfoAction!addCarInfo?icName=%@&ciiInsuranceType=%@&ciiInsurancetimeLeft=%@&ciiMaintaintimeLeft=%@&ciiMaintaindistanceLeft=%@&carLicenseid=%@&carModel=%@&carDriver=%@&userTianyitongid=%@"
+#define kSaveCarIno               @"/EasyCarServer/struts/carInfoAction!updateCarInfo?icName=%@&ciiInsuranceType=%@&ciiInsurancetimeLeft=%@&ciiMaintaintimeLeft=%@&ciiMaintaindistanceLeft=%@&carLicenseid=%@&carModel=%@&carDriver=%@&userTianyitongid=%@&userTelephone=%@"
 #define kBehaviorAnalysis         @"/EasyCarServer/struts/carTravelAction!selectCartreval?equipmentSNnum=%@"
 #define kCarPanel                 @"/EasyCarServer/struts/carTravelAction!selectCarControl?equipmentSNnum=%@"
 #define kCarAbnormalUrl           @""

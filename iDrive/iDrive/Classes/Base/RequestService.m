@@ -28,9 +28,11 @@
 		self.requestMethod = @"GET";
 	}
 
-	NSURL *requestURL = [NSURL URLWithString:self.url];
+	NSString *encodeUrl = [self.url stringByAddingPercentEscapesUsingEncoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingUTF8)];
+	NSURL *requestURL = [NSURL URLWithString:encodeUrl];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:requestURL];
-	request.timeOutSeconds = 10.f;
+	request.timeOutSeconds = 5.f;
+
 	if (self.requestMethod) {
 		request.requestMethod = self.requestMethod;
 	}
@@ -43,7 +45,9 @@
 	}
 
 
-	NSLog(@"Send request with url: %@\n RequestParameter:\n%@", self.url, parameter ? parameter : @"nil");
+	NSLog(@"Send request with url: %@\n RequestParameter:\n%@", encodeUrl, parameter ? parameter : @"nil");
+//	NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+//	[request setStringEncoding:enc];
 	[request startSynchronous];
 
 	_resultCode = request.responseStatusCode;

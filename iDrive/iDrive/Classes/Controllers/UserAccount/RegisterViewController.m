@@ -117,7 +117,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:kCarInfo]) {
 		CarInfoViewController *controller = segue.destinationViewController;
-		controller.pushFromLogin = YES;
+		controller.shouldUpdate = NO;
+		controller.isFirstTimeToFill = YES;
 	}
 }
 

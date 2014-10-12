@@ -8,6 +8,7 @@
 
 #import "MainIndexViewController.h"
 #import "CDCircleOverlayView.h"
+#import "CarInfoViewController.h"
 
 #define IntroductionImgs  @[@"主界面-车辆监控", @"主界面-车辆信息", @"主界面-车险及保养", @"主界面-车辆体检", @"主界面-实时轨迹", @"主界面-行为分析", @"主界面-行程管理", @"主界面-车辆异动", @"主界面-道路救援"]
 #define FunctionBtns      @[@"圆盘按钮-车辆监控", @"圆盘按钮-车辆信息", @"圆盘按钮-车险及保养", @"圆盘按钮-车辆体检", @"圆盘按钮-实时轨迹", @"圆盘按钮-行为分析", @"圆盘按钮-行程管理", @"圆盘按钮-车辆异动", @"圆盘按钮-道路救援"]
@@ -73,6 +74,15 @@
 
 - (UIImage *)circle:(CDCircle *)circle iconForThumbAtRow:(NSInteger)row {
 	return [UIImage imageNamed:FunctionBtns[row]];
+}
+
+#pragma mark
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:kCarInfo]) {
+		CarInfoViewController *controller = segue.destinationViewController;
+		controller.shouldUpdate = YES;
+	}
 }
 
 @end

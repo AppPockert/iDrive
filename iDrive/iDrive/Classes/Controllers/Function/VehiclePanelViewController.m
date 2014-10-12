@@ -28,8 +28,8 @@
 @property (weak, nonatomic) IBOutlet UIView *iFuelConsumptionView;
 @property (weak, nonatomic) IBOutlet UIView *aFuelConsumptionView;
 
-@property (weak, nonatomic) IBOutlet UIImageView *engieSpeed; // 发动机转速
-@property (weak, nonatomic) IBOutlet UIImageView *runningSpeed; // 行驶车速
+@property (weak, nonatomic) IBOutlet WMGaugeView *engieSpeedGaugeView; // 发动机转速
+@property (weak, nonatomic) IBOutlet WMGaugeView *runningSpeedGaugeView; // 行驶车速
 
 
 @end
@@ -42,7 +42,27 @@
 
 
 	[self.temperature addSubview:[self gifImageNamed:@"温度计表动画背景.gif" atFrame:self.temperature.bounds]];
-	[self.iFuelConsumptionView addSubview:[self gifImageNamed:@"瞬时油耗动画.gif" atFrame:CGRectMake(0, 0, 130, 57)]];
+//	[self.iFuelConsumptionView addSubview:[self gifImageNamed:@"瞬时油耗动画.gif" atFrame:CGRectMake(0, 0, 130, 57)]];
+
+	// 发动机转速
+	_engieSpeedGaugeView.minValue = 0.0;
+	_engieSpeedGaugeView.maxValue = 5000.0;
+	_engieSpeedGaugeView.scaleDivisions = 10.0;
+	_engieSpeedGaugeView.scaleSubdivisions = 10.0;
+	_engieSpeedGaugeView.scaleStartAngle = 75.0;
+	_engieSpeedGaugeView.scaleEndAngle = 285.0;
+	_engieSpeedGaugeView.rangeValues = @[@1000, @2000, @3000, @4000, @5000.0];
+	_engieSpeedGaugeView.rangeColors = @[RGB(255, 255, 255), RGB(232, 111, 33), RGB(232, 231, 33), RGB(27, 202, 33), RGB(231, 32, 43)];
+
+	// 行驶车速
+	_runningSpeedGaugeView.minValue = 0.0;
+	_runningSpeedGaugeView.maxValue = 160.0;
+	_runningSpeedGaugeView.scaleDivisions = 8.0;
+	_runningSpeedGaugeView.scaleSubdivisions = 10.0;
+	_runningSpeedGaugeView.scaleStartAngle = 75.0;
+	_runningSpeedGaugeView.scaleEndAngle = 285.0;
+	_runningSpeedGaugeView.rangeValues = @[@30, @60, @90, @120, @160.0];
+	_runningSpeedGaugeView.rangeColors = @[RGB(255, 255, 255), RGB(232, 111, 33), RGB(232, 231, 33), RGB(27, 202, 33), RGB(231, 32, 43)];
 
 	GetCarPanelInfoRequestParameter *parameter = [[GetCarPanelInfoRequestParameter alloc] init];
 	parameter.equipmentSNnum = [[kAppDelegate getUserInfo] SN];
@@ -82,7 +102,7 @@
 - (void)setSolarterm:(int)value {
 	[UIView animateWithDuration:.5 animations: ^{
 	    CGRect frame = self.solarTermView.frame;
-	    frame.origin.y = 113 - 57 * value / 100;
+	    frame.origin.y = 113 - 57 * value / 100.f;
 	    self.solarTermView.frame = frame;
 	}];
 
@@ -93,7 +113,7 @@
 - (void)setEngieLoad:(int)value {
 	[UIView animateWithDuration:.5 animations: ^{
 	    CGRect frame = self.engineLoadView.frame;
-	    frame.origin.y = 113 - 57 * value / 100;
+	    frame.origin.y = 113 - 57 * value / 100.f;
 	    self.engineLoadView.frame = frame;
 	}];
 	[self.engineLoad setText:[NSString stringWithFormat:@"%i%%", value]];
@@ -104,8 +124,12 @@
 	self.iFuelConsumption.text = [NSString stringWithFormat:@"%d", value];
 
 	CGRect frame = self.iFuelConsumptionView.frame;
-	frame.size.width = 130 * value / 100;
-	self.iFuelConsumptionView.frame = frame;
+	frame.size.width = 130 * (1 - value / 100.f);
+	frame.origin.x = 130 * (value / 100.f);
+
+	[UIView animateWithDuration:.5 animations: ^{
+	    self.iFuelConsumptionView.frame = frame;
+	}];
 }
 
 // 设置平均油耗
@@ -113,7 +137,7 @@
 	self.aFuelConsumption.text = [NSString stringWithFormat:@"%d", value];
 
 	__block CGRect frame = self.aFuelConsumptionView.frame;
-	frame.origin.y = 113 - 57 * value / 100;
+	frame.origin.y = 113 - 57 * value / 100.f;
 	frame.size.width = 0;
 	self.aFuelConsumptionView.frame = frame;
 
@@ -125,20 +149,12 @@
 
 // 设置发动机转速
 - (void)setengieSpeed:(int)speed {
-	self.engieSpeed.transform = CGAffineTransformIdentity;
-	[UIView animateWithDuration:0.5 animations: ^{
-	    CGAffineTransform transform = CGAffineTransformMakeRotation((speed - 30) * 3 * M_PI / 180.f);
-	    self.engieSpeed.transform = transform;
-	}];
+	self.engieSpeedGaugeView.value = speed;
 }
 
 // 设置行驶车速
 - (void)setrunningSpeed:(int)speed {
-	self.runningSpeed.transform = CGAffineTransformIdentity;
-	[UIView animateWithDuration:0.5 animations: ^{
-	    CGAffineTransform transform = CGAffineTransformMakeRotation((speed - 80) * 9  * M_PI / (8 * 180.f));
-	    self.runningSpeed.transform = transform;
-	}];
+	self.runningSpeedGaugeView.value = speed;
 }
 
 @end

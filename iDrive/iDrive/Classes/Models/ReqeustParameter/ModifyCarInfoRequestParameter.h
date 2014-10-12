@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSString *ciiMaintaintimeLeft;     // 保养到期日
 @property (strong, nonatomic) NSString *ciiMaintaindistanceLeft; // 保养到期里程
 @property (strong, nonatomic) NSString *equipmentSNnum;          // SN设备号
+@property (strong, nonatomic) NSString *userTelphone;            // 用户手机号
 
 
 @end

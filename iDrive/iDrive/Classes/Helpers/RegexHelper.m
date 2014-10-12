@@ -8,7 +8,7 @@
 
 #import "RegexHelper.h"
 
-#define kRegexs     @[@"1[0-9]{10}", @"[A-Z0-9a-z]{6,16}", @"^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$"]
+#define kRegexs     @[@"1[0-9]{10}", @"[A-Z0-9a-z]{6,16}", @"^[\u4e00-\u9fa5]{1}[A-Z]{1,2}[A-Z_0-9]{5}$"]
 #define kErrMsgs    @[@"手机号码格式错误", @"密码格式错误，请输入6-16位字母或数字", @"车牌号格式错误", @"身份证号格式错误"]
 
 @implementation RegexHelper

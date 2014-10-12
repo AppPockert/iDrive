@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>ECU中存储的故障码数量</string>
+    <string>MIL（故障指示灯）状态</string>
+    <string>支持失火监控</string>
+    <string>支持燃油系统监控</string>
+    <string>支持综合部件监控</string>
+    <string>支持压缩点火监控</string>
+    <string>失火检测准备就绪</string>
+    <string>燃油系统检测准备就绪</string>
+    <string>综合部件检测准备就绪</string>
+    <string>支持催化剂监测	</string>
+    <string>支持加热式催化剂监控</string>
+    <string>支持燃油蒸汽系统监测</string>
+    <string>支持二次空气喷射系统监控	</string>
+    <string>支持空调系统冷媒监控</string>
+    <string>支持氧传感器监测</string>
+    <string>支持EGR（废气再循环）系统</string>
+    <string>催化剂监测准备就绪	</string>
+    <string>加热式催化剂监测准备就绪	</string>
+    <string>燃油蒸汽系统监测准备就绪	</string>
+    <string>二次空气喷射系统监测准备就绪	</string>
+    <string>空调系统冷媒监测准备就绪	</string>
+    <string>氧传感器监测准备就绪</string>
+    <string>氧传感器加热器监测准备就绪</string>
+    <string>EGR（废气再循环）系统和VVT（可变阀正时）系统监测准备就绪	</string>
+    <string>燃油系统1状态	</string>
+    <string>燃油系统2状态	</string>
+    <string>负荷计算值</string>
+    <string>发动机冷却液温度</string>
+    <string>短期燃油修正（缸组1）</string>
+    <string>长期燃油修正（缸组1）</string>
+    <string>进气歧管绝对压力</string>
+    <string>发动机转速</string>
+    <string>车速传感器</string>
+    <string>气缸1点火提前角（BTDC）</string>
+    <string>进气温度</string>
+    <string>来自质量空气流量传感器的空气流量</string>
+    <string>节气门绝对位置	</string>
+    <string>氧气传感位置</string>
+    <string>氧传感器输出电压</string>
+    <string>短期燃油修正（缸组1，传感器1）</string>
+    <string>氧传感器输出电压（缸组1，传感器2）</string>
+    <string>车辆或发动机认证的OBD要求</string>
+    <string>发动机启动后时间</string>
+    <string>MIL（故障指示灯）点亮后的行驶距离	</string>
+    <string>油轨压力	</string>
+    <string>指令液位输入</string>
+    <string>清除故障码后的暖机次数</string>
+    <string>清除故障码后的行驶距离</string>
+    <string>大气压</string>
+    <string>控制模块电压</string>
+    <string>绝对负荷值</string>
+    <string>燃油/空气指令的当量比</string>
+</array>
+</plist>

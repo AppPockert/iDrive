@@ -7,19 +7,25 @@
 //
 
 #import "CarInfoDetailTableViewController.h"
+#import "PlistFilePathManager.h"
+#import "UIPopoverListView.h"
 
 @interface UIViewController (CarInfo)
 
 - (void)saveCarInfo;
 - (void)showDatePicker:(int)datePickerTag;
-- (BOOL)isPushFromLogin;
+- (BOOL)shouldUpdate;
 
 @end
 
+#define FileName    @"LicensePlate.plist"
 
-@interface CarInfoDetailTableViewController ()
+@interface CarInfoDetailTableViewController () <UIPopoverListViewDataSource, UIPopoverListViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *carLicense;        // 车牌号
+@property (strong, nonatomic) NSString *fullCarLicense;              // 完整车牌号
+
+@property (weak, nonatomic) IBOutlet UIButton *licenseSelectBtn;     // 车牌所属地区
+@property (weak, nonatomic) IBOutlet UITextField *carLicense;        // 车牌号后半部分
 @property (weak, nonatomic) IBOutlet UILabel *carBrandLabel;         // 车品牌
 @property (weak, nonatomic) IBOutlet UITextField *driverField;       // 驾驶员
 @property (weak, nonatomic) IBOutlet UITextField *mileageField;      // 行驶里程
@@ -29,8 +35,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *maintenanceDueDate;    // 保养到期日
 @property (weak, nonatomic) IBOutlet UITextField *maintenanceMaMi;   // 保养到期里程
 
-
 @property (weak, nonatomic) IBOutlet UIButton *doneBtn;              // 完成按钮
+
+@property (strong, nonatomic) NSMutableArray *carLicenseList;
 
 @end
 
@@ -40,13 +47,13 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-//	[self.tableView setTableFooterView:[UIView new]];
-//	self.tableView.scrollEnabled = (kScreenHeight < kScreenHeight568);
+	NSString *path = [PlistFilePathManager getFullPath:FileName options:FilePathOptionTypeUserDocument | FilePathOptionTypeCopyFromBundle];
+	_carLicenseList = [NSArray arrayWithContentsOfFile:path];
 }
 
 - (void)viewDidLayoutSubviews {
 	[super viewDidLayoutSubviews];
-	BOOL isPushFromLogin = [self.parentViewController isPushFromLogin];
+	BOOL isPushFromLogin = ![self.parentViewController shouldUpdate];
 	CGRect frame = self.tableView.frame;
 	if (isPushFromLogin) {
 		frame.size.height = kScreenHeight - kNavBarHeight;
@@ -55,6 +62,15 @@
 		frame.size.height = kScreenHeight - kNavBarHeight - KTabBarHeight;
 	}
 	self.tableView.frame = frame;
+}
+
+- (NSString *)fullCarLicense {
+	return [self.licenseSelectBtn.titleLabel.text stringByAppendingString:self.carLicense.text];
+}
+
+- (void)setFullCarLicense:(NSString *)fullCarLicense {
+	[self.licenseSelectBtn setTitle:[fullCarLicense substringToIndex:1] forState:UIControlStateNormal];
+	self.carLicense.text = [fullCarLicense substringFromIndex:1];
 }
 
 #pragma mark
@@ -95,6 +111,47 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
 	[self.tableView endEditing:YES];
+}
+
+#pragma mark
+
+- (IBAction)selectLicense:(id)sender {
+	CGFloat xWidth = self.view.bounds.size.width - 100.0f;
+	CGFloat yHeight = 272.0f;
+	CGFloat yOffset = (self.view.bounds.size.height - yHeight) / 2.0f;
+	UIPopoverListView *poplistview = [[UIPopoverListView alloc] initWithFrame:CGRectMake(10, yOffset, xWidth, yHeight)];
+	poplistview.delegate = self;
+	poplistview.datasource = self;
+	poplistview.listView.scrollEnabled = YES;
+	[poplistview setTitle:@"所属地"];
+	[poplistview show];
+}
+
+#pragma mark - UIPopoverListViewDataSource
+
+- (UITableViewCell *)popoverListView:(UIPopoverListView *)popoverListView
+                    cellForIndexPath:(NSIndexPath *)indexPath {
+	static NSString *identifier = @"cell";
+	UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+	                                               reuseIdentifier:identifier];
+	cell.textLabel.text = self.carLicenseList[indexPath.row];
+	return cell;
+}
+
+- (NSInteger)popoverListView:(UIPopoverListView *)popoverListView
+       numberOfRowsInSection:(NSInteger)section {
+	return self.carLicenseList.count;
+}
+
+#pragma mark - UIPopoverListViewDelegate
+- (void)popoverListView:(UIPopoverListView *)popoverListView
+     didSelectIndexPath:(NSIndexPath *)indexPath {
+	[self.licenseSelectBtn setTitle:self.carLicenseList[indexPath.row] forState:UIControlStateNormal];
+}
+
+- (CGFloat) popoverListView:(UIPopoverListView *)popoverListView
+    heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return 44.f;
 }
 
 @end

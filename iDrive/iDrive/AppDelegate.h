@@ -14,6 +14,8 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+- (void)logout;
+
 - (UserInfo *)getUserInfo;
 - (void)saveUserInfo:(UserInfo *)userInfo;
 

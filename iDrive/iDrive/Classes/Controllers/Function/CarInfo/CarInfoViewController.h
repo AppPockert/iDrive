@@ -12,6 +12,7 @@
 
 @interface CarInfoViewController : BaseViewController
 
-@property (assign, nonatomic, getter = isPushFromLogin) BOOL pushFromLogin; // 是否是登陆后迁移而来
+@property (assign, nonatomic) BOOL shouldUpdate;      // 是否是主页面过来，需要更新
+@property (assign, nonatomic) BOOL isFirstTimeToFill; // 是否是第一次填写
 
 @end
