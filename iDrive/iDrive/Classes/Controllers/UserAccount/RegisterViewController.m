@@ -105,7 +105,7 @@
 
 		[kAppDelegate saveUserInfo:userInfo];
 
-		[self performSegueWithIdentifier:kMainIndex sender:nil];
+		[self performSegueWithIdentifier:kCarInfo sender:nil];
 	}
 	else {
 		[self.view makeToast:@"注册失败"];

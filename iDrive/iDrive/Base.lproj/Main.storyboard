@@ -1904,7 +1904,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="剩余油量" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoN-e6-XBR">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="上次耗油量" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CoN-e6-XBR">
                                                 <rect key="frame" x="20" y="12" width="86" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1927,7 +1927,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="电瓶电压" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xx6-3j-Dhb">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="平均耗油量" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xx6-3j-Dhb">
                                                 <rect key="frame" x="20" y="12" width="86" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1950,7 +1950,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="当前车速" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjH-6y-bzn">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="电瓶电压" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjH-6y-bzn">
                                                 <rect key="frame" x="20" y="12" width="86" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1973,7 +1973,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="发动机转速" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAF-cD-g2J">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="当前车速" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAF-cD-g2J">
                                                 <rect key="frame" x="20" y="12" width="86" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1996,7 +1996,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="45"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="发动机运行时间" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyv-wL-9YH">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="发动机转速" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eyv-wL-9YH">
                                                 <rect key="frame" x="20" y="12" width="110" height="21"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -2083,6 +2083,7 @@
                                         <rect key="frame" x="0.0" y="368" width="320" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -2099,11 +2100,19 @@
                     </view>
                     <navigationItem key="navigationItem" id="QOl-P2-qjs"/>
                     <connections>
+                        <outlet property="avlOilConsumption" destination="36y-8x-XX7" id="fyl-A0-4Uk"/>
+                        <outlet property="batteryVoltage" destination="auA-jZ-2SD" id="TsW-Ob-4Bl"/>
                         <outlet property="beginExamBtn" destination="Zci-Yq-kp3" id="27E-Np-CKk"/>
+                        <outlet property="carSpeed" destination="Xle-s1-3dR" id="u5q-uY-O0r"/>
+                        <outlet property="coolantTemperature" destination="mOQ-Wo-aJZ" id="Co4-gm-ryP"/>
+                        <outlet property="currentOilConsumption" destination="jtM-qg-QTR" id="9et-ca-ZgK"/>
                         <outlet property="examView" destination="UgF-ve-RfI" id="JDk-tA-yqQ"/>
                         <outlet property="indicator" destination="CUJ-vU-fXm" id="coE-v5-T0x"/>
                         <outlet property="progressLabel" destination="ea3-ZS-SMD" id="i7T-Ad-iVq"/>
+                        <outlet property="rotateSpeed" destination="rJh-zz-2xi" id="yDr-DJ-qIC"/>
                         <outlet property="stautsLabel" destination="cak-il-vmz" id="7yR-S8-b9Q"/>
+                        <outlet property="sumMileage" destination="rGH-Zl-n4e" id="d2P-om-TO4"/>
+                        <outlet property="sumOilConsumption" destination="GNX-PT-pan" id="mrH-8K-I1p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H1x-YY-A84" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2882,7 +2891,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="油费/耗油量" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geR-c4-M3O">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="瞬时油耗：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="geR-c4-M3O">
                                 <rect key="frame" x="30" y="196" width="98" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -2980,7 +2989,7 @@
                         <outlet property="oilConsumptionPM" destination="eBV-gb-qPI" id="wdT-VG-47A"/>
                         <outlet property="rapidAcceleration" destination="Rn9-X0-5r5" id="NhN-eA-ISR"/>
                         <outlet property="rapidDeceleration" destination="LxA-nm-w9n" id="6V8-hR-bV7"/>
-                        <outlet property="sharpTurn" destination="Awq-Kh-BWL" id="3UV-da-Vzc"/>
+                        <outlet property="sharpTurn" destination="eUc-c1-xYO" id="pUq-Cp-Fsu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ZB-iE-d6j" userLabel="First Responder" sceneMemberID="firstResponder"/>

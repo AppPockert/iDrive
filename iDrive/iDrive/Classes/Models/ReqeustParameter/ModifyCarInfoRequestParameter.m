@@ -15,6 +15,7 @@
 	self = [super init];
 	if (self) {
 		self.equipmentSNnum = [[kAppDelegate getUserInfo] SN];
+		self.userTelphone = [[kAppDelegate getUserInfo] userTelephone];
 	}
 	return self;
 }

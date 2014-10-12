@@ -79,7 +79,7 @@
 #define kCarInfoRequestUrl       @"/EasyCarServer/struts/carInfoAction!queryCarInfo?userTelephone=%@"
 #define kRealTimeTrajectoryUrl   @"/EasyCarServer/struts/carTravelAction!doSelectLastTravelInfo?equipmentSNnum=%@"
 #define kItineraryHistoryUrl     @"/EasyCarServer/struts/carTravelAction!doSelectTravelInfoList?equipmentSNnum=%@&startTime=%@&endTime=%@"
-#define kExaminationInfoUrl      @"/EasyCarServer/struts/carInfoAction!queryCarTestInfo?carId=%@"
+#define kExaminationInfoUrl      @"/EasyCarServer/struts/carInfoAction!queryCarTestInfo?equipmentSNnum=%@"
 #define kTravelAction            @"/EasyCarServer/struts/carTravelAction!doSelectLastTravelInfo?equipmentSNnum='1'"
 #define kAddCarIno               @"/EasyCarServer/struts/carInfoAction!addCarInfo?icName=%@&ciiInsuranceType=%@&ciiInsurancetimeLeft=%@&ciiMaintaintimeLeft=%@&ciiMaintaindistanceLeft=%@&carLicenseid=%@&carModel=%@&carDriver=%@&userTianyitongid=%@"
 #define kSaveCarIno               @"/EasyCarServer/struts/carInfoAction!updateCarInfo?icName=%@&ciiInsuranceType=%@&ciiInsurancetimeLeft=%@&ciiMaintaintimeLeft=%@&ciiMaintaindistanceLeft=%@&carLicenseid=%@&carModel=%@&carDriver=%@&userTianyitongid=%@&userTelephone=%@"

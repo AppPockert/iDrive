@@ -10,6 +10,8 @@
 #import "GPLoadingView.h"
 #import "CheckItemListView.h"
 #import "PlistFilePathManager.h"
+#import "GetExaminationInfoRequestParameter.h"
+#import "RequestService.h"
 
 #define  FileName    @"ExaminationItem.plist"
 
@@ -17,6 +19,9 @@
 {
 	int progress;
 	NSTimer *timer;
+
+	BOOL _listCheckDone;
+	BOOL _getDataDone;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *examView;
@@ -28,6 +33,17 @@
 @property (strong, nonatomic) CheckItemListView *checkListView; // 检测列表
 
 @property (strong, nonatomic) NSMutableArray *checkList;
+
+/*------------------------------*/
+
+@property (weak, nonatomic) IBOutlet UILabel *sumOilConsumption;
+@property (weak, nonatomic) IBOutlet UILabel *sumMileage;
+@property (weak, nonatomic) IBOutlet UILabel *currentOilConsumption;
+@property (weak, nonatomic) IBOutlet UILabel *avlOilConsumption;
+@property (weak, nonatomic) IBOutlet UILabel *batteryVoltage;
+@property (weak, nonatomic) IBOutlet UILabel *rotateSpeed;
+@property (weak, nonatomic) IBOutlet UILabel *carSpeed;
+@property (weak, nonatomic) IBOutlet UILabel *coolantTemperature;
 
 @end
 
@@ -56,14 +72,15 @@
 
 // 开始检测
 - (IBAction)beginExam:(id)sender {
+	GetExaminationInfoRequestParameter *p = [[GetExaminationInfoRequestParameter alloc] init];
+	p.equipmentSNnum = @"vip10";
+	[self sendRequestTo:[[RequestService alloc] init] with:p];
+
 	self.beginExamBtn.userInteractionEnabled = NO;
 	[self.beginExamBtn setTitle:@"" forState:UIControlStateNormal];
 	[self.indicator startAnimation];
 
 	[self.stautsLabel setHidden:NO];
-
-	progress = -1;
-	timer = [NSTimer scheduledTimerWithTimeInterval:.25 target:self selector:@selector(doCheck:) userInfo:nil repeats:YES];
 
 	[self.examView bringSubviewToFront:self.progressLabel];
 	[self.progressLabel setText:@"0%"];
@@ -87,7 +104,40 @@
 	}
 }
 
+#pragma mark
+
 - (void)handleResult:(id)result of:(RequestService *)service {
+	if ([result isKindOfClass:[NSDictionary class]]) {
+		if ([[result allKeys] containsObject:@"error"]) {
+			[self examinationFailed];
+		}
+		else {
+			progress = -1;
+			timer = [NSTimer scheduledTimerWithTimeInterval:.25 target:self selector:@selector(doCheck:) userInfo:nil repeats:YES];
+
+			self.sumOilConsumption.text = [NSString stringWithFormat:@"%@ 升", result[@"sumOilConsumption"]];
+			self.sumMileage.text = [NSString stringWithFormat:@"%@ 公里", result[@"sumMileage"]];
+			self.currentOilConsumption.text = [NSString stringWithFormat:@"%@ 升", result[@"currentOilConsumption"]];
+			self.avlOilConsumption.text = [NSString stringWithFormat:@"%@ 升", result[@"avlOilConsumption"]];
+			self.batteryVoltage.text = [NSString stringWithFormat:@"%@ 伏", result[@"batteryVoltage"]];
+			self.carSpeed.text = [NSString stringWithFormat:@"%@ 公里/小时", result[@"carSpeed"]];
+			self.rotateSpeed.text = [NSString stringWithFormat:@"%@ 转/分钟", result[@"rotateSpeed"]];
+			self.coolantTemperature.text = [NSString stringWithFormat:@"%@ 度", result[@"coolantTemperature"]];
+		}
+	}
+	else {
+		[self examinationFailed];
+	}
+}
+
+- (void)examinationFailed {
+	[self.view makeToast:@"获取车辆体检信息失败，请稍后重试"];
+
+	self.beginExamBtn.userInteractionEnabled = YES;
+	[self.beginExamBtn setTitle:@"开始体检" forState:UIControlStateNormal];
+	[self.indicator stopAnimation];
+	[self.stautsLabel setHidden:YES];
+	[self.examView bringSubviewToFront:self.beginExamBtn];
 }
 
 @end

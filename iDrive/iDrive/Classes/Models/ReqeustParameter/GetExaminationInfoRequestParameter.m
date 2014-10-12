@@ -7,11 +7,20 @@
 //
 
 #import "GetExaminationInfoRequestParameter.h"
+#import "UserInfo.h"
 
 @implementation GetExaminationInfoRequestParameter
 
+- (id)init {
+	self = [super init];
+	if (self) {
+		self.equipmentSNnum = [[kAppDelegate getUserInfo] SN];
+	}
+	return self;
+}
+
 - (NSString *)urlByAppendParameter {
-	NSString *url = [NSString stringWithFormat:kExaminationInfoUrl, self.carId];
+	NSString *url = [NSString stringWithFormat:kExaminationInfoUrl, self.equipmentSNnum];
 	return [ServerURLUtil getFullURL:url];
 }
 

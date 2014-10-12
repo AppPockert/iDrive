@@ -142,8 +142,8 @@ const int CarInfoRequest = 2;
 			userInfo.userPassword = self.password.text;
 			userInfo.SN = result[@"equipmentSNnum"];
 
-			if (result[@"carLicenseid"] && ![result[@"carLicenseid"] isKindOfClass:[NSNull class]]) {
-				userInfo.carLicense = result[@"carLicenseid"];
+			if (result[@"carLicense"] && ![result[@"carLicense"] isKindOfClass:[NSNull class]]) {
+				userInfo.carLicense = result[@"carLicense"];
 
 				// 用户提交过车辆信息，则直接跳转到主页面
 				[self performSegueWithIdentifier:kMainIndex sender:nil];
