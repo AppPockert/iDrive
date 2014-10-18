@@ -182,7 +182,7 @@
 		direction = ABS(self.recognizer.currentThumb.tag - thumb.tag) >= self.numberOfSegments / 2.f ? -1 : 1;
 	}
 
-	int different = MIN(ABS(self.recognizer.currentThumb.tag - thumb.tag), ABS(self.recognizer.currentThumb.tag - thumb.tag + self.numberOfSegments));
+	int different = MIN(ABS(self.recognizer.currentThumb.tag - thumb.tag), ABS(ABS(self.recognizer.currentThumb.tag - thumb.tag) - self.numberOfSegments));
 	rotation = direction * different * (360.f / self.numberOfSegments);
 
 	[UIView animateWithDuration:0.25f animations: ^{

@@ -211,7 +211,7 @@ const int GetCarInfo = 3;
 		parameter.carLicenseid = self.detail.fullCarLicense;
 		parameter.carModel = [self valueOfLabel:self.detail.carBrandLabel];
 		parameter.carDriver = [self valueOfField:self.detail.driverField];
-		parameter.insuranceType = @""; //[self valueOfLabel:self.detail.autoInsuranceLabel];
+		parameter.insuranceType = [self valueOfLabel:self.detail.autoInsuranceLabel];
 		parameter.insuranceCompany = [self valueOfLabel:self.detail.insuranceCompanyLabel];
 		parameter.ciiInsurancetimeLeft = [self valueOfLabel:self.detail.insuranceExpire];
 		parameter.ciiMaintaintimeLeft = [self valueOfLabel:self.detail.maintenanceDueDate];
@@ -271,7 +271,7 @@ const int GetCarInfo = 3;
 					self.detail.driverField.text = result[@"carDriver"];
 				}
 				// 行驶公里数
-				if ([NSStringUtil isValidate:result[@"sumMileage"]]) {
+				if (result[@"sumMileage"] && [NSStringUtil isValidate:result[@"sumMileage"]]) {
 					self.detail.mileageField.text = [NSString stringWithFormat:@"%@", result[@"sumMileage"]];
 				}
 				// 保险公司
@@ -279,7 +279,7 @@ const int GetCarInfo = 3;
 					self.detail.insuranceCompanyLabel.text = result[@"IcName"];
 				}
 				// 保险类型
-				if ([NSStringUtil isValidate:result[@"CiiInsuranceType"]]) {
+				if (result[@"CiiInsuranceType"] && [NSStringUtil isValidate:[NSString stringWithFormat:@"%@", result[@"CiiInsuranceType"]]]) {
 					self.detail.autoInsuranceLabel.text = [NSString stringWithFormat:@"%@", result[@"CiiInsuranceType"]];
 				}
 				// 保险到期日
@@ -291,7 +291,7 @@ const int GetCarInfo = 3;
 					self.detail.maintenanceDueDate.text = result[@"CiiMaintaintimeLeft"];
 				}
 				// 保养到期里程
-				if ([NSStringUtil isValidate:result[@"CiiMaintaindistanceLeft"]]) {
+				if (result[@"CiiMaintaindistanceLeft"] && [NSStringUtil isValidate:[NSString stringWithFormat:@"%@", result[@"CiiMaintaindistanceLeft"]]]) {
 					self.detail.maintenanceMaMi.text = [NSString stringWithFormat:@"%@", result[@"CiiMaintaindistanceLeft"]];
 				}
 			}

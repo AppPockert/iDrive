@@ -32,6 +32,7 @@
 	_mapView = [[BMKMapView alloc] initWithFrame:CGRectMake(0.f, 0.f, kScreenWidth, kScreenHeight - kNavBarHeight - KTabBarHeight)];
 	_mapView.delegate = self;
 	_mapView.showMapScaleBar = YES;
+	_mapView.zoomLevel = 15.f;
 
 	[self.backgroundView addSubview:_mapView];
 
@@ -89,7 +90,7 @@
 // 请求实时轨迹信息
 - (void)inqueryRealTimeTrajectory {
 	RealTimeTrajectoryRequestParameter *parameter = [[RealTimeTrajectoryRequestParameter alloc] init];
-	parameter.equipmentSNnum = @"6334128330095";
+//	parameter.equipmentSNnum = @"6334128330095";
 	[self sendRequestTo:[[RequestService alloc] init] with:parameter];
 }
 
@@ -165,7 +166,7 @@
 #pragma mark -
 
 - (void)handleResult:(id)result of:(RequestService *)service {
-	if ([result isKindOfClass:[NSDictionary class]] && [result allKeys] > 0) {
+	if ([result isKindOfClass:[NSDictionary class]] && [[result allKeys] count] > 2) {
 		_history = [[ItineraryHistory alloc] init];
 		_history.avgOilCost = result[@"AvlOilConsumption"];
 		_history.avgSpeed = result[@"AvlSpeed"];
@@ -186,12 +187,16 @@
 
 - (NSArray *)getCoordinates:(NSArray *)gpsList {
 	NSMutableArray *coords = [[NSMutableArray alloc] initWithCapacity:5];
+	NSString *temp = @"(";
 	for (NSString *gps in gpsList) {
-		NSArray *gpsSp = [gps componentsSeparatedByString:@","];
-		Coordinate *c = [[Coordinate alloc] init];
-		c.lat = gpsSp[2];
-		c.lng = gpsSp[1];
-		[coords addObject:c];
+		NSRange foundObj = [gps rangeOfString:temp options:NSCaseInsensitiveSearch];
+		if (!foundObj.length > 0 || gps.length < 5) {
+			NSArray *gpsSp = [gps componentsSeparatedByString:@","];
+			Coordinate *c = [[Coordinate alloc] init];
+			c.lat = gpsSp[2];
+			c.lng = gpsSp[1];
+			[coords addObject:c];
+		}
 	}
 	return coords;
 }

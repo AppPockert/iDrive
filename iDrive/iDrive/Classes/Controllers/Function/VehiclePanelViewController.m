@@ -65,8 +65,6 @@
 	_runningSpeedGaugeView.rangeColors = @[RGB(255, 255, 255), RGB(232, 111, 33), RGB(232, 231, 33), RGB(27, 202, 33), RGB(231, 32, 43)];
 
 	GetCarPanelInfoRequestParameter *parameter = [[GetCarPanelInfoRequestParameter alloc] init];
-	parameter.equipmentSNnum = [[kAppDelegate getUserInfo] SN];
-
 	[self sendRequestTo:[[RequestService alloc] init] with:parameter];
 }
 
@@ -78,15 +76,23 @@
 
 - (void)handleResult:(id)result of:(RequestService *)service {
 	if ([result isKindOfClass:[NSDictionary class]]) {
-		self.voltage.text = result[@"batteryVoltage"];
-		self.tempLabel.text = [NSString stringWithFormat:@"%@%%", result[@"coolantTemperature"]];
+		if ([[result allKeys] containsObject:@"error"]) {
+			[self.view makeToast:@"车辆监控数据取得失败，请稍后重试"];
+		}
+		else {
+			self.voltage.text = result[@"batteryVoltage"];
+			self.tempLabel.text = [NSString stringWithFormat:@"%@%%", result[@"coolantTemperature"]];
 
-		[self setSolarterm:[result[@"throttlePercentage"] intValue]];
-		[self setEngieLoad:[result[@"engineLoad"] intValue]];
-		[self setiFuelConsumption:[result[@"instantOilConsumption"] intValue]];
-		[self setaFuelConsumption:[result[@"avlOilConsumption"] intValue]];
-		[self setengieSpeed:[result[@"rotateSpeed"] intValue]];
-		[self setrunningSpeed:[result[@"carSpeed"] intValue]];
+			[self setSolarterm:[result[@"throttlePercentage"] intValue]];
+			[self setEngieLoad:[result[@"engineLoad"] intValue]];
+			[self setiFuelConsumption:[result[@"instantOilConsumption"] intValue]];
+			[self setaFuelConsumption:[result[@"avlOilConsumption"] intValue]];
+			[self setengieSpeed:[result[@"rotateSpeed"] intValue]];
+			[self setrunningSpeed:[result[@"carSpeed"] intValue]];
+		}
+	}
+	else {
+		[self.view makeToast:@"车辆监控数据取得失败，请稍后重试"];
 	}
 }
 

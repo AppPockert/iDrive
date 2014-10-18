@@ -10,6 +10,7 @@
 #import "BehaviorAnalysisRequestParameter.h"
 #import "UserInfo.h"
 #import "RequestService.h"
+#import "NSStringUtil.h"
 
 @interface BehaviorAnalysisViewController ()
 
@@ -39,12 +40,34 @@
 			[self.view makeToast:@"获取分析数据失败，请稍后重试"];
 		}
 		else {
-			self.oilConsumptionPM.text = [NSString stringWithFormat:@"%@ L", result[@"avlOilHundMeter"]];
-			self.oilConsumption.text = [NSString stringWithFormat:@"%@ L", result[@"currentOilConsumption"]];
-			self.averageSpeed.text = [NSString stringWithFormat:@"%@ km/h", result[@"avlSpeed"]];
-			self.rapidAcceleration.text = [NSString stringWithFormat:@"%@ 次", result[@"addSpeed"]];
-			self.rapidDeceleration.text = [NSString stringWithFormat:@"%@ 次", result[@"reduceSpeed"]];
-			self.sharpTurn.text = [NSString stringWithFormat:@"%@ 次", result[@"wheel"]];
+			// 车型
+			if ([NSStringUtil isValidate:result[@"carModel"]]) {
+				self.carBrand.text = [NSString stringWithFormat:@"车型：%@", result[@"carModel"]];
+			}
+			// 百公里油耗
+			if ([NSStringUtil isValidate:result[@"avlOilHundMeter"]]) {
+				self.oilConsumptionPM.text = [NSString stringWithFormat:@"%@ L", result[@"avlOilHundMeter"]];
+			}
+			// 瞬时油耗
+			if ([NSStringUtil isValidate:result[@"currentOilConsumption"]]) {
+				self.oilConsumption.text = [NSString stringWithFormat:@"%@ L", result[@"currentOilConsumption"]];
+			}
+			// 平均速度
+			if ([NSStringUtil isValidate:result[@"avlSpeed"]]) {
+				self.averageSpeed.text = [NSString stringWithFormat:@"%@ km/h", result[@"avlSpeed"]];
+			}
+			// 急加速
+			if ([NSStringUtil isValidate:result[@"addSpeed"]]) {
+				self.rapidAcceleration.text = [NSString stringWithFormat:@"%@ 次", result[@"addSpeed"]];
+			}
+			// 急减速
+			if ([NSStringUtil isValidate:result[@"reduceSpeed"]]) {
+				self.rapidDeceleration.text = [NSString stringWithFormat:@"%@ 次", result[@"reduceSpeed"]];
+			}
+			// 急转弯
+			if ([NSStringUtil isValidate:result[@"wheel"]]) {
+				self.sharpTurn.text = [NSString stringWithFormat:@"%@ 次", result[@"wheel"]];
+			}
 		}
 	}
 	else {

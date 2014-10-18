@@ -71,8 +71,8 @@
 
 #pragma mark - Request API
 
-//#define kBaseURL                 @"http://121.40.85.106:8081"
-#define kBaseURL                 @"http://117.89.132.12:7788"
+#define kBaseURL                 @"http://121.40.85.106:8082"
+//#define kBaseURL                 @"http://117.89.132.12:7788"
 
 #define kLoginRequestUrl         @"/EasyCarServer/struts/loginAction!doLogin?userTelephone=%@&userPassword=%@"
 #define kRegisterRequestUrl      @"/EasyCarServer/struts/registerAction!doRegister?userCarlicense=%@&userIdcard=%@&userPassword=%@&userTelephone=%@&userTianyitongid=%@"

@@ -131,12 +131,12 @@ const int End = 2;
 //	[self sendRequestTo:[[RequestService alloc] init] with:parameter];
 
 	RealTimeTrajectoryRequestParameter *parameter = [[RealTimeTrajectoryRequestParameter alloc] init];
-	parameter.equipmentSNnum = @"6334128330095";
+//	parameter.equipmentSNnum = @"6334128330095";
 	[self sendRequestTo:[[RequestService alloc] init] with:parameter];
 }
 
 - (void)handleResult:(id)result of:(RequestService *)service {
-	if ([result isKindOfClass:[NSDictionary class]] && [result allKeys] > 0) {
+	if ([result isKindOfClass:[NSDictionary class]] && [[result allKeys] count] > 2) {
 		ItineraryHistory *_history = [[ItineraryHistory alloc] init];
 		_history.avgOilCost = result[@"AvlOilConsumption"];
 		_history.avgSpeed = result[@"AvlSpeed"];
