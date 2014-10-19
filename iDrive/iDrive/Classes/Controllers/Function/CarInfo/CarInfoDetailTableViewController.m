@@ -20,7 +20,7 @@
 
 #define FileName    @"LicensePlate.plist"
 
-@interface CarInfoDetailTableViewController () <UIPopoverListViewDataSource, UIPopoverListViewDelegate>
+@interface CarInfoDetailTableViewController () <UIPopoverListViewDataSource, UIPopoverListViewDelegate, UITextFieldDelegate>
 
 @property (strong, nonatomic) NSString *fullCarLicense;              // 完整车牌号
 
@@ -37,7 +37,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *doneBtn;              // 完成按钮
 
-@property (strong, nonatomic) NSMutableArray *carLicenseList;
+@property (strong, nonatomic) NSArray *carLicenseList;
 
 @end
 
@@ -47,12 +47,14 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
+    // 初始化车牌所属地列表
 	NSString *path = [PlistFilePathManager getFullPath:FileName options:FilePathOptionTypeUserDocument | FilePathOptionTypeCopyFromBundle];
 	_carLicenseList = [NSArray arrayWithContentsOfFile:path];
 }
 
 - (void)viewDidLayoutSubviews {
 	[super viewDidLayoutSubviews];
+    // 重置画面大小
 	BOOL isPushFromLogin = ![self.parentViewController shouldUpdate];
 	CGRect frame = self.tableView.frame;
 	if (isPushFromLogin) {
@@ -64,10 +66,12 @@
 	self.tableView.frame = frame;
 }
 
+// 返回完整车牌信息
 - (NSString *)fullCarLicense {
 	return [self.licenseSelectBtn.titleLabel.text stringByAppendingString:self.carLicense.text];
 }
 
+// 设置车牌信息
 - (void)setFullCarLicense:(NSString *)fullCarLicense {
 	[self.licenseSelectBtn setTitle:[fullCarLicense substringToIndex:1] forState:UIControlStateNormal];
 	self.carLicense.text = [fullCarLicense substringFromIndex:1];
@@ -115,6 +119,7 @@
 
 #pragma mark
 
+// 选择车牌所属地
 - (IBAction)selectLicense:(id)sender {
 	CGFloat xWidth = self.view.bounds.size.width - 100.0f;
 	CGFloat yHeight = 272.0f;
@@ -135,6 +140,9 @@
 	UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
 	                                               reuseIdentifier:identifier];
 	cell.textLabel.text = self.carLicenseList[indexPath.row];
+    if ([cell.textLabel.text isEqualToString:self.licenseSelectBtn.titleLabel.text]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    }
 	return cell;
 }
 
@@ -152,6 +160,16 @@
 - (CGFloat) popoverListView:(UIPopoverListView *)popoverListView
     heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	return 44.f;
+}
+
+#pragma mark - UITextFieldDelegate
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    textField.text = [textField.text uppercaseString];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.view endEditing:YES];
+    return YES;
 }
 
 @end

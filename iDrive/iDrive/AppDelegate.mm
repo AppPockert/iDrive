@@ -11,9 +11,8 @@
 #import "UserInfo.h"
 #import "PlistFilePathManager.h"
 #import "ServerSettingViewController.h"
-#import "ASIHTTPRequest.h"
 
-@interface AppDelegate () <ASIHTTPRequestDelegate>
+@interface AppDelegate ()
 
 @property (strong, nonatomic) UINavigationController *navigationController;
 
@@ -31,13 +30,6 @@
 
 	NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 	NSString *identifier;
-
-//	ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:@"http://117.89.132.12:7788/EasyCarServer/struts/carTravelAction!car_JDBCinit"]];
-//	[request startSynchronous];
-//	id response = request.responseData;
-//
-//	NSError *error;
-//	id JSON = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
 
 	// 程序启动过
 	if ([userDefaults boolForKey:kFirstLaunched]) {
@@ -68,8 +60,10 @@
 	// 初始化百度地图
 	[self initMap];
 
+    // 车辆异动检测
+    _carAbnormalService = [[CarAbnormalService alloc] init];
 	if ([userDefaults boolForKey:kCarAbnormal]) {
-		[self checkCarAbnormal];
+		[_carAbnormalService shouldCheckCarAbnormal:YES];
 	}
 
 #if TestVersion
@@ -85,12 +79,11 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-	// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-	// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self.carAbnormalService applicationDidEnterBackground:application];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-	// Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    [self.carAbnormalService applicationWillEnterForeground:(UIApplication *)application];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
@@ -141,28 +134,6 @@
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-- (void)shouldCheckCarAbnormal:(BOOL)check {
-	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(checkCarAbnormal) object:nil];
-	if (check) {
-		[self checkCarAbnormal];
-	}
-}
-
-- (void)checkCarAbnormal {
-#warning 替换url
-//	NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:nil]];
-//	ASIHTTPRequest *request = [[ASIHTTPRequest alloc] initWithURL:url];
-//	request.delegate = self;
-//	[request startAsynchronous];
-}
-
-- (void)requestFinished:(ASIHTTPRequest *)request {
-	[self performSelector:@selector(checkCarAbnormal) withObject:nil afterDelay:300.f];
-}
-
-- (void)requestFailed:(ASIHTTPRequest *)request {
-	[self performSelector:@selector(checkCarAbnormal) withObject:nil afterDelay:300.f];
-}
 
 #if TestVersion
 #pragma mark - 设置测试服务器地址

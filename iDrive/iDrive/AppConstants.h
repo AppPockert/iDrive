@@ -71,20 +71,30 @@
 
 #pragma mark - Request API
 
-#define kBaseURL                 @"http://121.40.85.106:8082"
-//#define kBaseURL                 @"http://117.89.132.12:7788"
+//#define kBaseURL                 @"http://121.40.85.106:8082"
+#define kBaseURL                 @"http://117.89.129.25:7788"
 
+// 登录
 #define kLoginRequestUrl         @"/EasyCarServer/struts/loginAction!doLogin?userTelephone=%@&userPassword=%@"
+// 注册
 #define kRegisterRequestUrl      @"/EasyCarServer/struts/registerAction!doRegister?userCarlicense=%@&userIdcard=%@&userPassword=%@&userTelephone=%@&userTianyitongid=%@"
+// 获取车辆信息
 #define kCarInfoRequestUrl       @"/EasyCarServer/struts/carInfoAction!queryCarInfo?userTelephone=%@"
+// 实时轨迹
 #define kRealTimeTrajectoryUrl   @"/EasyCarServer/struts/carTravelAction!doSelectLastTravelInfo?equipmentSNnum=%@"
+// 查询历史历程
 #define kItineraryHistoryUrl     @"/EasyCarServer/struts/carTravelAction!doSelectTravelInfoList?equipmentSNnum=%@&startTime=%@&endTime=%@"
+// 获取体检信息
 #define kExaminationInfoUrl      @"/EasyCarServer/struts/carInfoAction!queryCarTestInfo?equipmentSNnum=%@"
-#define kTravelAction            @"/EasyCarServer/struts/carTravelAction!doSelectLastTravelInfo?equipmentSNnum='1'"
+// 添加车辆信息
 #define kAddCarIno               @"/EasyCarServer/struts/carInfoAction!addCarInfo?icName=%@&ciiInsuranceType=%@&ciiInsurancetimeLeft=%@&ciiMaintaintimeLeft=%@&ciiMaintaindistanceLeft=%@&carLicenseid=%@&carModel=%@&carDriver=%@&userTianyitongid=%@"
+// 编辑保存车辆信息
 #define kSaveCarIno               @"/EasyCarServer/struts/carInfoAction!updateCarInfo?icName=%@&ciiInsuranceType=%@&ciiInsurancetimeLeft=%@&ciiMaintaintimeLeft=%@&ciiMaintaindistanceLeft=%@&carLicenseid=%@&carModel=%@&carDriver=%@&userTianyitongid=%@&userTelephone=%@"
+// 行为分析
 #define kBehaviorAnalysis         @"/EasyCarServer/struts/carTravelAction!selectCartreval?equipmentSNnum=%@"
+// 获取车辆面板的监控信息
 #define kCarPanel                 @"/EasyCarServer/struts/carTravelAction!selectCarControl?equipmentSNnum=%@"
-#define kCarAbnormalUrl           @""
+// 获取车辆异动信息
+#define kCarAbnormalUrl           @"/EasyCarServer/struts/carTravelAction!selectCarAbnormal?equipmentSNnum=%@"
 
 #endif

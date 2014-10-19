@@ -14,7 +14,6 @@
 #import "CarInfoViewController.h"
 #import "RegisterViewController.h"
 #import "RequestService.h"
-#import "TravelActionRequestParameter.h"
 #import "GetCarInfoRequestParameter.h"
 #import "UserInfo.h"
 
@@ -36,6 +35,7 @@ const int CarInfoRequest = 2;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
+    // 添加消键盘事件
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 
@@ -63,12 +63,9 @@ const int CarInfoRequest = 2;
 }
 
 #pragma mark
-
+// 登录事件
 - (IBAction)login:(id)sender {
 	[self.view endEditing:YES];
-//
-//	[self performSegueWithIdentifier:kMainIndex sender:nil];
-//	return;
 
 	// check账号
 	if (![NSStringUtil isValidate:self.account.text]) {
@@ -110,13 +107,6 @@ const int CarInfoRequest = 2;
 	// 登录结果处理
 	if (service.tag == LoginRequest) {
 		if ([result isKindOfClass:[NSArray class]] && [result[0] isEqualToString:kResultSuccess]) {
-//			UserInfo *userInfo = [[UserInfo alloc] init];
-//			userInfo.userTelephone = self.account.text;
-//			userInfo.userPassword = self.password.text;
-//			[kAppDelegate saveUserInfo:userInfo];
-//			[self performSegueWithIdentifier:kMainIndex sender:nil];
-//
-//			return;
 
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 			    // 登录成功后，再去服务器获取当前用户的车辆信息

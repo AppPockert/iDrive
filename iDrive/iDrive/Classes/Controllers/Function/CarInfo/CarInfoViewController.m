@@ -75,7 +75,6 @@ const int GetCarInfo = 3;
 		RequestService *service = [[RequestService alloc] init];
 		service.tag = GetCarInfo;
 		GetCarInfoRequestParameter *parameter = [[GetCarInfoRequestParameter alloc] init];
-//		parameter.userId = @"13770519290";
 		[self sendRequestTo:service with:parameter];
 	}
 

@@ -24,11 +24,12 @@
 	self.abnormalSwitch.on = isOn;
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-
-	[[NSUserDefaults standardUserDefaults] setBool:self.abnormalSwitch.isOn forKey:kCarAbnormal];
-	[[NSUserDefaults standardUserDefaults] synchronize];
+// 开关事件
+- (IBAction)switchDidChanged:(UISwitch *)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:self.abnormalSwitch.isOn forKey:kCarAbnormal];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [kAppDelegate.carAbnormalService shouldCheckCarAbnormal:self.abnormalSwitch.isOn];
 }
 
 @end

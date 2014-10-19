@@ -12,6 +12,7 @@
 #import "BMKStartOrEndPolyline.h"
 #import "RequestService.h"
 #import "RealTimeTrajectoryRequestParameter.h"
+#import "FliterCoordinateService.h"
 
 @interface TrajectoryMapViewController () <BMKMapViewDelegate>
 
@@ -60,6 +61,10 @@
 	self.mapView.delegate = nil;
 
 	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(inqueryRealTimeTrajectory) object:nil];
+}
+
+- (void)dealloc {
+    _mapView = nil;
 }
 
 #pragma mark
@@ -121,7 +126,7 @@
 //		[self addAnnotation:endAnnotation with:line];
 	}
 	BMKPolylineView *path = [[BMKPolylineView alloc] initWithOverlay:overlay];
-	path.lineWidth = 8.f;
+	path.lineWidth = 2.f;
 	path.fillColor = [UIColor greenColor];
 	path.strokeColor = [UIColor greenColor];
 	return path;
@@ -174,7 +179,7 @@
 		_history.mileage = result[@"Mileage"];
 		_history.startTime = result[@"startTime"];
 		_history.endTime = result[@"endTime"];
-		_history.coordinates = [self getCoordinates:result[@"gpsList"]];
+		_history.coordinates = [FliterCoordinateService fliterCoordinates:result[@"gpsList"]];
 
 		[self setLineInfo];
 
@@ -183,22 +188,6 @@
 	else {
 		[self.view makeToast:@"获取实时轨迹失败,请稍后重试"];
 	}
-}
-
-- (NSArray *)getCoordinates:(NSArray *)gpsList {
-	NSMutableArray *coords = [[NSMutableArray alloc] initWithCapacity:5];
-	NSString *temp = @"(";
-	for (NSString *gps in gpsList) {
-		NSRange foundObj = [gps rangeOfString:temp options:NSCaseInsensitiveSearch];
-		if (!foundObj.length > 0 || gps.length < 5) {
-			NSArray *gpsSp = [gps componentsSeparatedByString:@","];
-			Coordinate *c = [[Coordinate alloc] init];
-			c.lat = gpsSp[2];
-			c.lng = gpsSp[1];
-			[coords addObject:c];
-		}
-	}
-	return coords;
 }
 
 @end

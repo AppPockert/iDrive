@@ -37,7 +37,7 @@
 - (void)viewDidLayoutSubviews {
 	[super viewDidLayoutSubviews];
 	CGFloat width = self.scrollView.frame.size.width;
-	self.scrollView.contentSize = CGSizeMake(width * 3, 0);
+	self.scrollView.contentSize = CGSizeMake(width * pages.count, 0);
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -56,6 +56,8 @@
 	}
 
 	self.info.text = Infos[index];
+    
+//    self.page1.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%i", pages[index], (index + 3) / 2]];
 
 	if (index == 0) {
 		self.page1.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@%i", pages[0], 1]];

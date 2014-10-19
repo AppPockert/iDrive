@@ -12,10 +12,11 @@
 #import "PlistFilePathManager.h"
 #import "GetExaminationInfoRequestParameter.h"
 #import "RequestService.h"
+#import "VehicleExaminationCell.h"
 
 #define  FileName    @"ExaminationItem.plist"
 
-@interface VehicleExaminationViewController ()
+@interface VehicleExaminationViewController () <UITableViewDataSource>
 {
 	int progress;
 	NSTimer *timer;
@@ -30,9 +31,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *stautsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *progressLabel;
 
-@property (strong, nonatomic) CheckItemListView *checkListView; // 检测列表
 
-@property (strong, nonatomic) NSMutableArray *checkList;
+@property (strong, nonatomic) NSArray *checkList;
 
 /*------------------------------*/
 
@@ -53,27 +53,19 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	_checkListView = [[CheckItemListView alloc] initWithFrame:self.view.bounds];
-	[self.view addSubview:_checkListView];
-
-	self.checkListView.hidden = YES;
 	self.indicator.lineColor = [UIColor yellowColor];
 
+    // 初始化检测列表
 	NSString *path = [PlistFilePathManager getFullPath:FileName options:FilePathOptionTypeUserDocument | FilePathOptionTypeCopyFromBundle];
 	_checkList = [NSArray arrayWithContentsOfFile:path];
-}
-
-- (void)didReceiveMemoryWarning {
-	[super didReceiveMemoryWarning];
-	// Dispose of any resources that can be recreated.
 }
 
 #pragma mark -
 
 // 开始检测
 - (IBAction)beginExam:(id)sender {
+    // 获取车辆体检信息
 	GetExaminationInfoRequestParameter *p = [[GetExaminationInfoRequestParameter alloc] init];
-	p.equipmentSNnum = @"vip10";
 	[self sendRequestTo:[[RequestService alloc] init] with:p];
 
 	self.beginExamBtn.userInteractionEnabled = NO;
@@ -86,7 +78,7 @@
 	[self.progressLabel setText:@"0%"];
 }
 
-#pragma mark -
+#pragma mark
 
 - (void)doCheck:(NSTimer *)sender {
 	progress++;
@@ -105,6 +97,15 @@
 }
 
 #pragma mark
+
+- (void)service:(RequestService *)service didCompleted:(id)result {
+    if (service.resultCode != 200) {
+        [self.view makeToast:@"服务器错误"];
+    }
+    
+    [self handleResult:result of:service];
+    [HUD hide:self.shouldAutoHideHUD];
+}
 
 - (void)handleResult:(id)result of:(RequestService *)service {
 	if ([result isKindOfClass:[NSDictionary class]]) {
@@ -130,6 +131,7 @@
 	}
 }
 
+// 获取车辆信息失败处理
 - (void)examinationFailed {
 	[self.view makeToast:@"获取车辆体检信息失败，请稍后重试"];
 
@@ -138,6 +140,17 @@
 	[self.indicator stopAnimation];
 	[self.stautsLabel setHidden:YES];
 	[self.examView bringSubviewToFront:self.beginExamBtn];
+}
+
+#pragma mark - UITableViewDatasource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.checkList.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    VehicleExaminationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleExamination" forIndexPath:indexPath];
+    cell.checkItem.text = self.checkList[indexPath.row];
+    return cell;
 }
 
 @end

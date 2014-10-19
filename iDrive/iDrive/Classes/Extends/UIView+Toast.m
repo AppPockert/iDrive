@@ -20,9 +20,9 @@
 		}
 	}
 
-	float y = kScreenHeight - 93.f; // 44 + 49
+	float y = kScreenHeight - 85.f; // 36 + 49
 
-	UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, y, 320.0f, 44.0f)];
+	UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, y, 320.0f, 36.0f)];
 	bgView.backgroundColor = [UIColor clearColor];
 	bgView.clipsToBounds = YES;
 	bgView.tag = 550;
@@ -32,27 +32,28 @@
 }
 
 - (void)createAndShowToastInBackgroundView:(UIView *)bgView message:(NSString *)message {
-	UILabel *toast = [[UILabel alloc] initWithFrame:CGRectMake(0, 44.0f, 320.0f, 44.0f)];
+	UILabel *toast = [[UILabel alloc] initWithFrame:CGRectMake(0, 36.0f, 320.0f, 36.0f)];
 	[toast setBackgroundColor:[UIColor orangeColor]];
 	[toast setText:message];
 	[toast setTextAlignment:NSTextAlignmentCenter];
 	[toast setTextColor:[UIColor whiteColor]];
 	[toast setFont:[UIFont systemFontOfSize:13.0f]];
 	[toast setTag:555];
+    [toast setAlpha:0];
 	[bgView addSubview:toast];
 
 	[UIView animateWithDuration:.5f delay:0 options:UIViewAnimationOptionCurveEaseInOut
 	                 animations: ^{
 	    CGRect frame = toast.frame;
-	    frame.origin.y -= 44.0f;
+	    frame.origin.y -= 36.0f;
 	    toast.frame = frame;
-	}
-
-	                 completion: ^(BOOL finished) {
+        toast.alpha = 1;
+	} completion: ^(BOOL finished) {
 	    [UIView animateWithDuration:.5f delay:1.5f options:UIViewAnimationOptionCurveEaseInOut animations: ^{
 	        CGRect frame = toast.frame;
-	        frame.origin.y += 44.0f;
+	        frame.origin.y += 36.0f;
 	        toast.frame = frame;
+            toast.alpha = 0;
 		} completion: ^(BOOL finished) {
 	        [toast removeFromSuperview];
 	        [bgView removeFromSuperview];

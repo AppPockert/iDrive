@@ -80,13 +80,13 @@
 			[self.view makeToast:@"车辆监控数据取得失败，请稍后重试"];
 		}
 		else {
-			self.voltage.text = result[@"batteryVoltage"];
+			self.voltage.text = [NSString stringWithFormat:@"%i", [result[@"batteryVoltage"] intValue]];
 			self.tempLabel.text = [NSString stringWithFormat:@"%@%%", result[@"coolantTemperature"]];
 
 			[self setSolarterm:[result[@"throttlePercentage"] intValue]];
 			[self setEngieLoad:[result[@"engineLoad"] intValue]];
-			[self setiFuelConsumption:[result[@"instantOilConsumption"] intValue]];
-			[self setaFuelConsumption:[result[@"avlOilConsumption"] intValue]];
+			[self setiFuelConsumption:[result[@"instantOilConsumption"] floatValue]];
+			[self setaFuelConsumption:[result[@"avlOilConsumption"] floatValue]];
 			[self setengieSpeed:[result[@"rotateSpeed"] intValue]];
 			[self setrunningSpeed:[result[@"carSpeed"] intValue]];
 		}
@@ -126,8 +126,8 @@
 }
 
 // 设置瞬时油耗
-- (void)setiFuelConsumption:(int)value {
-	self.iFuelConsumption.text = [NSString stringWithFormat:@"%d", value];
+- (void)setiFuelConsumption:(float)value {
+	self.iFuelConsumption.text = [NSString stringWithFormat:@"%.1f", value];
 
 	CGRect frame = self.iFuelConsumptionView.frame;
 	frame.size.width = 130 * (1 - value / 100.f);
@@ -139,8 +139,8 @@
 }
 
 // 设置平均油耗
-- (void)setaFuelConsumption:(int)value {
-	self.aFuelConsumption.text = [NSString stringWithFormat:@"%d", value];
+- (void)setaFuelConsumption:(float)value {
+	self.aFuelConsumption.text = [NSString stringWithFormat:@"%.1f", value];
 
 	__block CGRect frame = self.aFuelConsumptionView.frame;
 	frame.origin.y = 113 - 57 * value / 100.f;

@@ -59,8 +59,12 @@
 		id JSON = [NSJSONSerialization JSONObjectWithData:response options:NSJSONReadingMutableLeaves error:&error];
 
 		if (error) {
-			NSLog(@"%@", error);
-
+            if (response.length == 0) {
+                NSLog(@"Response length is 0 Bytes!");
+            } else {
+                NSLog(@"%@", error);
+            }
+			
 			_resultCode = error.code;
 			return nil;
 		}
@@ -69,6 +73,7 @@
 		return JSON;
 	}
 	else {
+        NSLog(@"Response is 'nil'!");
 		return nil;
 	}
 }

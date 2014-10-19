@@ -37,11 +37,6 @@
 
 #pragma mark -
 
-- (void)handleResult:(id)result of:(RequestService *)service {
-}
-
-#pragma mark -
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	// 历史行程
 	if ([segue.identifier isEqualToString:kItinerayDetial]) {

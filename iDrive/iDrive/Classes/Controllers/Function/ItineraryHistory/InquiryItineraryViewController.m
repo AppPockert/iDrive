@@ -12,6 +12,7 @@
 #import "ItineraryHistoryViewController.h"
 #import "RealTimeTrajectoryRequestParameter.h"
 #import "ItineraryHistory.h"
+#import "FliterCoordinateService.h"
 
 const int Start = 1;
 const int End = 2;
@@ -80,11 +81,12 @@ const int End = 2;
 		NSDate *startDate = [dateFormatter dateFromString:self.startData.titleLabel.text];
 		NSDate *endDate = [dateFormatter dateFromString:self.endData.titleLabel.text];
 
-
+        // 结束时间超过1个月以上
 		if ([endDate timeIntervalSinceDate:startDate] > 2592000) {
 			endDate = [startDate dateByAddingTimeInterval:2592000];
 			[self.endData setTitle:[dateFormatter stringFromDate:endDate] forState:UIControlStateNormal];
 		}
+        // 结束时间比开始时间早
 		else if ([endDate timeIntervalSinceDate:startDate] < 0) {
 			[self.endData setTitle:self.startData.titleLabel.text forState:UIControlStateNormal];
 		}
@@ -124,14 +126,9 @@ const int End = 2;
 }
 
 - (IBAction)search:(id)sender {
-//	ItineraryHistoryRequestParameter *parameter = [[ItineraryHistoryRequestParameter alloc] init];
-//	parameter.startTime = self.startData.titleLabel.text;
-//	parameter.endTime = self.endData.titleLabel.text;
-//	parameter.equipmentSNnum = @"6334128330095";
-//	[self sendRequestTo:[[RequestService alloc] init] with:parameter];
-
-	RealTimeTrajectoryRequestParameter *parameter = [[RealTimeTrajectoryRequestParameter alloc] init];
-//	parameter.equipmentSNnum = @"6334128330095";
+	ItineraryHistoryRequestParameter *parameter = [[ItineraryHistoryRequestParameter alloc] init];
+	parameter.startTime = self.startData.titleLabel.text;
+	parameter.endTime = self.endData.titleLabel.text;
 	[self sendRequestTo:[[RequestService alloc] init] with:parameter];
 }
 
@@ -144,7 +141,7 @@ const int End = 2;
 		_history.mileage = result[@"Mileage"];
 		_history.startTime = result[@"startTime"];
 		_history.endTime = result[@"endTime"];
-		_history.coordinates = [self getCoordinates:result[@"gpsList"]];
+        _history.coordinates = [FliterCoordinateService fliterCoordinates:result[@"gpsList"]];
 
 		[self.historyList addObject:_history];
 		[self performSegueWithIdentifier:kHistoryList sender:nil];
@@ -152,18 +149,6 @@ const int End = 2;
 	else {
 		[self.view makeToast:@"查询失败,请稍后重试"];
 	}
-}
-
-- (NSArray *)getCoordinates:(NSArray *)gpsList {
-	NSMutableArray *coords = [[NSMutableArray alloc] initWithCapacity:5];
-	for (NSString *gps in gpsList) {
-		NSArray *gpsSp = [gps componentsSeparatedByString:@","];
-		Coordinate *c = [[Coordinate alloc] init];
-		c.lat = gpsSp[2];
-		c.lng = gpsSp[1];
-		[coords addObject:c];
-	}
-	return coords;
 }
 
 #pragma mark

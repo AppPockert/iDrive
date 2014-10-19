@@ -7,18 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CarAbnormalService.h"
 
 @class UserInfo;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) CarAbnormalService *carAbnormalService;
 
 - (void)logout;
 
 - (UserInfo *)getUserInfo;
 - (void)saveUserInfo:(UserInfo *)userInfo;
-
-- (void)shouldCheckCarAbnormal:(BOOL)check;
 
 @end
