@@ -28,7 +28,8 @@
 		self.requestMethod = @"GET";
 	}
 
-	NSString *encodeUrl = [self.url stringByAddingPercentEscapesUsingEncoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingUTF8)];
+    NSString *encodeUrl = [self.url stringByAddingPercentEscapesUsingEncoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingUTF8)];
+    
 	NSURL *requestURL = [NSURL URLWithString:encodeUrl];
 	ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:requestURL];
 	request.timeOutSeconds = 5.f;
@@ -41,7 +42,7 @@
 	}
 
 	if (parameter) {
-		[parameter addPostValueTo:request];
+//		[parameter addPostValueTo:request];
 	}
 
 

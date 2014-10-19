@@ -61,14 +61,14 @@
     if (indexPath.row == 0) {
         [self.parentViewController performSegueWithIdentifier:kInsuranceCompany sender:nil];
     }
-	// 保险到期日
-	else if (indexPath.row == 1) {
-		[self.parentViewController showDatePicker:1];
-	}
     // 车险类型
-    else if (indexPath.row == 2) {
+    else if (indexPath.row == 1) {
         [self.parentViewController performSegueWithIdentifier:kAutoInsurance sender:nil];
     }
+	// 保险到期日
+	else if (indexPath.row == 2) {
+		[self.parentViewController showDatePicker:1];
+	}
 	// 保养到期日
 	else if (indexPath.row == 3) {
 		[self.parentViewController showDatePicker:2];

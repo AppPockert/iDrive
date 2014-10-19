@@ -83,7 +83,7 @@ static char RequestServiceDelegate;
 }
 
 - (void)sendRequestTo:(RequestService *)service with:(RequestParameter *)parameter {
-	if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == NotReachable) {
+	if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == kNotReachable) {
 		[self.view makeToast:@"网络未设置，请检查网络设置后重试"];
 		return;
 	}

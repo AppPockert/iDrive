@@ -38,7 +38,11 @@
 	NSDate *end = [dateformatter dateFromString:endTime];
 
 	long interval = [end timeIntervalSinceDate:start];
-	return [NSString stringWithFormat:@"%lih%lim", interval / 3600, (interval % 3600) / 60];
+    if (interval / 3600 > 0) {
+        return [NSString stringWithFormat:@"%lih%lim", interval / 3600, (interval % 3600) / 60];
+    } else {
+        return [NSString stringWithFormat:@"%lim", (interval % 3600) / 60];
+    }
 }
 
 @end

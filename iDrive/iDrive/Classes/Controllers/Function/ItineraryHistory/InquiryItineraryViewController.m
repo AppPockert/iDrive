@@ -108,7 +108,7 @@ const int End = 2;
 		isShowDatePicker = YES;
 		[UIView animateWithDuration:.25 animations: ^{
 		    CGRect rect = self.datePickerView.frame;
-		    rect.origin.y = rect.origin.y - rect.size.height - 99;
+		    rect.origin.y = rect.origin.y - rect.size.height - 50;
 		    self.datePickerView.frame = rect;
 		}];
 	}
@@ -119,7 +119,7 @@ const int End = 2;
 		isShowDatePicker = NO;
 		[UIView animateWithDuration:.25 animations: ^{
 		    CGRect rect = self.datePickerView.frame;
-		    rect.origin.y = rect.origin.y + rect.size.height + 99;
+		    rect.origin.y = rect.origin.y + rect.size.height + 50;
 		    self.datePickerView.frame = rect;
 		}];
 	}
@@ -133,17 +133,25 @@ const int End = 2;
 }
 
 - (void)handleResult:(id)result of:(RequestService *)service {
-	if ([result isKindOfClass:[NSDictionary class]] && [[result allKeys] count] > 2) {
-		ItineraryHistory *_history = [[ItineraryHistory alloc] init];
-		_history.avgOilCost = result[@"AvlOilConsumption"];
-		_history.avgSpeed = result[@"AvlSpeed"];
-		_history.fuelConsumption = result[@"CurrentOilConsumption"];
-		_history.mileage = result[@"Mileage"];
-		_history.startTime = result[@"startTime"];
-		_history.endTime = result[@"endTime"];
-        _history.coordinates = [FliterCoordinateService fliterCoordinates:result[@"gpsList"]];
-
-		[self.historyList addObject:_history];
+	if ([result isKindOfClass:[NSArray class]] && ![result containsObject:@"error"]) {
+        if ([result containsObject:@"no message"]) {
+            [self.view makeToast:@"未查询到相关历程数据"];
+            return;
+        }
+        
+        for (NSDictionary *record in result) {
+            ItineraryHistory *_history = [[ItineraryHistory alloc] init];
+            _history.avgOilCost = record[@"AvlOilConsumption"];
+            _history.avgSpeed = record[@"AvlSpeed"];
+            _history.fuelConsumption = record[@"CurrentOilConsumption"];
+            _history.mileage = record[@"Mileage"];
+            _history.startTime = record[@"startTime"];
+            _history.endTime = record[@"endTime"];
+            _history.coordinates = [FliterCoordinateService fliterCoordinates:record[@"gpsList"]];
+            
+            [self.historyList addObject:_history];
+        }
+		
 		[self performSegueWithIdentifier:kHistoryList sender:nil];
 	}
 	else {

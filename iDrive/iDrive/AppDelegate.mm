@@ -11,6 +11,7 @@
 #import "UserInfo.h"
 #import "PlistFilePathManager.h"
 #import "ServerSettingViewController.h"
+#import "Reachability.h"
 
 @interface AppDelegate ()
 
@@ -69,6 +70,10 @@
 #if TestVersion
 	[self setTestServer];
 #endif
+    
+    if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == kNotReachable) {
+        [self.window makeToast:@"网络未设置，请先检查网络设置"];
+    }
 
 	return YES;
 }
