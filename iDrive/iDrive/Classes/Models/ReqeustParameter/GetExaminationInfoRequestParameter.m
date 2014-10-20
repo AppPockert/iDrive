@@ -20,8 +20,8 @@
 }
 
 - (NSString *)urlByAppendParameter {
-	NSString *url = [NSString stringWithFormat:kExaminationInfoUrl, self.equipmentSNnum];
-	return [ServerURLUtil getFullURL:url];
+//	NSString *url = [NSString stringWithFormat:kExaminationInfoUrl, self.equipmentSNnum];
+	return [ServerURLUtil getFullURL:kGetCarTestInfo];
 }
 
 @end

@@ -102,8 +102,8 @@
 #pragma mark - BMKMapViewDelegate
 
 - (BMKOverlayView *)mapView:(BMKMapView *)mapView viewForOverlay:(id <BMKOverlay> )overlay {
-	if ([overlay isKindOfClass:[BMKStartOrEndPolyline class]]) {
-		BMKStartOrEndPolyline *line = (BMKStartOrEndPolyline *)overlay;
+	if ([overlay isKindOfClass:[BMKPolyline class]]) {
+		BMKPolyline *line = (BMKPolyline *)overlay;
 
 		BMKMapPoint *points = [line points];
 		BMKMapPoint startPoint = points[0];
@@ -116,14 +116,16 @@
 		startAnnotation.title = self.history.startTime;
 		[mapView addAnnotation:startAnnotation];
 //		[self addAnnotation:startAnnotation with:line];
-
-		// 终点
-		BMKStartOrEndPointAnnotation *endAnnotation = [[BMKStartOrEndPointAnnotation alloc]init];
-		endAnnotation.coordinate = BMKCoordinateForMapPoint(endPoint);
-		endAnnotation.type = PointTypeEnd;
-		endAnnotation.title = self.history.endTime;
-		[mapView addAnnotation:endAnnotation];
+        
+        if ([line pointCount] > 1) {
+            // 终点
+            BMKStartOrEndPointAnnotation *endAnnotation = [[BMKStartOrEndPointAnnotation alloc]init];
+            endAnnotation.coordinate = BMKCoordinateForMapPoint(endPoint);
+            endAnnotation.type = PointTypeEnd;
+            endAnnotation.title = self.history.endTime;
+            [mapView addAnnotation:endAnnotation];
 //		[self addAnnotation:endAnnotation with:line];
+        }
 	}
 	BMKPolylineView *path = [[BMKPolylineView alloc] initWithOverlay:overlay];
 	path.lineWidth = 2.f;
@@ -135,20 +137,34 @@
 - (BMKAnnotationView *)mapView:(BMKMapView *)mapView viewForAnnotation:(id <BMKAnnotation> )annotation {
 	static NSString *annotationIdentifier = @"Annotation";
 	if ([annotation isKindOfClass:[BMKStartOrEndPointAnnotation class]]) {
+        BMKStartOrEndPointAnnotation *startOrEndPointAnnotation = (BMKStartOrEndPointAnnotation *)annotation;
 		BMKPinAnnotationView *annotationView = (BMKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:annotationIdentifier];
 
 		if (!annotationView) {
 			annotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotationIdentifier];
 		}
+        
+        if (startOrEndPointAnnotation.type == PointTypeStart) {
+            if (self.trajectoryType == TrajectoryTypeHistory) {
+                annotationView.image = [UIImage imageNamed:@"start"];
+//                annotationView.centerOffset = CGPointMake(0, 2);
+            } else {
+                annotationView.image = [UIImage imageNamed:@"car"];
+                annotationView.centerOffset = CGPointMake(0, 5);
+            }
+        } else {
+            annotationView.image = [UIImage imageNamed:@"end"];
+//            annotationView.centerOffset = CGPointMake(0, 2);
+        }
 
-		annotationView.pinColor = BMKPinAnnotationColorPurple;
+//		annotationView.pinColor = BMKPinAnnotationColorPurple;
 		return annotationView;
 	}
 	return nil;
 }
 
 - (void)mapView:(BMKMapView *)mapView didSelectAnnotationView:(BMKAnnotationView *)view {
-	[mapView setCenterCoordinate:[[view annotation] coordinate]];
+	[mapView setCenterCoordinate:[[view annotation] coordinate] animated:YES];
 }
 
 #pragma mark -

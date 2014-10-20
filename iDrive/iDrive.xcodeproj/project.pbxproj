@@ -141,6 +141,9 @@
 		04AF3B8819C5C83500C53563 /* CheckItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04AF3B8719C5C83500C53563 /* CheckItemView.xib */; };
 		04C07F0419EA257F00EB34F5 /* FuelConsumptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C07F0319EA257F00EB34F5 /* FuelConsumptionView.m */; };
 		04C07F0719EA702800EB34F5 /* NJDNumberJumpLable.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C07F0619EA702800EB34F5 /* NJDNumberJumpLable.m */; };
+		04C2D85D19F5366700754D05 /* InsuranceType.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04C2D85C19F5366700754D05 /* InsuranceType.plist */; };
+		04C2D86319F5436800754D05 /* SaveMaintenanceInfoRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C2D86219F5436800754D05 /* SaveMaintenanceInfoRequestParameter.m */; };
+		04C2D86619F5438000754D05 /* GetMaintenanceInfoRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C2D86519F5438000754D05 /* GetMaintenanceInfoRequestParameter.m */; };
 		04D908A219D1B7B600A4DF4C /* LoginRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D908A119D1B7B600A4DF4C /* LoginRequestParameter.m */; };
 		04D908A519D1C38200A4DF4C /* RegisterRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D908A419D1C38200A4DF4C /* RegisterRequestParameter.m */; };
 		04D908A819D1C6E500A4DF4C /* RealTimeTrajectoryRequestParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D908A719D1C6E500A4DF4C /* RealTimeTrajectoryRequestParameter.m */; };
@@ -436,6 +439,11 @@
 		04C07F0319EA257F00EB34F5 /* FuelConsumptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FuelConsumptionView.m; sourceTree = "<group>"; };
 		04C07F0519EA702800EB34F5 /* NJDNumberJumpLable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJDNumberJumpLable.h; sourceTree = "<group>"; };
 		04C07F0619EA702800EB34F5 /* NJDNumberJumpLable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJDNumberJumpLable.m; sourceTree = "<group>"; };
+		04C2D85C19F5366700754D05 /* InsuranceType.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InsuranceType.plist; sourceTree = "<group>"; };
+		04C2D86119F5436800754D05 /* SaveMaintenanceInfoRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SaveMaintenanceInfoRequestParameter.h; sourceTree = "<group>"; };
+		04C2D86219F5436800754D05 /* SaveMaintenanceInfoRequestParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SaveMaintenanceInfoRequestParameter.m; sourceTree = "<group>"; };
+		04C2D86419F5438000754D05 /* GetMaintenanceInfoRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMaintenanceInfoRequestParameter.h; sourceTree = "<group>"; };
+		04C2D86519F5438000754D05 /* GetMaintenanceInfoRequestParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMaintenanceInfoRequestParameter.m; sourceTree = "<group>"; };
 		04D908A019D1B7B600A4DF4C /* LoginRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginRequestParameter.h; sourceTree = "<group>"; };
 		04D908A119D1B7B600A4DF4C /* LoginRequestParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginRequestParameter.m; sourceTree = "<group>"; };
 		04D908A319D1C38200A4DF4C /* RegisterRequestParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterRequestParameter.h; sourceTree = "<group>"; };
@@ -825,15 +833,16 @@
 		040CFAB619BC0836000FCE06 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				0475301519D390CE0098105B /* 瞬时油耗动画.gif */,
 				0475301319D390C10098105B /* 平均油耗动画.gif */,
-				0475301119D390720098105B /* 温度计表动画背景.gif */,
-				0475300219D3654B0098105B /* 启动画面@2x.png */,
 				0475300319D3654B0098105B /* 启动画面-568h@2x.png */,
-				040CFAB719BC08C0000FCE06 /* InsuranceCompany.plist */,
+				0475300219D3654B0098105B /* 启动画面@2x.png */,
+				0475301519D390CE0098105B /* 瞬时油耗动画.gif */,
+				0475301119D390720098105B /* 温度计表动画背景.gif */,
 				0465E60F19D04EEE00D6A640 /* CarBrand.plist */,
-				0421F61819E90E3500A9D258 /* LicensePlate.plist */,
 				0421F61A19E92A8300A9D258 /* ExaminationItem.plist */,
+				040CFAB719BC08C0000FCE06 /* InsuranceCompany.plist */,
+				04C2D85C19F5366700754D05 /* InsuranceType.plist */,
+				0421F61819E90E3500A9D258 /* LicensePlate.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1091,28 +1100,32 @@
 		0477614419B1C75400B1DA26 /* ReqeustParameter */ = {
 			isa = PBXGroup;
 			children = (
-				04AEC7D519CD9B7300266B18 /* GetCarInfoRequestParameter.h */,
-				04AEC7D619CD9B7300266B18 /* GetCarInfoRequestParameter.m */,
-				04AEC7D819CD9BB200266B18 /* ModifyCarInfoRequestParameter.h */,
-				04AEC7D919CD9BB200266B18 /* ModifyCarInfoRequestParameter.m */,
-				04AEC7DB19CD9D2F00266B18 /* GetInsuranceCompanyRequestParameter.h */,
-				04AEC7DC19CD9D2F00266B18 /* GetInsuranceCompanyRequestParameter.m */,
-				04AEC7DE19CD9D9600266B18 /* GetExaminationInfoRequestParameter.h */,
-				04AEC7DF19CD9D9600266B18 /* GetExaminationInfoRequestParameter.m */,
-				04AEC7E119CD9DD000266B18 /* GetCarPanelInfoRequestParameter.h */,
-				04AEC7E219CD9DD000266B18 /* GetCarPanelInfoRequestParameter.m */,
-				04D908A019D1B7B600A4DF4C /* LoginRequestParameter.h */,
-				04D908A119D1B7B600A4DF4C /* LoginRequestParameter.m */,
-				04D908A319D1C38200A4DF4C /* RegisterRequestParameter.h */,
-				04D908A419D1C38200A4DF4C /* RegisterRequestParameter.m */,
-				04D908A619D1C6E500A4DF4C /* RealTimeTrajectoryRequestParameter.h */,
-				04D908A719D1C6E500A4DF4C /* RealTimeTrajectoryRequestParameter.m */,
-				04D908A919D1C80000A4DF4C /* ItineraryHistoryRequestParameter.h */,
-				04D908AA19D1C80000A4DF4C /* ItineraryHistoryRequestParameter.m */,
 				04D908AC19D1C9FD00A4DF4C /* AddCarInfoRequestParameter.h */,
 				04D908AD19D1C9FD00A4DF4C /* AddCarInfoRequestParameter.m */,
 				0475300B19D376BD0098105B /* BehaviorAnalysisRequestParameter.h */,
 				0475300C19D376BD0098105B /* BehaviorAnalysisRequestParameter.m */,
+				04AEC7D519CD9B7300266B18 /* GetCarInfoRequestParameter.h */,
+				04AEC7D619CD9B7300266B18 /* GetCarInfoRequestParameter.m */,
+				04AEC7E119CD9DD000266B18 /* GetCarPanelInfoRequestParameter.h */,
+				04AEC7E219CD9DD000266B18 /* GetCarPanelInfoRequestParameter.m */,
+				04AEC7DE19CD9D9600266B18 /* GetExaminationInfoRequestParameter.h */,
+				04AEC7DF19CD9D9600266B18 /* GetExaminationInfoRequestParameter.m */,
+				04AEC7DB19CD9D2F00266B18 /* GetInsuranceCompanyRequestParameter.h */,
+				04AEC7DC19CD9D2F00266B18 /* GetInsuranceCompanyRequestParameter.m */,
+				04D908A919D1C80000A4DF4C /* ItineraryHistoryRequestParameter.h */,
+				04D908AA19D1C80000A4DF4C /* ItineraryHistoryRequestParameter.m */,
+				04D908A019D1B7B600A4DF4C /* LoginRequestParameter.h */,
+				04D908A119D1B7B600A4DF4C /* LoginRequestParameter.m */,
+				04AEC7D819CD9BB200266B18 /* ModifyCarInfoRequestParameter.h */,
+				04AEC7D919CD9BB200266B18 /* ModifyCarInfoRequestParameter.m */,
+				04D908A619D1C6E500A4DF4C /* RealTimeTrajectoryRequestParameter.h */,
+				04D908A719D1C6E500A4DF4C /* RealTimeTrajectoryRequestParameter.m */,
+				04D908A319D1C38200A4DF4C /* RegisterRequestParameter.h */,
+				04D908A419D1C38200A4DF4C /* RegisterRequestParameter.m */,
+				04C2D86119F5436800754D05 /* SaveMaintenanceInfoRequestParameter.h */,
+				04C2D86219F5436800754D05 /* SaveMaintenanceInfoRequestParameter.m */,
+				04C2D86419F5438000754D05 /* GetMaintenanceInfoRequestParameter.h */,
+				04C2D86519F5438000754D05 /* GetMaintenanceInfoRequestParameter.m */,
 			);
 			path = ReqeustParameter;
 			sourceTree = "<group>";
@@ -1470,6 +1483,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C2D85D19F5366700754D05 /* InsuranceType.plist in Resources */,
 				04E412F419BD6AF5005F2798 /* PaperFoldResources.bundle in Resources */,
 				04AF3B8819C5C83500C53563 /* CheckItemView.xib in Resources */,
 				04ED810B19D596850035EC3E /* mapapi.bundle in Resources */,
@@ -1524,6 +1538,7 @@
 				04E412F219BD6AF5005F2798 /* MultiFoldView.m in Sources */,
 				0477614519B1C75400B1DA26 /* UserInfo.m in Sources */,
 				04E359FA19BD988A00E451A5 /* InquiryItineraryViewController.m in Sources */,
+				04C2D86319F5436800754D05 /* SaveMaintenanceInfoRequestParameter.m in Sources */,
 				0477610E19B1950900B1DA26 /* ASIS3ObjectRequest.m in Sources */,
 				040C8F4319B0CED000E3C43B /* UIView+Toast.m in Sources */,
 				0477610319B1950900B1DA26 /* ASICloudFilesContainer.m in Sources */,
@@ -1613,6 +1628,7 @@
 				0477610219B1950900B1DA26 /* ASICloudFilesCDNRequest.m in Sources */,
 				04ED25FD19BB18BF00139CD0 /* MainIndexViewController.m in Sources */,
 				047760FD19B1950900B1DA26 /* ASIFormDataRequest.m in Sources */,
+				04C2D86619F5438000754D05 /* GetMaintenanceInfoRequestParameter.m in Sources */,
 				0465E60E19D04C0300D6A640 /* ServerURLUtil.m in Sources */,
 				040C8F4519B0CED000E3C43B /* RegexHelper.m in Sources */,
 				04E359F719BD97DD00E451A5 /* TrajectoryMapViewController.m in Sources */,

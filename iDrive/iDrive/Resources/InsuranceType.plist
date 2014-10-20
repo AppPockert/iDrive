@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>交强险</string>
+	<string>车损险</string>
+	<string>第三者责任险</string>
+	<string>盗抢险</string>
+	<string>车上人员责任保险</string>
+	<string>划痕险</string>
+	<string>玻璃单独破碎险</string>
+	<string>自燃险</string>
+	<string>制定专修厂</string>
+	<string>不计免赔</string>
+</array>
+</plist>

@@ -42,6 +42,8 @@
 #define kFirstLaunched    @"FirstLaunched"
 #define kCarAbnormal      @"CarAbnormal"
 
+#define kEngineOil        @"HasEngineOil"
+#define kAirConditioner   @"HasAirConditioner"
 
 #define kResultSuccess    @"success"
 
@@ -71,8 +73,8 @@
 
 #pragma mark - Request API
 
-//#define kBaseURL                 @"http://121.40.85.106:8082"
-#define kBaseURL                 @"http://117.89.129.25:7788"
+#define kBaseURL                 @"http://121.40.85.106:8082"
+//#define kBaseURL                 @"http://117.89.129.25:7788"
 
 // 登录
 #define kLoginRequestUrl         @"/EasyCarServer/struts/loginAction!doLogin?userTelephone=%@&userPassword=%@"
@@ -96,5 +98,11 @@
 #define kCarPanel                 @"/EasyCarServer/struts/carTravelAction!selectCarControl?equipmentSNnum=%@"
 // 获取车辆异动信息
 #define kCarAbnormalUrl           @"/EasyCarServer/struts/carTravelAction!selectCarAbnormal?equipmentSNnum=%@"
+// 获取车险及保养信息
+#define kGetMaintenanceInfoUrl    @"/EasyCarServer/struts/insuranceInfoAction!queryInsuranceInfo?userTelephone=%@"
+// 保存车型及保养信息
+#define kSaveMaintenanceInfoUrl   @"/EasyCarServer/struts/insuranceInfoAction!updateInsuranceInfo?userTelephone=%@&icName=%@&ciiInsuranceType=%@&ciiInsurancetimeLeft=%@&ciiMaintaintimeLeft=%@&ciiMaintaindistanceLeft=%@&ciiMaintainInfo=1"
+
+#define kGetCarTestInfo           @"/EasyCarServer/struts/carInfoAction!getCarTestInfo"
 
 #endif

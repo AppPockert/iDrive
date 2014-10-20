@@ -18,7 +18,7 @@
         NSRange foundObj = [gps rangeOfString:temp options:NSCaseInsensitiveSearch];
         if (!foundObj.length > 0 || gps.length < 5) {
             NSArray *gpsSp = [gps componentsSeparatedByString:@","];
-            if ([gpsSp[0] isEqualToString:@"2"]) {
+            if ([gpsSp[0] isEqualToString:@"2"] || gpsSp.count < 3) {
                 continue;
             }
             Coordinate *c = [[Coordinate alloc] init];

@@ -30,9 +30,10 @@
 @property (weak, nonatomic) IBOutlet GPLoadingView *indicator;  // 等待指示器
 @property (weak, nonatomic) IBOutlet UILabel *stautsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *progressLabel;
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSArray *checkList;
+@property (strong, nonatomic) NSMutableArray *checkResult;
 
 /*------------------------------*/
 
@@ -58,6 +59,7 @@
     // 初始化检测列表
 	NSString *path = [PlistFilePathManager getFullPath:FileName options:FilePathOptionTypeUserDocument | FilePathOptionTypeCopyFromBundle];
 	_checkList = [NSArray arrayWithContentsOfFile:path];
+    _checkResult = [[NSMutableArray alloc] initWithCapacity:5];
 }
 
 #pragma mark -
@@ -108,24 +110,29 @@
 }
 
 - (void)handleResult:(id)result of:(RequestService *)service {
-	if ([result isKindOfClass:[NSDictionary class]]) {
-		if ([[result allKeys] containsObject:@"error"]) {
-			[self examinationFailed];
-		}
-		else {
-			progress = -1;
-			timer = [NSTimer scheduledTimerWithTimeInterval:.25 target:self selector:@selector(doCheck:) userInfo:nil repeats:YES];
-
-			self.sumOilConsumption.text = [NSString stringWithFormat:@"%@ 升", result[@"sumOilConsumption"]];
-			self.sumMileage.text = [NSString stringWithFormat:@"%@ 公里", result[@"sumMileage"]];
-			self.currentOilConsumption.text = [NSString stringWithFormat:@"%@ 升", result[@"currentOilConsumption"]];
-			self.avlOilConsumption.text = [NSString stringWithFormat:@"%@ 升", result[@"avlOilConsumption"]];
-			self.batteryVoltage.text = [NSString stringWithFormat:@"%@ 伏", result[@"batteryVoltage"]];
-			self.carSpeed.text = [NSString stringWithFormat:@"%@ 公里/小时", result[@"carSpeed"]];
-			self.rotateSpeed.text = [NSString stringWithFormat:@"%@ 转/分钟", result[@"rotateSpeed"]];
-			self.coolantTemperature.text = [NSString stringWithFormat:@"%@ 度", result[@"coolantTemperature"]];
-		}
-	}
+//	if ([result isKindOfClass:[NSDictionary class]]) {
+//		if ([[result allKeys] containsObject:@"error"]) {
+//			[self examinationFailed];
+//		}
+//		else {
+//			self.sumOilConsumption.text = [NSString stringWithFormat:@"%@ 升", result[@"sumOilConsumption"]];
+//			self.sumMileage.text = [NSString stringWithFormat:@"%@ 公里", result[@"sumMileage"]];
+//			self.currentOilConsumption.text = [NSString stringWithFormat:@"%@ 升", result[@"currentOilConsumption"]];
+//			self.avlOilConsumption.text = [NSString stringWithFormat:@"%@ 升", result[@"avlOilConsumption"]];
+//			self.batteryVoltage.text = [NSString stringWithFormat:@"%@ 伏", result[@"batteryVoltage"]];
+//			self.carSpeed.text = [NSString stringWithFormat:@"%@ 公里/小时", result[@"carSpeed"]];
+//			self.rotateSpeed.text = [NSString stringWithFormat:@"%@ 转/分钟", result[@"rotateSpeed"]];
+//			self.coolantTemperature.text = [NSString stringWithFormat:@"%@ 度", result[@"coolantTemperature"]];
+//		}
+//	}
+    
+    if ([result isKindOfClass:[NSArray class]]) {
+        self.checkResult = [NSMutableArray arrayWithArray:result];
+        [self.tableView reloadData];
+        
+        progress = -1;
+        timer = [NSTimer scheduledTimerWithTimeInterval:.25 target:self selector:@selector(doCheck:) userInfo:nil repeats:YES];
+    }
 	else {
 		[self examinationFailed];
 	}
@@ -144,12 +151,13 @@
 
 #pragma mark - UITableViewDatasource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.checkList.count;
+    return self.checkResult.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     VehicleExaminationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"VehicleExamination" forIndexPath:indexPath];
-    cell.checkItem.text = self.checkList[indexPath.row];
+    cell.checkItem.text = [NSString stringWithFormat:@"%i    %@", indexPath.row + 1, self.checkList[indexPath.row]];
+    cell.result.text = self.checkResult[indexPath.row];
     return cell;
 }
 

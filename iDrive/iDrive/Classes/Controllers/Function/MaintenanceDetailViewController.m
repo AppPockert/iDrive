@@ -25,11 +25,23 @@
 
 @property (assign, nonatomic) BOOL hasEngineOil;      // 机油
 @property (assign, nonatomic) BOOL hasAirConditioner; // 空调
+@property (weak, nonatomic) IBOutlet UIButton *selectEngieOil;
+@property (weak, nonatomic) IBOutlet UIButton *selectAirContidioner;
 
 @end
 
 @implementation MaintenanceDetailViewController
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    self.hasEngineOil = [userDefault boolForKey:kEngineOil];
+   [self.selectEngieOil setImage :[self getSelectedImage:_hasEngineOil] forState : UIControlStateNormal];
+    
+    self.hasAirConditioner = [userDefault boolForKey:kAirConditioner];
+    [self.selectAirContidioner setImage :[self getSelectedImage:_hasAirConditioner] forState : UIControlStateNormal];
+}
 
 - (UIImage *)getSelectedImage:(BOOL)selected {
 	if (selected) {
@@ -43,13 +55,13 @@
 // 选择机油
 - (IBAction)selectEngineOil:(id)sender {
 	_hasEngineOil = !_hasEngineOil;
-	[((UIButton *)sender)setImage :[self getSelectedImage:_hasEngineOil] forState : UIControlStateNormal];
+	[self.selectEngieOil setImage :[self getSelectedImage:_hasEngineOil] forState : UIControlStateNormal];
 }
 
 // 选择空调
 - (IBAction)selectAirConditioner:(id)sender {
 	_hasAirConditioner = !_hasAirConditioner;
-	[((UIButton *)sender)setImage :[self getSelectedImage:_hasAirConditioner] forState : UIControlStateNormal];
+	[self.selectAirContidioner setImage :[self getSelectedImage:_hasAirConditioner] forState : UIControlStateNormal];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -83,6 +95,13 @@
 
 - (IBAction)save:(id)sender {
 	[self.parentViewController save];
+}
+
+- (void)saveDidCompleted {
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setBool:self.hasEngineOil forKey:kEngineOil];
+    [userDefault setBool:self.hasAirConditioner forKey:kAirConditioner];
+    [userDefault synchronize];
 }
 
 @end

@@ -40,7 +40,12 @@
     NSError *error = nil;
     id result = [NSJSONSerialization JSONObjectWithData:request.responseData options:NSJSONReadingMutableLeaves error:&error];
     if (!error && result) {
-        //
+        if ([result[@"yes"] isEqualToString:@"yes"]) {
+            UILocalNotification *notification = [[UILocalNotification alloc] init];
+            notification.soundName = UILocalNotificationDefaultSoundName;
+            notification.alertBody = @"检测到您的车辆有异动！请确认是否是本人行为。";
+            [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+        }
     } else {
         NSLog(@"车辆异动检测失败！");
     }

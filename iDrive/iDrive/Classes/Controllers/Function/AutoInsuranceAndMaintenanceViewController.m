@@ -9,12 +9,14 @@
 #import "AutoInsuranceAndMaintenanceViewController.h"
 #import "MaintenanceDetailViewController.h"
 #import "SelectableViewController.h"
-#import "GetCarInfoRequestParameter.h"
+#import "GetMaintenanceInfoRequestParameter.h"
+#import "SaveMaintenanceInfoRequestParameter.h"
 #import "RequestService.h"
-#import "ModifyCarInfoRequestParameter.h"
 #import "NSStringUtil.h"
 
 @interface MaintenanceDetailViewController ()
+
+- (void)saveDidCompleted;
 
 @property (nonatomic) UILabel *insuranceCompanyLabel; // 保险公司
 @property (nonatomic) UILabel *autoInsuranceLabel;    // 车险类型
@@ -34,8 +36,6 @@
 }
 
 @property (strong, nonatomic) MaintenanceDetailViewController *detail;
-@property (strong, nonatomic) ModifyCarInfoRequestParameter *parameterForSave;
-
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *dataPicker;
 @property (weak, nonatomic) IBOutlet UIView *datePickerView;
@@ -50,11 +50,9 @@ const int SaveInfo = 2;
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    _parameterForSave = [[ModifyCarInfoRequestParameter alloc] init];
-    
     RequestService *service = [[RequestService alloc] init];
     service.tag = GetInfo;
-    GetCarInfoRequestParameter *parameter = [[GetCarInfoRequestParameter alloc] init];
+    GetMaintenanceInfoRequestParameter *parameter = [[GetMaintenanceInfoRequestParameter alloc] init];
     [self sendRequestTo:service with:parameter];
 }
 
@@ -139,38 +137,57 @@ const int SaveInfo = 2;
 #pragma mark - 保存
 
 - (void)save {
-#warning 接口未完成
-    [self.view makeToast:@"保存成功"];
-	[self.navigationController popViewControllerAnimated:YES];
+    RequestService *service = [[RequestService alloc] init];
+    service.tag = SaveInfo;
+    
+    SaveMaintenanceInfoRequestParameter *parameter = [[SaveMaintenanceInfoRequestParameter alloc] init];
+    parameter.insuranceType = [self valueOfLabel:self.detail.autoInsuranceLabel];
+    parameter.insuranceCompany = [self valueOfLabel:self.detail.insuranceCompanyLabel];
+    parameter.ciiInsurancetimeLeft = [self valueOfLabel:self.detail.insuranceExpire];
+    parameter.ciiMaintaintimeLeft = [self valueOfLabel:self.detail.maintenanceDueDate];
+    parameter.ciiMaintaindistanceLeft = [self valueOfField:self.detail.maintenanceMaMi];
+    
+    [self sendRequestTo:service with:parameter];
 }
 
 #pragma mark 
 
 - (void)handleResult:(id)result of:(RequestService *)service {
     if (service.tag == GetInfo) {
-        // 保险公司
-        if ([NSStringUtil isValidate:result[@"IcName"]]) {
-            self.detail.insuranceCompanyLabel.text = result[@"IcName"];
-        }
-        
-        // 保险类型
-        if (result[@"CiiInsuranceType"] && [NSStringUtil isValidate:[NSString stringWithFormat:@"%@", result[@"CiiInsuranceType"]]]) {
-            self.detail.autoInsuranceLabel.text = [NSString stringWithFormat:@"%@", result[@"CiiInsuranceType"]];
-        }
-        
-        // 保险到期日
-        if ([NSStringUtil isValidate:result[@"CiiInsurancetimeLeft"]]) {
-            self.detail.insuranceExpire.text = result[@"CiiInsurancetimeLeft"];
-        }
-        // 保养到期日
-        if ([NSStringUtil isValidate:result[@"CiiMaintaintimeLeft"]]) {
-            self.detail.maintenanceDueDate.text = result[@"CiiMaintaintimeLeft"];
-        }
-        // 保养到期里程
-        if (result[@"CiiMaintaindistanceLeft"] && [NSStringUtil isValidate:[NSString stringWithFormat:@"%@", result[@"CiiMaintaindistanceLeft"]]]) {
-            self.detail.maintenanceMaMi.text = [NSString stringWithFormat:@"%@", result[@"CiiMaintaindistanceLeft"]];
+        if ([result isKindOfClass:[NSDictionary class]]) {
+            // 保险公司
+            if ([NSStringUtil isValidate:result[@"IcName"]]) {
+                self.detail.insuranceCompanyLabel.text = result[@"IcName"];
+            }
+            
+            // 保险类型
+            if (result[@"CiiInsuranceType"] && [NSStringUtil isValidate:[NSString stringWithFormat:@"%@", result[@"CiiInsuranceType"]]]) {
+                self.detail.autoInsuranceLabel.text = [NSString stringWithFormat:@"%@", result[@"CiiInsuranceType"]];
+            }
+            
+            // 保险到期日
+            if ([NSStringUtil isValidate:result[@"CiiInsurancetimeLeft"]]) {
+                self.detail.insuranceExpire.text = result[@"CiiInsurancetimeLeft"];
+            }
+            // 保养到期日
+            if ([NSStringUtil isValidate:result[@"CiiMaintaintimeLeft"]]) {
+                self.detail.maintenanceDueDate.text = result[@"CiiMaintaintimeLeft"];
+            }
+            // 保养到期里程
+            if (result[@"CiiMaintaindistanceLeft"] && [NSStringUtil isValidate:[NSString stringWithFormat:@"%@", result[@"CiiMaintaindistanceLeft"]]]) {
+                self.detail.maintenanceMaMi.text = [NSString stringWithFormat:@"%@", result[@"CiiMaintaindistanceLeft"]];
+            }
+        } else {
+            [self.view makeToast:@"获取数据失败"];
         }
     } else {
+        if ([result isKindOfClass:[NSArray class]] && [result containsObject:@"success"]) {
+            [self.detail saveDidCompleted];
+            [self.view makeToast:@"保存成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+        } else {
+            [self.view makeToast:@"保存失败"];
+        }
         
     }
 }
